@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  /* Reference palette (index.html) */
+  --color-roncy-yellow: #ffd93d;
+  --color-roncy-yellow2: #ffc107;
+  --color-roncy-teal: #00d4c8;
+  --color-roncy-teal2: #00b8ad; /* same as accent-dim; named for parity with reference */
+  --color-roncy-coral: #ff6b6b;
+  --color-roncy-purple: #c084fc;
+  --color-roncy-navy: #0f172a;
+  /* Semantic tokens (used across existing pages) */
+  --color-roncy-bg: #ffffff;
+  --color-roncy-surface: #f8fafc;
+  --color-roncy-border: #e2e8f0;
+  --color-roncy-muted: #64748b;
+  --color-roncy-text: #1e293b;
+  --color-roncy-accent: #00d4c8;
+  --color-roncy-accent-dim: #00b8ad;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-dvh bg-[var(--color-roncy-bg)] text-[var(--color-roncy-text)] antialiased;
+}
+
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-[var(--color-roncy-teal)];
+}
+
+/* Homepage motion — keep opacity at 1 so content never disappears if animation is skipped */
+@keyframes roncy-up {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes roncy-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--roncy-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-18px) rotate(var(--roncy-rot, 0deg));
+  }
+}
+
+.roncy-ease {
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-roncy-up {
+  opacity: 1;
+  animation: roncy-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-roncy-up {
+    animation: none;
+    transform: none;
+  }
+}
+
+.animate-roncy-float {
+  animation: roncy-float var(--roncy-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--roncy-delay, 0s);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-roncy-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-roncy-border);
+  border-radius: 10px;
+}
