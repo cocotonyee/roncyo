@@ -21,7 +21,9 @@ public/play/
 1. 在 `lib/games.ts` 里确认游戏的 `slug`（例如 `mochi-cats`）。
 2. 将 Unity WebGL、Cocos、Phaser、纯 HTML5 等 **导出/Web 构建产物** 整包复制到 `public/play/<slug>/`。
 3. 保证能通过 `public/play/<slug>/index.html` 本地打开并运行。
-4. 在 `lib/games.ts` 为该游戏设置：
+4. 运行 `npm run play:base`，自动为每个 `public/play/<slug>/index.html` 写入  
+   `<base href="/play/<slug>/">`（Cocos / Godot 等构建后都建议跑一遍）。
+5. 在 `lib/games.ts` 为该游戏设置：
    - `localPlayPath: "/play/<slug>/"`（或省略，默认即此路径）
    - `platforms` 包含 `"web"`
 5. 运行 `npm run dev`，打开 `/games/<slug>` 测试。
@@ -31,10 +33,14 @@ public/play/
 | 用途 | URL |
 |------|-----|
 | 游戏介绍 + 内嵌游玩 | `https://roncyo.com/games/mochi-cats` |
-| 仅游戏全屏（新标签） | `https://roncyo.com/play/mochi-cats/` |
+| 仅游戏全屏（新标签） | `https://roncyo.com/play/mochi-cats/`（与 `/play/mochi-cats/index.html` 相同） |
 
 ## 注意
 
 - 资源路径请用**相对路径**（`./assets/...`），不要写死本地磁盘路径。
 - 大型 WebGL 包建议开启 gzip/brotli；部署在 Vercel 等会自动处理静态文件。
 - 若引擎需要特殊响应头（COOP/COEP），在 `next.config.ts` 里为 `/play/*` 配置 headers。
+
+## 多游戏路径说明
+
+部分引擎会把资源请求发到 `/play/xxx`（缺少游戏名）。站点已用 **middleware** 根据页面来源（Referer）把请求转发到正确的 `/play/<slug>/xxx`，并在 `lib/games.ts` 里为每个带 `localPlayPath` 的游戏生效。新增游戏后执行 `npm run play:base` 即可。

@@ -4,12 +4,12 @@ import type { ReactNode } from "react";
 export function PawIcon({ className = "size-4" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <ellipse cx="6" cy="8" rx="2.2" ry="2.8" />
-      <ellipse cx="12" cy="6" rx="2.2" ry="2.8" />
-      <ellipse cx="18" cy="8" rx="2.2" ry="2.8" />
-      <ellipse cx="9" cy="13" rx="2" ry="2.5" />
-      <ellipse cx="15" cy="13" rx="2" ry="2.5" />
-      <path d="M8 16c1.5 3 6.5 3 8 0 1.2 2.5 4.5 2.8 6.5 0.5-3.5-1.5-7-6.5-7s-7 3.5-6.5 7c2-0.3 5.3-0.5 6.5 0z" />
+      <circle cx="6" cy="7" r="2.5" />
+      <circle cx="12" cy="5" r="2.5" />
+      <circle cx="18" cy="7" r="2.5" />
+      <circle cx="9" cy="12" r="2" />
+      <circle cx="15" cy="12" r="2" />
+      <ellipse cx="12" cy="18" rx="5" ry="4" />
     </svg>
   );
 }

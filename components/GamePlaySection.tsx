@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { CozyButton, PawIcon } from "@/components/CozyUI";
-import { getGamePlaySrc } from "@/lib/game-play";
+import { getGamePlaySrc, playIndexUrl, playPageUrl } from "@/lib/game-play";
 import type { Game } from "@/lib/games";
 
 export function GamePlaySection({ game }: { game: Game }) {
   const playSrc = getGamePlaySrc(game);
   const isLocal = Boolean(game.localPlayPath && playSrc === game.localPlayPath);
-  const fullscreenHref = game.localPlayPath ?? playSrc;
+  const fullscreenHref = game.localPlayPath ? playPageUrl(game.slug) : playSrc;
 
   return (
     <section
@@ -17,10 +17,9 @@ export function GamePlaySection({ game }: { game: Game }) {
         {playSrc ? (
           <iframe
             title={`${game.title} — play`}
-            src={playSrc}
+            src={game.localPlayPath ? playIndexUrl(game.slug) : playSrc}
             className="aspect-[16/10] w-full min-h-[420px] bg-[#1a1a2e] min-[960px]:min-h-[560px]"
             allow="fullscreen; gamepad; autoplay"
-            allowFullScreen
           />
         ) : (
           <div className="flex min-h-[420px] flex-col items-center justify-center gap-6 bg-gradient-to-br from-[#FFE8DC] to-[#D4E8D0] p-10 text-center">

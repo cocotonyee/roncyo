@@ -1,9 +1,6 @@
 import type { Game } from "@/lib/games";
 
-/** Static HTML5 build folder under `public/play/[slug]/` → served at `/play/[slug]/` */
-export function defaultLocalPlayPath(slug: string) {
-  return `/play/${slug}/`;
-}
+export { playBasePath as defaultLocalPlayPath, playIndexUrl, playPageUrl } from "@/lib/play-hosting";
 
 /** URL loaded inside the game page iframe (local build preferred). */
 export function getGamePlaySrc(game: Game): string | null {
