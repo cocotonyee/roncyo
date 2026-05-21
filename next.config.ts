@@ -9,12 +9,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/index.html", destination: "/", permanent: true },
-      { source: "/games/sample-puzzle", destination: "/games/kitty-merge", permanent: true },
-      { source: "/games/sample-puzzle/support", destination: "/games/kitty-merge/support", permanent: true },
-      { source: "/games/sample-puzzle/privacy", destination: "/games/kitty-merge/privacy", permanent: true },
-      { source: "/games/mochi-drop", destination: "/games/kitty-merge", permanent: true },
-      { source: "/games/mochi-drop/support", destination: "/games/kitty-merge/support", permanent: true },
-      { source: "/games/mochi-drop/privacy", destination: "/games/kitty-merge/privacy", permanent: true },
+      { source: "/games/kitty-merge", destination: "/games/mochi-cats", permanent: true },
+      { source: "/games/kitty-merge/support", destination: "/games/mochi-cats/support", permanent: true },
+      { source: "/games/kitty-merge/privacy", destination: "/games/mochi-cats/privacy", permanent: true },
+      { source: "/games/kitty-merge/play", destination: "/games/mochi-cats", permanent: true },
+      { source: "/games/sample-puzzle", destination: "/games/cozy-cat-block-puzzle", permanent: true },
+      { source: "/games/sample-puzzle/support", destination: "/games/cozy-cat-block-puzzle/support", permanent: true },
+      { source: "/games/sample-puzzle/privacy", destination: "/games/cozy-cat-block-puzzle/privacy", permanent: true },
+      { source: "/games/mochi-drop", destination: "/games/mochi-cats", permanent: true },
+      { source: "/games/mochi-drop/support", destination: "/games/mochi-cats/support", permanent: true },
+      { source: "/games/mochi-drop/privacy", destination: "/games/mochi-cats/privacy", permanent: true },
+      { source: "/games/mochi-drop/play", destination: "/games/mochi-cats", permanent: true },
     ];
   },
 };

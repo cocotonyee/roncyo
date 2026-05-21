@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GamePageHero } from "@/components/GamePageHero";
-import { ContentPanel, InnerPage } from "@/components/InnerPage";
+import { GamePageHeader } from "@/components/GamePageHeader";
+import { GamePlaySection } from "@/components/GamePlaySection";
+import { SectionEyebrow } from "@/components/CozyUI";
+import { canPlayInBrowser } from "@/lib/game-play";
 import { getAllSlugs, getGameBySlug } from "@/lib/games";
 import { platformLabel } from "@/lib/platforms";
 import { site, absoluteUrl } from "@/lib/site";
@@ -33,19 +35,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function storeRow(label: string, href?: string) {
   return (
-    <li className="flex items-center justify-between gap-3 border-b border-[var(--color-roncy-border)] py-3 text-[var(--color-roncy-muted)] last:border-0">
-      <span className="font-medium text-[var(--color-roncy-text)]">{label}</span>
+    <li className="flex items-center justify-between gap-3 border-b border-[var(--color-cozy-brown)]/10 py-3 text-[var(--color-cozy-brown-muted)] last:border-0">
+      <span className="font-medium text-[var(--color-cozy-brown)]">{label}</span>
       {href ? (
         <a
           href={href}
           rel="noopener noreferrer"
           target="_blank"
-          className="shrink-0 font-[family-name:var(--font-display)] text-sm font-extrabold text-[var(--color-roncy-teal2)] hover:text-[var(--color-roncy-teal)] hover:underline"
+          className="shrink-0 font-[family-name:var(--font-display)] text-sm font-extrabold text-[var(--color-cozy-terracotta)] hover:underline"
         >
           Open store →
         </a>
       ) : (
-        <span className="text-xs font-semibold text-[var(--color-roncy-muted)]">Coming soon</span>
+        <span className="text-xs font-semibold text-[var(--color-cozy-brown-muted)]">Coming soon</span>
       )}
     </li>
   );
@@ -56,61 +58,87 @@ export default async function GamePage({ params }: Props) {
   const game = getGameBySlug(slug);
   if (!game) notFound();
 
+  const canPlayOnPage = canPlayInBrowser(game);
+
   return (
-    <>
-      <GamePageHero game={game} />
-      <InnerPage glow="pixel" className="!pt-8 md:!pt-12">
-        <ContentPanel className="mb-6">
-          <h2 className="font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--color-roncy-navy)]">
-            About the game
-          </h2>
-          <p className="mt-3 leading-relaxed text-[var(--color-roncy-muted)]">{game.about}</p>
-        </ContentPanel>
+    <div className="bg-[var(--color-cozy-cream)]">
+      <GamePageHeader game={game} />
 
-        <ContentPanel className="mb-6">
-          <h2 className="font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--color-roncy-navy)]">
-            Features
-          </h2>
-          <ul className="mt-4 space-y-2">
-            {game.features.map((f) => (
-              <li
-                key={f}
-                className="flex gap-3 rounded-xl bg-[var(--color-roncy-surface)] px-4 py-3 text-sm text-[var(--color-roncy-text)]"
-              >
-                <span className="text-[var(--color-roncy-teal)]">✓</span>
-                {f}
-              </li>
-            ))}
-          </ul>
-        </ContentPanel>
+      {canPlayOnPage ? (
+        <div className="px-5 py-8 min-[960px]:px-[52px] min-[960px]:py-10">
+          <GamePlaySection game={game} />
+        </div>
+      ) : null}
 
-        <ContentPanel className="mb-6">
-          <h2 className="font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--color-roncy-navy)]">
-            Available on
-          </h2>
-          <ul className="mt-2">
-            {game.platforms.includes("ios") && storeRow(platformLabel("ios"), game.appStoreUrl)}
-            {game.platforms.includes("android") &&
-              storeRow(platformLabel("android"), game.playStoreUrl)}
-            {game.platforms.includes("web") && storeRow("Web / browser", game.webUrl)}
-            {game.platforms.includes("tiktok") && storeRow(platformLabel("tiktok"), game.tiktokUrl)}
-          </ul>
-        </ContentPanel>
+      <div className="px-5 pb-16 min-[960px]:px-[52px] min-[960px]:pb-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-10 min-[960px]:grid-cols-2 min-[960px]:gap-14">
+            <section className="rounded-[28px] border-2 border-[var(--color-cozy-brown)]/8 bg-white p-8 shadow-[0_12px_40px_rgba(93,64,55,0.06)]">
+              <SectionEyebrow>About the game</SectionEyebrow>
+              <p className="mt-2 leading-relaxed text-[var(--color-cozy-brown-muted)]">{game.about}</p>
+            </section>
 
-        <p className="text-center text-sm text-[var(--color-roncy-muted)]">
-          <Link href={`/games/${game.slug}/support`} className="font-semibold text-[var(--color-roncy-teal2)] hover:underline">
-            Support
-          </Link>
-          <span className="mx-2 text-[var(--color-roncy-border)]">·</span>
-          <Link href={`/games/${game.slug}/privacy`} className="font-semibold text-[var(--color-roncy-teal2)] hover:underline">
-            Privacy
-          </Link>
-          <span className="mx-2 text-[var(--color-roncy-border)]">·</span>
-          <a href={`mailto:${site.emails.support}`} className="font-semibold text-[var(--color-roncy-teal2)] hover:underline">
-            {site.emails.support}
-          </a>
-        </p>
-      </InnerPage>
-    </>
+            {game.story ? (
+              <section className="flex flex-col justify-center rounded-[28px] border-2 border-[var(--color-cozy-brown)]/8 bg-[var(--color-cozy-card)] p-8">
+                <div className="mb-6 flex justify-center text-[72px] leading-none">{game.cardEmoji}</div>
+                <SectionEyebrow>Story</SectionEyebrow>
+                <p className="mt-2 leading-relaxed text-[var(--color-cozy-brown-muted)]">{game.story}</p>
+              </section>
+            ) : null}
+          </div>
+
+          <section className="mt-12">
+            <SectionEyebrow>Features</SectionEyebrow>
+            <div className="mt-6 grid gap-4 min-[640px]:grid-cols-2 min-[960px]:grid-cols-4">
+              {game.features.map((f) => (
+                <div
+                  key={f}
+                  className="rounded-[24px] border-2 border-[var(--color-cozy-brown)]/8 bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(93,64,55,0.08)]"
+                >
+                  <span className="text-[var(--color-cozy-terracotta)]">✓</span>
+                  <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--color-cozy-brown)]">{f}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-12 rounded-[28px] border-2 border-[var(--color-cozy-brown)]/8 bg-[var(--color-cozy-card)] p-8">
+            <h2 className="font-[family-name:var(--font-display)] text-lg font-black text-[var(--color-cozy-brown)]">
+              Available on
+            </h2>
+            <ul className="mt-2">
+              {game.platforms.includes("ios") && storeRow(platformLabel("ios"), game.appStoreUrl)}
+              {game.platforms.includes("android") &&
+                storeRow(platformLabel("android"), game.playStoreUrl)}
+              {game.platforms.includes("web") && storeRow("Web / browser", game.webUrl)}
+              {game.platforms.includes("tiktok") && storeRow(platformLabel("tiktok"), game.tiktokUrl)}
+            </ul>
+          </section>
+
+          <p className="mt-10 text-center text-sm text-[var(--color-cozy-brown-muted)]">
+            <Link
+              href={`/games/${game.slug}/support`}
+              className="font-semibold text-[var(--color-cozy-terracotta)] hover:underline"
+            >
+              Support
+            </Link>
+            <span className="mx-2 text-[var(--color-cozy-brown)]/20">·</span>
+            <Link
+              href={`/games/${game.slug}/privacy`}
+              className="font-semibold text-[var(--color-cozy-terracotta)] hover:underline"
+            >
+              Privacy
+            </Link>
+            <span className="mx-2 text-[var(--color-cozy-brown)]/20">·</span>
+            <a
+              href={`mailto:${site.emails.support}`}
+              className="font-semibold text-[var(--color-cozy-terracotta)] hover:underline"
+            >
+              {site.emails.support}
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

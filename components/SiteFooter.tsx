@@ -1,41 +1,54 @@
 import Link from "next/link";
+import { PawIcon } from "@/components/CozyUI";
 import { site } from "@/lib/site";
 
 const year = new Date().getFullYear();
 
-const links = [
-  { href: "/privacy-policy", label: "Privacy" },
-  { href: "/terms-of-service", label: "Terms" },
-  { href: "/data-deletion", label: "Data deletion" },
-  { href: "/support", label: "Support" },
-  { href: "/contact", label: "Contact" },
+const social = [
+  { label: "Discord", href: "#", icon: "D" },
+  { label: "Twitter", href: "#", icon: "𝕏" },
+  { label: "YouTube", href: "#", icon: "▶" },
+  { label: "Instagram", href: "#", icon: "◎" },
 ] as const;
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-white/10 bg-[var(--color-roncy-navy)] px-5 py-6 sm:px-8 lg:px-[52px]">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 text-center min-[640px]:flex-row min-[640px]:items-center min-[640px]:justify-between min-[640px]:text-left">
-        <div className="flex items-center gap-2 font-[family-name:var(--font-display)] text-base font-black text-white">
-          <span
-            className="inline-block size-2.5 shrink-0 rounded-full bg-[var(--color-roncy-yellow)] shadow-[0_0_0_3px_rgba(255,217,61,0.25)]"
-            aria-hidden
-          />
-          {site.brand}
+    <footer className="mt-auto bg-[var(--color-cozy-sage)] px-5 py-8 sm:px-8 lg:px-[52px]">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 text-center min-[768px]:flex-row min-[768px]:items-center min-[768px]:justify-between min-[768px]:text-left">
+        <div>
+          <div className="flex items-center justify-center gap-2 font-[family-name:var(--font-display)] text-lg font-black text-[var(--color-cozy-brown)] min-[768px]:justify-start">
+            <PawIcon className="size-4 text-[var(--color-cozy-terracotta)]" />
+            {site.brand}
+          </div>
+          <p className="mt-1 text-xs font-medium text-[var(--color-cozy-brown)]/70">
+            © {year} {site.brand}. All rights reserved.
+          </p>
         </div>
-        <nav aria-label="Legal and support" className="flex flex-wrap justify-center gap-x-5 gap-y-2 min-[640px]:justify-end">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-xs font-semibold text-white/45 transition hover:text-white/90"
+
+        <nav aria-label="Social" className="flex items-center gap-3">
+          {social.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              aria-label={s.label}
+              className="flex size-10 items-center justify-center rounded-full border-2 border-[var(--color-cozy-brown)]/15 bg-[var(--color-cozy-cream)] text-sm font-bold text-[var(--color-cozy-brown)] transition hover:-translate-y-0.5 hover:border-[var(--color-cozy-brown)]/30"
             >
-              {l.label}
-            </Link>
+              {s.icon}
+            </a>
           ))}
         </nav>
-        <p className="text-xs font-medium whitespace-nowrap text-white/30">
-          © {year} {site.brand} · {site.domain}
-        </p>
+
+        <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-[var(--color-cozy-brown)]/80 min-[768px]:justify-end">
+          <Link href="/privacy-policy" className="transition hover:text-[var(--color-cozy-brown)]">
+            Privacy Policy
+          </Link>
+          <Link href="/terms-of-service" className="transition hover:text-[var(--color-cozy-brown)]">
+            Terms of Service
+          </Link>
+          <Link href="/contact" className="transition hover:text-[var(--color-cozy-brown)]">
+            Contact Us
+          </Link>
+        </nav>
       </div>
     </footer>
   );

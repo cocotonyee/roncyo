@@ -3,22 +3,33 @@
 @theme {
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  /* Reference palette (index.html) */
+  /* Cozy brand palette (reference mockup) */
+  --color-cozy-cream: #fff9f0;
+  --color-cozy-sage: #a8c69f;
+  --color-cozy-sage-dark: #7a9a72;
+  --color-cozy-terracotta: #e58e73;
+  --color-cozy-terracotta-dark: #d4785c;
+  --color-cozy-brown: #5d4037;
+  --color-cozy-brown-muted: #8d6e63;
+  --color-cozy-card: #fff5e8;
+  --color-cozy-peach: #ffd6c8;
+  --color-cozy-mint: #d4e8d0;
+  --color-cozy-lavender: #e8e4f5;
+  /* Legacy tokens — mapped for inner/legal pages */
   --color-roncy-yellow: #ffd93d;
   --color-roncy-yellow2: #ffc107;
-  --color-roncy-teal: #00d4c8;
-  --color-roncy-teal2: #00b8ad; /* same as accent-dim; named for parity with reference */
-  --color-roncy-coral: #ff6b6b;
+  --color-roncy-teal: #a8c69f;
+  --color-roncy-teal2: #7a9a72;
+  --color-roncy-coral: #e58e73;
   --color-roncy-purple: #c084fc;
-  --color-roncy-navy: #0f172a;
-  /* Semantic tokens (used across existing pages) */
-  --color-roncy-bg: #ffffff;
-  --color-roncy-surface: #f8fafc;
-  --color-roncy-border: #e2e8f0;
-  --color-roncy-muted: #64748b;
-  --color-roncy-text: #1e293b;
-  --color-roncy-accent: #00d4c8;
-  --color-roncy-accent-dim: #00b8ad;
+  --color-roncy-navy: #5d4037;
+  --color-roncy-bg: #fff9f0;
+  --color-roncy-surface: #fff5e8;
+  --color-roncy-border: #e8ddd0;
+  --color-roncy-muted: #8d6e63;
+  --color-roncy-text: #5d4037;
+  --color-roncy-accent: #e58e73;
+  --color-roncy-accent-dim: #d4785c;
 }
 
 html {

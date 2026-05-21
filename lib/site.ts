@@ -8,7 +8,7 @@ export const site = {
   legalName: "RONCY LLC",
   domain: "roncyo.com",
   country: "United States",
-  tagline: "Mobile & browser games",
+  tagline: "Cozy games that warm your heart",
   emails: {
     support: SUPPORT,
     privacy: SUPPORT,
