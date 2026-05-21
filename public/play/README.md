@@ -41,6 +41,14 @@ public/play/
 - 大型 WebGL 包建议开启 gzip/brotli；部署在 Vercel 等会自动处理静态文件。
 - 若引擎需要特殊响应头（COOP/COEP），在 `next.config.ts` 里为 `/play/*` 配置 headers。
 
+## Telegram Mini App（仅 Telegram 内可玩）
+
+若游戏对接了 Telegram Bot（如 `cozy-cat-block-puzzle`）：
+
+1. 构建产物仍放在 `public/play/<slug>/`，BotFather 填 `https://roncyo.com/play/<slug>/`
+2. 在 `lib/games.ts` 设置 `telegramMiniApp: true` 和 `telegramUrl`（`https://t.me/你的Bot`）
+3. **不要**设置 `localPlayPath` — 官网游戏页不会 iframe 嵌入，只显示「在 Telegram 中打开」
+
 ## 多游戏路径说明
 
 部分引擎会把资源请求发到 `/play/xxx`（缺少游戏名）。站点已用 **middleware** 根据页面来源（Referer）把请求转发到正确的 `/play/<slug>/xxx`，并在 `lib/games.ts` 里为每个带 `localPlayPath` 的游戏生效。新增游戏后执行 `npm run play:base` 即可。

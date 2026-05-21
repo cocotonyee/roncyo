@@ -4,6 +4,7 @@ const labels: Record<GamePlatform, string> = {
   ios: "iOS (App Store)",
   android: "Android (Google Play)",
   web: "Web / browser",
+  telegram: "Telegram Mini App",
   tiktok: "TikTok",
 };
 

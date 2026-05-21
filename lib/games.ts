@@ -1,4 +1,4 @@
-export type GamePlatform = "ios" | "android" | "web" | "tiktok";
+export type GamePlatform = "ios" | "android" | "web" | "telegram" | "tiktok";
 
 export type Game = {
   slug: string;
@@ -28,6 +28,15 @@ export type Game = {
   webUrl?: string;
   /** External embed URL (itch.io, etc.) — used if no localPlayPath */
   embedUrl?: string;
+  /** Telegram bot link, e.g. https://t.me/YourBot */
+  telegramUrl?: string;
+  /**
+   * Static Mini App files under `public/play/[slug]/` — for BotFather only.
+   * Website shows “Play in Telegram”, not an iframe.
+   */
+  telegramMiniApp?: boolean;
+  /** Defaults to `/play/[slug]/` */
+  telegramMiniAppPath?: string;
   tiktokUrl?: string;
   sdks: string[];
   collectsPersonalData: boolean;
@@ -47,6 +56,12 @@ export function resolvePlayCTA(game: Game): { href: string; label: string; inter
       href: `/games/${game.slug}#play`,
       label: game.playButtonLabel ?? "Play now",
       internal: true,
+    };
+  }
+  if (game.telegramMiniApp && game.telegramUrl) {
+    return {
+      href: game.telegramUrl,
+      label: "Play in Telegram",
     };
   }
   if (game.playUrl) {
@@ -99,7 +114,8 @@ export const games: Game[] = [
       "Beat your best score each round.",
     ],
     localPlayPath: "/play/mochi-cats/",
-    platforms: ["android", "web"],
+    telegramUrl: "https://t.me/MochiCatsBot/mochi",
+    platforms: ["android", "web", "telegram"],
     playStoreUrl: PLAY_MOCHI_CATS,
     playButtonLabel: "Play now",
     sdks: ["Google Play services", "Ad SDKs"],
@@ -128,9 +144,9 @@ export const games: Game[] = [
       "Classic block puzzle on a cozy grid board",
       "Heart-warming cat art and smooth animations",
       "Combo multipliers for big clears",
-      "Play offline anytime — no Wi‑Fi needed",
+      "Telegram Mini App with bot integration",
+      "Android version on Google Play",
       "No timers — stress-free, zen pacing",
-      "Free to play with optional ads",
     ],
     howToPlay: [
       "Drag block shapes from the bottom onto the grid.",
@@ -139,10 +155,13 @@ export const games: Game[] = [
       "Plan ahead — the game ends when no shapes fit on the board.",
       "Enjoy your cats cheering on every line you clear.",
     ],
-    localPlayPath: "/play/cozy-cat-block-puzzle/",
-    platforms: ["android", "web"],
+    telegramMiniApp: true,
+    telegramMiniAppPath: "/play/cozy-cat-block-puzzle/",
+    /** Replace with your real bot link */
+    telegramUrl: "https://t.me/roncyo_bot",
+    platforms: ["android", "telegram"],
     playStoreUrl: PLAY_COZY_CAT,
-    playButtonLabel: "Play now",
+    playButtonLabel: "Play in Telegram",
     sdks: ["Google Play services", "Ad SDKs"],
     collectsPersonalData: true,
     childrenTargeted: false,
