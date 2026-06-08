@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      /* Canonical host: apex only (Roiify / SEO expect roncyo.com, not www) */
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.roncyo.com" }],
+        destination: "https://roncyo.com/:path*",
+        permanent: true,
+      },
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/games/kitty-merge", destination: "/games/mochi-cats", permanent: true },
       { source: "/games/kitty-merge/support", destination: "/games/mochi-cats/support", permanent: true },
