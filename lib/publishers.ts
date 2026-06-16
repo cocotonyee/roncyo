@@ -26,7 +26,7 @@ export const publishers: Publisher[] = [
       "Independent game studio crafting cozy mobile and browser experiences — merge puzzles, block games, and Telegram Mini Apps with warm art and player-first design.",
     website: `https://${site.domain}`,
     supportEmail: site.emails.support,
-    founded: "2020",
+    founded: "2026",
     logoEmoji: "🐾",
     logoColor: "#FFD6C8",
   },
