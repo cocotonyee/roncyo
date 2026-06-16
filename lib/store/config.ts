@@ -14,9 +14,8 @@ export type StoreGameConfig = {
   /** URL path: `/games/[slug]` */
   slug: string;
 
-  /** Company / publisher */
+  /** Company / publisher — display name only */
   companyName: string;
-  companyLegalName: string;
   companyCountry?: string;
   companyDescription?: string;
   companyEmail?: string;
@@ -54,6 +53,13 @@ export type StoreGameConfig = {
   telegramMiniApp?: boolean;
   telegramMiniAppPath?: string;
   playButtonLabel?: string;
+  /** In-site or external play / trial URL */
+  playUrl?: string;
+
+  /** Source game ID on yxk.jyb99999.cn — used for web trial play */
+  yxkGameId?: number;
+  /** Trial iframe orientation hint from source catalog */
+  trialLandscape?: boolean;
 
   sdks?: string[];
   collectsPersonalData?: boolean;

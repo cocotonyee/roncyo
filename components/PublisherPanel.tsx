@@ -28,7 +28,7 @@ export function PublisherPanel({
   game?: Game;
 }) {
   const brandName = game?.companyName ?? publisher.brandName;
-  const legalName = game?.companyLegalName ?? publisher.legalName;
+  const country = game?.companyCountry ?? publisher.country;
   const description = game?.companyDescription ?? publisher.description;
   const supportEmail = game?.companyEmail ?? publisher.supportEmail;
 
@@ -52,7 +52,7 @@ export function PublisherPanel({
           </h3>
           <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-[var(--color-cozy-brown-muted)]">
             <PublisherIcon className="size-3.5 shrink-0" />
-            {legalName} · {publisher.country}
+            {country}
           </p>
         </div>
       </div>

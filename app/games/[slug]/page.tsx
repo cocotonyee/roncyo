@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const game = getGameBySlug(slug);
   if (!game) return { title: "App" };
   const publisher = getPublisherById(game.publisherId);
+  const publisherName = game.companyName ?? publisher?.brandName ?? site.brand;
   return {
     title: game.title,
     description: game.shortDescription,
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : [{ url: absoluteUrl(game.heroImage), width: 1920, height: 1080, alt: game.title }],
     },
     other: publisher
-      ? { "application:developer": publisher.legalName }
+      ? { "application:developer": publisherName }
       : undefined,
   };
 }
@@ -65,6 +66,7 @@ export default async function GamePage({ params }: Props) {
   if (!game) notFound();
 
   const publisher = getPublisherById(game.publisherId);
+  const publisherName = game.companyName ?? publisher?.brandName ?? site.brand;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -83,7 +85,7 @@ export default async function GamePage({ params }: Props) {
     ...(publisher && {
       author: {
         "@type": "Organization",
-        name: publisher.legalName,
+        name: publisherName,
         url: publisher.website,
       },
     }),
@@ -186,7 +188,7 @@ export default async function GamePage({ params }: Props) {
 
           <footer className="mt-10 flex flex-col items-center gap-3 border-t border-[var(--color-cozy-brown)]/10 pt-8 text-center text-xs text-[var(--color-cozy-brown-muted)] min-[640px]:flex-row min-[640px]:justify-between min-[640px]:text-left">
             <p>
-              Published by {publisher?.legalName ?? site.legalName} ·{" "}
+              Published by {publisherName} ·{" "}
               <Link href="/privacy-policy" className="font-semibold hover:underline">
                 Privacy
               </Link>

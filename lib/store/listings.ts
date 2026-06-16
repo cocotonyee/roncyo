@@ -1,8 +1,12 @@
 import type { StoreGameConfig } from "@/lib/store/config";
 import { site } from "@/lib/site";
+import { yxkStoreListings } from "@/lib/store/yxk-import";
 
 /**
  * Store catalog — add one entry per game folder in `public/store/`.
+ *
+ * - Mochi Cat / Cozy Cat: edit `companyName`, etc. on each entry below.
+ * - 18 demo games: edit per-game `company` in `lib/store/yxk-catalog.json`.
  *
  * Example folder layout:
  *   public/store/mochicat/
@@ -18,7 +22,6 @@ export const storeListings: StoreGameConfig[] = [
     slug: "mochi-cats",
 
     companyName: site.brand,
-    companyLegalName: site.legalName,
     companyCountry: site.country,
     companyDescription:
       "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
@@ -78,7 +81,6 @@ export const storeListings: StoreGameConfig[] = [
     slug: "cozy-cat-block-puzzle",
 
     companyName: site.brand,
-    companyLegalName: site.legalName,
     companyCountry: site.country,
     companyDescription:
       "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
@@ -133,4 +135,5 @@ export const storeListings: StoreGameConfig[] = [
     progressNote:
       "Scores and progress may be stored locally on your device depending on your version.",
   },
+  ...yxkStoreListings(),
 ];

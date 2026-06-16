@@ -11,7 +11,7 @@ export type Game = {
   storeDir?: string;
   /** From store config; overrides publisher display name when set */
   companyName?: string;
-  companyLegalName?: string;
+  companyCountry?: string;
   companyDescription?: string;
   companyEmail?: string;
   companyWebsite?: string;
@@ -48,6 +48,9 @@ export type Game = {
   /** Primary “play” CTA; if omitted, uses local → embed → store URLs */
   playUrl?: string;
   playButtonLabel?: string;
+  /** yxk.jyb99999.cn game id for trial token API */
+  yxkGameId?: number;
+  trialLandscape?: boolean;
   appStoreUrl?: string;
   playStoreUrl?: string;
   webUrl?: string;
@@ -120,10 +123,7 @@ export function getGameBySlug(slug: string) {
 /** Company name shown on cards and detail pages — store config overrides publisher. */
 export function getCompanyDisplay(game: Game) {
   if (game.companyName) {
-    return {
-      brandName: game.companyName,
-      legalName: game.companyLegalName,
-    };
+    return { brandName: game.companyName };
   }
   return null;
 }

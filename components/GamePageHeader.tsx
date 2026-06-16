@@ -95,12 +95,6 @@ export function GamePageHeader({ game }: { game: Game }) {
                       <span className="font-semibold text-[var(--color-cozy-brown)]">
                         {company.brandName}
                       </span>
-                      {company.legalName ? (
-                        <span className="text-[var(--color-cozy-brown-muted)]">
-                          {" "}
-                          · {company.legalName}
-                        </span>
-                      ) : null}
                     </div>
                   </div>
                 ) : null}
@@ -111,6 +105,15 @@ export function GamePageHeader({ game }: { game: Game }) {
               </div>
 
               <div className="flex shrink-0 flex-row flex-wrap gap-2.5 min-[960px]:max-w-[220px] min-[960px]:flex-col min-[960px]:items-stretch">
+                {game.playUrl ? (
+                  <a
+                    href={game.playUrl}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--color-cozy-terracotta)] px-6 py-3 font-[family-name:var(--font-display)] text-sm font-extrabold text-white shadow-[0_6px_20px_rgba(0,210,106,0.35)] transition hover:-translate-y-0.5 min-[960px]:flex-none"
+                  >
+                    <PlatformIcon platform="web" className="size-4" />
+                    {game.playButtonLabel ?? "Play"}
+                  </a>
+                ) : null}
                 {game.playStoreUrl ? (
                   <a
                     href={game.playStoreUrl}

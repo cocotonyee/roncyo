@@ -1,0 +1,566 @@
+[
+  {
+    "yxkGameId": 322,
+    "storeDir": "zhaochuniuniu",
+    "slug": "find-the-bull",
+    "gameName": "Find the Bull",
+    "genre": "Puzzle",
+    "shortDescription": "Spot matching bull heads across 200 puzzle stages — 35 unique bull animations and relaxed brain-teasing fun.",
+    "about": "Find the Bull is a observation puzzle built around spotting and matching bull-head patterns. With 200 handcrafted levels and 35 distinct bull animations, each stage rewards careful looking and steady progress through playful, colorful art.",
+    "story": "Train your eye level by level — from easy warm-ups to tricky layouts that test focus and patience.",
+    "features": [
+      "200 puzzle levels with rising difficulty",
+      "35 unique bull-head animations",
+      "Casual pick-up-and-play sessions",
+      "Brain-training observation gameplay",
+      "Rich original artwork throughout"
+    ],
+    "howToPlay": [
+      "Study the board and the bull patterns shown.",
+      "Find and match the correct bull head for each stage.",
+      "Clear levels to unlock the next challenge.",
+      "Stay sharp — later stages introduce trickier layouts."
+    ],
+    "categories": ["Puzzle", "Casual", "Level"],
+    "languages": ["简体中文"],
+    "version": "3.8.7",
+    "size": "75.1 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "zhaochuniuniu",
+    "company": {
+      "companyName": "YUNQI CULTURE MEDIA LLC",
+      "companyCountry": "United States of America",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "fengkemlb@163.com"
+    }
+  },
+  {
+    "yxkGameId": 321,
+    "storeDir": "yongzheshouweizhan",
+    "slug": "hero-defense",
+    "gameName": "Hero Defense",
+    "genre": "Tower Defense",
+    "shortDescription": "Hold the line in a stage-based tower defense — deploy heroes and weather wave after wave of enemy assaults.",
+    "about": "Hero Defense blends classic tower defense with adventure-style progression. Place your defenses, upgrade your lineup, and stop relentless enemy waves across a full campaign of challenging stages.",
+    "story": "Enemies keep coming — only smart placement and steady upgrades will keep your kingdom safe.",
+    "features": [
+      "Stage-based tower defense campaign",
+      "Wave-based enemy assaults",
+      "Hero placement and upgrade systems",
+      "Adventure progression between battles",
+      "Compact sessions, deep strategy"
+    ],
+    "howToPlay": [
+      "Deploy defenders before each wave begins.",
+      "Upgrade units to handle tougher enemies.",
+      "Use terrain and range to your advantage.",
+      "Clear every wave to advance to the next stage."
+    ],
+    "categories": ["Adventure", "Level", "Tower Defense"],
+    "languages": ["简体中文"],
+    "version": "2.3.4",
+    "size": "7.86 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "yongzheshouweizhan"
+  },
+  {
+    "yxkGameId": 320,
+    "storeDir": "yiqipindoudou",
+    "slug": "bean-sort-puzzle",
+    "gameName": "Bean Sort Puzzle",
+    "genre": "Puzzle",
+    "shortDescription": "Sort colorful beans by hue and place every bean on its matching color to clear each clever logic stage.",
+    "about": "Bean Sort Puzzle is a satisfying color-sorting brain teaser. Separate beans by color, plan your moves, and make sure every piece lands on the right palette before the board locks up.",
+    "story": "One misplaced bean can block the whole tray — think ahead and sort with precision.",
+    "features": [
+      "Color-based sorting puzzles",
+      "Logic-driven level design",
+      "Relaxing casual pacing",
+      "Clear visual feedback on every move",
+      "Stages that ramp up in complexity"
+    ],
+    "howToPlay": [
+      "Move beans between containers by color.",
+      "Ensure each bean ends on its matching color zone.",
+      "Plan ahead — limited space makes order matter.",
+      "Complete the layout to finish the level."
+    ],
+    "categories": ["Match", "Casual", "Level"],
+    "languages": ["简体中文"],
+    "version": "3.8.5",
+    "size": "5.98 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "yiqipindoudou"
+  },
+  {
+    "yxkGameId": 319,
+    "storeDir": "xiaoyangnongchang",
+    "slug": "little-sheep-farm",
+    "gameName": "Little Sheep Farm",
+    "genre": "Simulation",
+    "shortDescription": "Build and nurture a cozy sheep farm — plant, harvest, and grow your countryside homestead at your own pace.",
+    "about": "Little Sheep Farm is a gentle farming sim where you raise animals, expand your land, and watch a quiet rural world come to life. Easy to start, rewarding to grow.",
+    "story": "Start with a small pasture and turn it into a thriving farm full of fluffy friends.",
+    "features": [
+      "Farm building and expansion",
+      "Animal care and collection",
+      "Harvest and resource management",
+      "Relaxing simulation pacing",
+      "Charming pastoral visuals"
+    ],
+    "howToPlay": [
+      "Plant crops and tend your animals daily.",
+      "Earn resources to unlock new farm areas.",
+      "Complete tasks to grow your homestead.",
+      "Check in often to keep production flowing."
+    ],
+    "categories": ["Casual", "Simulation"],
+    "languages": ["简体中文"],
+    "version": "2.4.15",
+    "size": "4.73 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "xiaoyangnongchang"
+  },
+  {
+    "yxkGameId": 318,
+    "storeDir": "fangkuaixiaoxiaoxiao",
+    "slug": "block-blast",
+    "gameName": "Block Blast",
+    "genre": "Puzzle",
+    "shortDescription": "English-language block dropping action — clear lines, chain combos, and chase high scores in a modern Tetris-style challenge.",
+    "about": "Block Blast delivers classic falling-block puzzle gameplay with a polished English interface. Drop shapes, complete lines, and push for bigger combos as stages climb in speed and pressure.",
+    "story": "Every line you clear buys breathing room — miss your openings and the stack wins.",
+    "features": [
+      "Tetris-style block dropping gameplay",
+      "Line clears and combo chains",
+      "English-language interface",
+      "Stage-based progression",
+      "Quick sessions, high-score chasing"
+    ],
+    "howToPlay": [
+      "Guide falling blocks into open spaces on the grid.",
+      "Complete horizontal lines to clear them from the board.",
+      "Chain multiple clears for bonus points.",
+      "Keep the stack low to survive longer stages."
+    ],
+    "categories": ["Match", "Casual", "Level"],
+    "languages": ["English"],
+    "version": "2.4.4",
+    "size": "19.9 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "fangkuaixiaoxiaoxiao"
+  },
+  {
+    "yxkGameId": 317,
+    "storeDir": "zhengjiuxiaomumu",
+    "slug": "save-little-mumu",
+    "gameName": "Save Little Mumu",
+    "genre": "Adventure",
+    "shortDescription": "Guide Little Mumu through adventure stages, grow stronger, and rescue friends in a charming progression RPG.",
+    "about": "Save Little Mumu mixes stage-based adventure with light character growth. Battle through levels, upgrade your hero, and unlock new abilities as the journey gets tougher.",
+    "story": "Mumu needs your help — fight forward, level up, and bring everyone home safe.",
+    "features": [
+      "Stage-based adventure levels",
+      "Character growth and upgrades",
+      "Light RPG progression systems",
+      "Colorful cast and story beats",
+      "Casual-friendly combat pacing"
+    ],
+    "howToPlay": [
+      "Clear enemies to progress through each stage.",
+      "Collect rewards to upgrade Mumu's stats.",
+      "Use new skills when stages get harder.",
+      "Replay earlier levels to power up if stuck."
+    ],
+    "categories": ["Adventure", "Level", "Growth"],
+    "languages": ["简体中文"],
+    "version": "2.4.7",
+    "size": "12.7 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "zhengjiuxiaomumu"
+  },
+  {
+    "yxkGameId": 316,
+    "storeDir": "shuangrenyouxi",
+    "slug": "two-player-party",
+    "gameName": "Two Player Party",
+    "genre": "Party",
+    "shortDescription": "Local two-player mini-game collection — 55 quick competitive games perfect for couch play and friendly rivalry.",
+    "about": "Two Player Party packs dozens of head-to-head microgames into one app. Challenge a friend on the same device with fast rounds spanning puzzles, reflex tests, and arcade action.",
+    "story": "Grab a friend, pick a game, and settle it in sixty seconds — winner picks the next round.",
+    "features": [
+      "55 local two-player mini-games",
+      "Quick competitive rounds",
+      "Mix of puzzle, action, and arcade modes",
+      "Same-device couch multiplayer",
+      "Easy rules, instant rematches"
+    ],
+    "howToPlay": [
+      "Choose a mini-game from the collection.",
+      "Share controls with a friend on one screen.",
+      "Win the round to earn bragging rights.",
+      "Jump to another game anytime for a new challenge."
+    ],
+    "categories": ["Puzzle", "Casual", "Action"],
+    "languages": ["简体中文"],
+    "version": "2.4.4",
+    "size": "25.5 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "shuangrenyouxi"
+  },
+  {
+    "yxkGameId": 315,
+    "storeDir": "mofaluandou",
+    "slug": "magic-brawl",
+    "gameName": "Magic Brawl",
+    "genre": "Action",
+    "shortDescription": "Survive swarms of foes in a magic-fueled horde shooter — level up spells and cut through endless enemy waves.",
+    "about": "Magic Brawl puts a fantasy spin on the horde-survival formula. Dodge encircled enemies, collect power-ups, and evolve your magic kit to last longer and hit harder each run.",
+    "story": "The arena never empties — survive long enough and your spells become unstoppable.",
+    "features": [
+      "Horde-survival action gameplay",
+      "Magic skills and power-up builds",
+      "Stage-based progression",
+      "Fast combat with readable telegraphs",
+      "Replayable upgrade paths"
+    ],
+    "howToPlay": [
+      "Move constantly to avoid surrounding enemies.",
+      "Pick up upgrades that match your play style.",
+      "Survive each wave to reach the next stage.",
+      "Stack abilities for stronger late-game builds."
+    ],
+    "categories": ["Adventure", "Casual", "Level"],
+    "languages": ["简体中文"],
+    "version": "2.4.9",
+    "size": "11.2 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "mofaluandou"
+  },
+  {
+    "yxkGameId": 314,
+    "storeDir": "eechuji",
+    "slug": "goose-squad",
+    "gameName": "Goose Squad",
+    "genre": "Tower Defense",
+    "shortDescription": "Deploy geese, grow your flock, and defend 108 tower-defense stages in this quirky casual strategy game.",
+    "about": "Goose Squad combines cute characters with lane defense strategy. Train your birds, unlock new units, and push through a long campaign of tower-defense stages.",
+    "story": "Your geese are the last line of defense — hatch a plan and hold every lane.",
+    "features": [
+      "108 tower-defense stages",
+      "Unit growth and flock building",
+      "Quirky goose-themed cast",
+      "Casual strategy pacing",
+      "Stage rewards for steady progression"
+    ],
+    "howToPlay": [
+      "Place goose units to block enemy paths.",
+      "Upgrade your flock between waves.",
+      "Use special abilities on tough stages.",
+      "Clear all waves to unlock the next level."
+    ],
+    "categories": ["Casual", "Level", "Tower Defense"],
+    "languages": ["简体中文"],
+    "version": "2.4.10",
+    "size": "50.2 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "eechuji"
+  },
+  {
+    "yxkGameId": 313,
+    "storeDir": "chuangguanzhuanjia",
+    "slug": "stage-master",
+    "gameName": "Stage Master",
+    "genre": "Action",
+    "shortDescription": "Switch between heroes and mow down hordes in a multi-character horde shooter built for landscape play.",
+    "about": "Stage Master lets you swap fighters mid-campaign and lean into explosive horde-combat action. Each character brings different strengths — find the right hero for each gauntlet of enemies.",
+    "story": "One hero cannot do it alone — rotate your roster and dominate every stage.",
+    "features": [
+      "Multiple playable characters",
+      "Horde-combat shooting action",
+      "Landscape-optimized presentation",
+      "Stage gauntlets with escalating pressure",
+      "Build-specific hero strategies"
+    ],
+    "howToPlay": [
+      "Choose a hero suited to the current stage.",
+      "Dodge enemy swarms while attacking constantly.",
+      "Swap characters when a kit fits better.",
+      "Clear the stage objective to advance."
+    ],
+    "categories": ["Adventure", "Shooter", "Level"],
+    "languages": ["简体中文"],
+    "version": "2.4.7",
+    "size": "5.15 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": true,
+    "assetFolder": "chuangguanzhuanjia"
+  },
+  {
+    "yxkGameId": 312,
+    "storeDir": "blockpuzzle",
+    "slug": "classic-block-puzzle",
+    "gameName": "Classic Block Puzzle",
+    "genre": "Puzzle",
+    "shortDescription": "English-language falling-block puzzle — drop tetrominoes, clear lines, and climb through classic arcade stages.",
+    "about": "Classic Block Puzzle is a streamlined Tetris-style experience with an English interface. Fit pieces together, erase lines, and survive increasingly demanding stage layouts.",
+    "story": "Simple rules, endless tension — one bad drop can end the run.",
+    "features": [
+      "Classic falling-block mechanics",
+      "English-language UI",
+      "Stage-based level progression",
+      "Line-clear combo scoring",
+      "Pick-up-and-play arcade feel"
+    ],
+    "howToPlay": [
+      "Rotate and place blocks into open grid spaces.",
+      "Fill complete rows to clear them.",
+      "Avoid stacking pieces above the danger line.",
+      "Push for higher scores on later stages."
+    ],
+    "categories": ["Match", "Casual", "Level"],
+    "languages": ["English"],
+    "version": "2.4.7",
+    "size": "6.00 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "blockpuzzle"
+  },
+  {
+    "yxkGameId": 311,
+    "storeDir": "fangkuaie",
+    "slug": "block-goose",
+    "gameName": "Block Goose",
+    "genre": "Puzzle",
+    "shortDescription": "A fresh take on block puzzles — campaign, classic, daily challenges, ranked play, items, and a deep collection meta.",
+    "about": "Block Goose reimagines block-dropping puzzles with multiple modes and a rich collection layer. Play through the campaign, tackle daily challenges, or compete in ranked runs — smart item use and mode mastery unlock faster clears.",
+    "story": "Every mode plays differently — learn the rules, collect rewards, and chase your best run.",
+    "features": [
+      "Campaign, classic, daily, and ranked modes",
+      "Power-ups for tricky board states",
+      "Deep collection and unlock systems",
+      "Distinct rules per game mode",
+      "Replay-friendly score chasing"
+    ],
+    "howToPlay": [
+      "Pick a mode — campaign, classic, daily, or ranked.",
+      "Place blocks to clear lines or hit mode goals.",
+      "Use items when the board gets tight.",
+      "Collect rewards to expand your unlock roster."
+    ],
+    "categories": ["Match", "Casual", "Level"],
+    "languages": ["简体中文"],
+    "version": "2.4.12",
+    "size": "12.1 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "fangkuaie"
+  },
+  {
+    "yxkGameId": 310,
+    "storeDir": "zhanchexiangqianchong",
+    "slug": "tank-rush",
+    "gameName": "Tank Rush",
+    "genre": "Merge",
+    "shortDescription": "Merge weapons, upgrade your arsenal, and blast through merge-action stages in this fast tank combat game.",
+    "about": "Tank Rush pairs merge progression with arcade combat. Combine gear to power up, then roll into stages where stronger weapons make every enemy wave easier to break through.",
+    "story": "Merge smarter, fire harder — your tank only goes as far as your loadout allows.",
+    "features": [
+      "Weapon merge and upgrade loop",
+      "Stage-based combat progression",
+      "Arcade tank action feel",
+      "Gear synergies across merges",
+      "Short runs with visible power growth"
+    ],
+    "howToPlay": [
+      "Merge duplicate weapons to raise their tier.",
+      "Equip your best gear before each stage.",
+      "Destroy enemies to earn merge materials.",
+      "Push deeper as your arsenal grows stronger."
+    ],
+    "categories": ["Casual", "Level", "Merge"],
+    "languages": ["简体中文"],
+    "version": "2.4.10",
+    "size": "14.6 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "zhanchexiangqianchong"
+  },
+  {
+    "yxkGameId": 309,
+    "storeDir": "wanghongzhubo",
+    "slug": "streamer-tycoon",
+    "gameName": "Streamer Tycoon",
+    "genre": "Simulation",
+    "shortDescription": "Run your own streaming agency — sign talent, go live, and grow revenue in this casual management sim.",
+    "about": "Streamer Tycoon puts you in charge of a creator agency. Recruit streamers, schedule broadcasts, and reinvest earnings to expand your roster and studio reach.",
+    "story": "From one small room to a full creator empire — every stream counts.",
+    "features": [
+      "Streaming agency management",
+      "Recruit and develop unique talent",
+      "Revenue and upgrade loops",
+      "Casual simulation pacing",
+      "Expandable studio progression"
+    ],
+    "howToPlay": [
+      "Sign streamers and assign them to go live.",
+      "Earn income from successful broadcasts.",
+      "Reinvest profits to unlock better talent and gear.",
+      "Scale the agency to hit new revenue milestones."
+    ],
+    "categories": ["Casual", "Simulation"],
+    "languages": ["简体中文"],
+    "version": "2.4.4",
+    "size": "32.8 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "wanghongzhubo"
+  },
+  {
+    "yxkGameId": 308,
+    "storeDir": "shourenjueqi",
+    "slug": "orc-rising",
+    "gameName": "Orc Rising",
+    "genre": "Action",
+    "shortDescription": "Play as mighty orcs in a horde-action game — unique fighters, upgrade paths, and landscape battles.",
+    "about": "Orc Rising is a horde-combat action title with multiple orc heroes, each with distinct traits. Level up your fighter and cut through enemy crowds across a full stage campaign.",
+    "story": "Pick your champion, grow their power, and dominate every battlefield.",
+    "features": [
+      "Multiple orc heroes with unique kits",
+      "Horde-combat action stages",
+      "Combat power upgrade systems",
+      "Landscape-oriented battles",
+      "Replayable character builds"
+    ],
+    "howToPlay": [
+      "Select an orc hero that fits your style.",
+      "Survive enemy swarms while dealing constant damage.",
+      "Spend rewards on stat and skill upgrades.",
+      "Switch heroes when a new kit suits the stage better."
+    ],
+    "categories": ["Adventure", "Casual", "Level"],
+    "languages": ["简体中文"],
+    "version": "2.4.7",
+    "size": "6.24 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": true,
+    "assetFolder": "shourenjueqi"
+  },
+  {
+    "yxkGameId": 307,
+    "storeDir": "kuailexiaoxiaoxiao",
+    "slug": "happy-pop-match",
+    "gameName": "Happy Pop Match",
+    "genre": "Match-3",
+    "shortDescription": "Pop colorful sea-creature tiles in a cheerful match game inspired by classic star-clearing puzzles.",
+    "about": "Happy Pop Match is a bright, casual matcher starring ocean-themed tiles. Group and pop clusters, chase stage goals, and enjoy a relaxing session with cute underwater flair.",
+    "story": "Match, pop, and watch the board cascade — one good chain clears the whole screen.",
+    "features": [
+      "Cluster-matching pop gameplay",
+      "Ocean-themed tile set",
+      "Casual puzzle pacing",
+      "Chain reactions and board cascades",
+      "Light-hearted visuals and sound"
+    ],
+    "howToPlay": [
+      "Tap or swap tiles to form matching groups.",
+      "Clear target colors or scores to finish stages.",
+      "Look for chain setups before you pop.",
+      "Use cascades to beat tougher level goals."
+    ],
+    "categories": ["Match", "Puzzle", "Casual"],
+    "languages": ["简体中文"],
+    "version": "2.4.11",
+    "size": "2.97 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "kuailexiaoxiaoxiao"
+  },
+  {
+    "yxkGameId": 306,
+    "storeDir": "kaigegongxiaoshe",
+    "slug": "match-arcade-pack",
+    "gameName": "Match Arcade Pack",
+    "genre": "Match-3",
+    "shortDescription": "Multiple match-style mini-games in one pack — different rules, same satisfying clears. Find your favorite mode.",
+    "about": "Match Arcade Pack bundles several distinct matching games under one roof. Each mini-game has its own twist on tile clears, so there is always a fresh rule set to master.",
+    "story": "One download, many puzzles — sample every mode and stick with what clicks.",
+    "features": [
+      "Multiple match-game variants in one app",
+      "Unique rules per mini-game",
+      "Casual puzzle sessions",
+      "Low-friction pick-up-and-play design",
+      "Great for trying new match mechanics"
+    ],
+    "howToPlay": [
+      "Choose a mini-game from the main menu.",
+      "Learn its specific matching rules.",
+      "Clear boards to unlock the next challenge.",
+      "Switch modes anytime for variety."
+    ],
+    "categories": ["Match", "Puzzle", "Casual"],
+    "languages": ["简体中文"],
+    "version": "2.4.11",
+    "size": "7.68 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "kaigegongxiaoshe"
+  },
+  {
+    "yxkGameId": 305,
+    "storeDir": "jiangnanxiyucheng",
+    "slug": "jiangnan-spa-resort",
+    "gameName": "Jiangnan Spa Resort",
+    "genre": "Simulation",
+    "shortDescription": "Build and manage a spa resort — earn coins, unlock new zones, and expand your wellness empire.",
+    "about": "Jiangnan Spa Resort is a cozy management sim set in a traditional bathhouse setting. Serve guests, reinvest earnings, and gradually unlock new facilities and areas across the property.",
+    "story": "Start with a single spring and grow into the region's most popular retreat.",
+    "features": [
+      "Spa and resort management gameplay",
+      "Unlockable zones and facilities",
+      "Guest service and revenue loops",
+      "Relaxing simulation pacing",
+      "Gradual expansion meta-progression"
+    ],
+    "howToPlay": [
+      "Welcome guests and provide spa services.",
+      "Earn coins from completed visits.",
+      "Spend earnings to unlock new rooms and features.",
+      "Expand the resort to attract more visitors."
+    ],
+    "categories": ["Casual", "Simulation"],
+    "languages": ["简体中文"],
+    "version": "2.4.10",
+    "size": "19.9 MB",
+    "platforms": ["web"],
+    "trialAvailable": true,
+    "trialLandscape": false,
+    "assetFolder": "jiangnanxiyucheng"
+  }
+]
