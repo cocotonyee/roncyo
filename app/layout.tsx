@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: `${site.brand} — ${site.tagline}`,
     template: `%s — ${site.brand}`,
   },
-  description: `${site.brand} publishes mobile and browser games — games, support, and company info.`,
+  description: `${site.brand} — professional app publishing platform. Browse apps, publisher info, support, and compliance documentation.`,
   openGraph: {
     type: "website",
     locale: "en_US",

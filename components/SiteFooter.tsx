@@ -1,54 +1,60 @@
 import Link from "next/link";
-import { PawIcon } from "@/components/CozyUI";
+import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/site";
 
 const year = new Date().getFullYear();
 
-const social = [
-  { label: "Discord", href: "#", icon: "D" },
-  { label: "Twitter", href: "#", icon: "𝕏" },
-  { label: "YouTube", href: "#", icon: "▶" },
-  { label: "Instagram", href: "#", icon: "◎" },
-] as const;
-
 export function SiteFooter() {
   return (
-    <footer className="mt-auto bg-[var(--color-cozy-sage)] px-5 py-8 sm:px-8 lg:px-[52px]">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 text-center min-[768px]:flex-row min-[768px]:items-center min-[768px]:justify-between min-[768px]:text-left">
-        <div>
-          <div className="flex items-center justify-center gap-2 font-[family-name:var(--font-display)] text-lg font-black text-[var(--color-cozy-brown)] min-[768px]:justify-start">
-            <PawIcon className="size-4 text-[var(--color-cozy-terracotta)]" />
-            {site.brand}
+    <footer className="mt-auto border-t border-white/10 bg-[var(--color-cozy-sage-dark)] px-5 py-10 sm:px-8 lg:px-[52px]">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-8 min-[768px]:grid-cols-3">
+          <div>
+            <Link href="/" className="inline-flex">
+              <SiteLogo className="h-8 w-auto" />
+            </Link>
+            <p className="mt-2 text-sm leading-relaxed text-white/70">
+              {site.tagline}
+            </p>
+            <p className="mt-3 text-xs text-white/50">
+              {site.legalName} · {site.country}
+            </p>
           </div>
-          <p className="mt-1 text-xs font-medium text-[var(--color-cozy-brown)]/70">
-            © {year} {site.brand}. All rights reserved.
-          </p>
+
+          <nav aria-label="Store" className="flex flex-col gap-2">
+            <p className="text-xs font-bold tracking-wide text-white/90 uppercase">
+              Store
+            </p>
+            <Link href="/games" className="text-sm font-medium text-white/65 hover:text-white">
+              App Store
+            </Link>
+            <Link href="/support" className="text-sm font-medium text-white/65 hover:text-white">
+              Support
+            </Link>
+            <Link href="/contact" className="text-sm font-medium text-white/65 hover:text-white">
+              Contact
+            </Link>
+          </nav>
+
+          <nav aria-label="Legal" className="flex flex-col gap-2">
+            <p className="text-xs font-bold tracking-wide text-white/90 uppercase">
+              Legal
+            </p>
+            <Link href="/privacy-policy" className="text-sm font-medium text-white/65 hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="text-sm font-medium text-white/65 hover:text-white">
+              Terms of Service
+            </Link>
+            <Link href="/cookie-policy" className="text-sm font-medium text-white/65 hover:text-white">
+              Cookie Policy
+            </Link>
+          </nav>
         </div>
 
-        <nav aria-label="Social" className="flex items-center gap-3">
-          {social.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              aria-label={s.label}
-              className="flex size-10 items-center justify-center rounded-full border-2 border-[var(--color-cozy-brown)]/15 bg-[var(--color-cozy-cream)] text-sm font-bold text-[var(--color-cozy-brown)] transition hover:-translate-y-0.5 hover:border-[var(--color-cozy-brown)]/30"
-            >
-              {s.icon}
-            </a>
-          ))}
-        </nav>
-
-        <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-[var(--color-cozy-brown)]/80 min-[768px]:justify-end">
-          <Link href="/privacy-policy" className="transition hover:text-[var(--color-cozy-brown)]">
-            Privacy Policy
-          </Link>
-          <Link href="/terms-of-service" className="transition hover:text-[var(--color-cozy-brown)]">
-            Terms of Service
-          </Link>
-          <Link href="/contact" className="transition hover:text-[var(--color-cozy-brown)]">
-            Contact Us
-          </Link>
-        </nav>
+        <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-white/50 min-[768px]:text-left">
+          © {year} {site.legalName}. All rights reserved.
+        </div>
       </div>
     </footer>
   );

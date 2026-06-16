@@ -12,5 +12,5 @@ export default async function GamePlayRedirect({ params }: Props) {
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) redirect("/games");
-  redirect(`/games/${slug}#play`);
+  redirect(`/games/${slug}`);
 }

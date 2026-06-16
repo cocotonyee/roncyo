@@ -3,33 +3,36 @@
 @theme {
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  /* Cozy brand palette (reference mockup) */
-  --color-cozy-cream: #fff9f0;
-  --color-cozy-sage: #a8c69f;
-  --color-cozy-sage-dark: #7a9a72;
-  --color-cozy-terracotta: #e58e73;
-  --color-cozy-terracotta-dark: #d4785c;
-  --color-cozy-brown: #5d4037;
-  --color-cozy-brown-muted: #8d6e63;
-  --color-cozy-card: #fff5e8;
-  --color-cozy-peach: #ffd6c8;
-  --color-cozy-mint: #d4e8d0;
-  --color-cozy-lavender: #e8e4f5;
-  /* Legacy tokens — mapped for inner/legal pages */
-  --color-roncy-yellow: #ffd93d;
-  --color-roncy-yellow2: #ffc107;
-  --color-roncy-teal: #a8c69f;
-  --color-roncy-teal2: #7a9a72;
-  --color-roncy-coral: #e58e73;
-  --color-roncy-purple: #c084fc;
-  --color-roncy-navy: #5d4037;
-  --color-roncy-bg: #fff9f0;
-  --color-roncy-surface: #fff5e8;
-  --color-roncy-border: #e8ddd0;
-  --color-roncy-muted: #8d6e63;
-  --color-roncy-text: #5d4037;
-  --color-roncy-accent: #e58e73;
-  --color-roncy-accent-dim: #d4785c;
+  /* Poki-inspired palette — cool blues, no warm tones */
+  --color-cozy-cream: #009cff;
+  --color-cozy-sage: #002b50;
+  --color-cozy-sage-dark: #001428;
+  --color-cozy-terracotta: #00d26a;
+  --color-cozy-terracotta-dark: #00b85c;
+  --color-cozy-brown: #002b50;
+  --color-cozy-brown-muted: #475569;
+  --color-cozy-card: #ffffff;
+  --color-cozy-peach: #e3f2fd;
+  --color-cozy-mint: #b3e5fc;
+  --color-cozy-lavender: #dbeafe;
+  --color-cozy-surface: #f0f7ff;
+  --color-cozy-on-blue: #ffffff;
+  --color-cozy-on-blue-muted: rgba(255, 255, 255, 0.82);
+  /* Legacy tokens — mapped to Poki palette for inner/legal pages */
+  --color-roncy-yellow: #ffdc00;
+  --color-roncy-yellow2: #ffc400;
+  --color-roncy-teal: #009cff;
+  --color-roncy-teal2: #0077cc;
+  --color-roncy-coral: #00d26a;
+  --color-roncy-purple: #6366f1;
+  --color-roncy-navy: #002b50;
+  --color-roncy-bg: #009cff;
+  --color-roncy-surface: #ffffff;
+  --color-roncy-border: #cbd5e1;
+  --color-roncy-muted: #475569;
+  --color-roncy-text: #002b50;
+  --color-roncy-accent: #00d26a;
+  --color-roncy-accent-dim: #00b85c;
 }
 
 html {
@@ -37,14 +40,13 @@ html {
 }
 
 body {
-  @apply min-h-dvh bg-[var(--color-roncy-bg)] text-[var(--color-roncy-text)] antialiased;
+  @apply min-h-dvh bg-[var(--color-roncy-bg)] text-[var(--color-cozy-on-blue)] antialiased;
 }
 
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-[var(--color-roncy-teal)];
+  @apply outline-2 outline-offset-2 outline-[var(--color-roncy-yellow)];
 }
 
-/* Homepage motion — keep opacity at 1 so content never disappears if animation is skipped */
 @keyframes roncy-up {
   from {
     transform: translateY(20px);
@@ -86,12 +88,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-roncy-surface);
+  background: var(--color-cozy-sage-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-roncy-border);
+  background: #0077cc;
   border-radius: 10px;
 }

@@ -8,7 +8,8 @@ export const site = {
   legalName: "RONCY LLC",
   domain: "roncyo.com",
   country: "United States",
-  tagline: "Cozy games that warm your heart",
+  tagline: "Professional game publishing platform",
+  logo: "/logo.png",
   emails: {
     support: SUPPORT,
     privacy: SUPPORT,

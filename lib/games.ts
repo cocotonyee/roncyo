@@ -5,11 +5,36 @@ export type Game = {
   title: string;
   genre: string;
   shortDescription: string;
+  /** Publisher / client that owns this app listing */
+  publisherId: string;
+  /** Folder under `public/store/` — when set, logo/top/screenshots load from there */
+  storeDir?: string;
+  /** From store config; overrides publisher display name when set */
+  companyName?: string;
+  companyLegalName?: string;
+  companyDescription?: string;
+  companyEmail?: string;
+  companyWebsite?: string;
+  logoUrl?: string;
+  topBannerUrl?: string;
+  screenshots?: string[];
   /** Full-bleed hero (`/public/...` or `https://...`) */
   heroImage: string;
   /** Card accent on homepage */
   cardColor: string;
   cardEmoji: string;
+  /** App store metadata */
+  version?: string;
+  lastUpdated?: string;
+  releaseDate?: string;
+  contentRating?: string;
+  categories?: string[];
+  languages?: string[];
+  size?: string;
+  /** Optional store-style rating (omit if not available) */
+  rating?: number;
+  reviewCount?: number;
+  badges?: ("new" | "featured" | "editor-choice")[];
   about: string;
   story?: string;
   features: string[];
@@ -45,29 +70,20 @@ export type Game = {
   knownIssues?: string;
 };
 
-const PLAY_MOCHI_CATS =
-  "https://play.google.com/store/apps/details?id=com.roncyo.mochicats" as const;
-const PLAY_COZY_CAT =
-  "https://play.google.com/store/apps/details?id=com.roncyo.cozycat" as const;
+import { buildGameFromStore } from "@/lib/store/build-game";
+import { storeListings } from "@/lib/store/listings";
 
-export function resolvePlayCTA(game: Game): { href: string; label: string; internal?: boolean } | null {
-  if (game.localPlayPath || game.embedUrl || game.webUrl) {
-    return {
-      href: `/games/${game.slug}#play`,
-      label: game.playButtonLabel ?? "Play now",
-      internal: true,
-    };
-  }
+export function resolvePlayCTA(game: Game): { href: string; label: string } | null {
   if (game.telegramMiniApp && game.telegramUrl) {
     return {
       href: game.telegramUrl,
-      label: "Play in Telegram",
+      label: game.playButtonLabel ?? "Open in Telegram",
     };
   }
   if (game.playUrl) {
     return {
       href: game.playUrl,
-      label: game.playButtonLabel ?? "Play now",
+      label: game.playButtonLabel ?? "Download",
     };
   }
   if (game.playStoreUrl)
@@ -75,100 +91,17 @@ export function resolvePlayCTA(game: Game): { href: string; label: string; inter
       href: game.playStoreUrl,
       label: game.playButtonLabel ?? "Get on Google Play",
     };
-  if (game.webUrl) return { href: game.webUrl, label: game.playButtonLabel ?? "Play in browser" };
-  if (game.tiktokUrl)
-    return { href: game.tiktokUrl, label: game.playButtonLabel ?? "Play on TikTok" };
   if (game.appStoreUrl)
     return { href: game.appStoreUrl, label: game.playButtonLabel ?? "Download on App Store" };
+  if (game.telegramUrl)
+    return { href: game.telegramUrl, label: game.playButtonLabel ?? "Open in Telegram" };
+  if (game.webUrl) return { href: game.webUrl, label: game.playButtonLabel ?? "Visit website" };
+  if (game.tiktokUrl)
+    return { href: game.tiktokUrl, label: game.playButtonLabel ?? "Open on TikTok" };
   return null;
 }
 
-export const games: Game[] = [
-  {
-    slug: "mochi-cats",
-    title: "Mochi Cats",
-    genre: "Merge Puzzle",
-    shortDescription:
-      "Drop adorable cats, merge matching kitties, and keep the stack from overflowing — cozy merge puzzle fun with a high-score challenge.",
-    heroImage:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1920&q=80",
-    cardColor: "#FFD6C8",
-    cardEmoji: "🐱",
-    about:
-      "Mochi Cats is a cute cat merge puzzle that blends relaxing casual play, fluffy kitty collection, and satisfying high-score runs. Easy to pick up, tricky to master — every drop and merge matters as you stack adorable cats and unlock new forms.",
-    story:
-      "Drop mochi-soft kitties into the box, merge pairs into rarer fluffballs, and chase your best score before the stack hits the danger line. A cozy pocket of purrs for quick breaks or longer puzzle sessions.",
-    features: [
-      "Cute cat merge puzzle gameplay",
-      "Simple controls — relaxing casual sessions",
-      "Merge matching cats to unlock new kitties",
-      "Stacking and space management with a danger line",
-      "Charming fluffy cat collection",
-      "Cozy visuals and high-score challenges",
-    ],
-    howToPlay: [
-      "Drop cute cats into the puzzle box.",
-      "Merge two identical cats to create a new cat.",
-      "Keep merging to discover more fluffy kitties.",
-      "Manage your space and stay above the danger line.",
-      "Beat your best score each round.",
-    ],
-    localPlayPath: "/play/mochi-cats/",
-    telegramUrl: "https://t.me/MochiCatsBot/mochi",
-    platforms: ["android", "web", "telegram"],
-    playStoreUrl: PLAY_MOCHI_CATS,
-    playButtonLabel: "Play now",
-    sdks: ["Google Play services", "Ad SDKs"],
-    collectsPersonalData: true,
-    childrenTargeted: false,
-    progressNote:
-      "Progress and high scores may be saved locally on your device. Reinstalling the app may reset local data.",
-    knownIssues:
-      "If something breaks after an OS update, email us with your device model and Android version.",
-  },
-  {
-    slug: "cozy-cat-block-puzzle",
-    title: "Cozy Cat Block Puzzle",
-    genre: "Block Puzzle",
-    shortDescription:
-      "Drag cozy block shapes onto the grid, clear lines with your feline friends cheering you on — no timers, pure relaxing brain training.",
-    heroImage:
-      "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1920&q=80",
-    cardColor: "#D4E8D0",
-    cardEmoji: "🧩",
-    about:
-      "Cozy Cat Block Puzzle is a warm, aesthetic grid puzzle for cat lovers and classic block fans. Fill rows and columns, chain combos, and unwind with companion cats — playable offline with no rush or pressure.",
-    story:
-      "Leave daily stress behind and settle into a soft 10×10 world where every line you clear brings a purr of encouragement. Thoughtful moves, cozy art, and gentle sound make each session feel like a quiet retreat.",
-    features: [
-      "Classic block puzzle on a cozy grid board",
-      "Heart-warming cat art and smooth animations",
-      "Combo multipliers for big clears",
-      "Telegram Mini App with bot integration",
-      "Android version on Google Play",
-      "No timers — stress-free, zen pacing",
-    ],
-    howToPlay: [
-      "Drag block shapes from the bottom onto the grid.",
-      "Fill complete horizontal rows or vertical columns to clear them.",
-      "Clear multiple lines at once for combo multipliers.",
-      "Plan ahead — the game ends when no shapes fit on the board.",
-      "Enjoy your cats cheering on every line you clear.",
-    ],
-    telegramMiniApp: true,
-    telegramMiniAppPath: "/play/cozy-cat-block-puzzle/",
-    /** Replace with your real bot link */
-    telegramUrl: "https://t.me/roncyo_bot",
-    platforms: ["android", "telegram"],
-    playStoreUrl: PLAY_COZY_CAT,
-    playButtonLabel: "Play in Telegram",
-    sdks: ["Google Play services", "Ad SDKs"],
-    collectsPersonalData: true,
-    childrenTargeted: false,
-    progressNote:
-      "Scores and progress may be stored locally on your device depending on your version.",
-  },
-];
+export const games: Game[] = storeListings.map(buildGameFromStore);
 
 /** Homepage featured game cards (live titles only) */
 export const featuredGameCards = games.map((g) => ({
@@ -184,6 +117,27 @@ export function getGameBySlug(slug: string) {
   return games.find((g) => g.slug === slug);
 }
 
+/** Company name shown on cards and detail pages — store config overrides publisher. */
+export function getCompanyDisplay(game: Game) {
+  if (game.companyName) {
+    return {
+      brandName: game.companyName,
+      legalName: game.companyLegalName,
+    };
+  }
+  return null;
+}
+
 export function getAllSlugs() {
   return games.map((g) => g.slug);
+}
+
+export function getGamesByPublisher(publisherId: string) {
+  return games.filter((g) => g.publisherId === publisherId);
+}
+
+export function getRelatedGames(slug: string, limit = 4) {
+  const game = getGameBySlug(slug);
+  if (!game) return [];
+  return games.filter((g) => g.slug !== slug && g.publisherId === game.publisherId).slice(0, limit);
 }

@@ -23,7 +23,7 @@ export function CozyButton({
 }: {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "outline" | "sage";
+  variant?: "primary" | "outline" | "light" | "sage";
   className?: string;
   external?: boolean;
 }) {
@@ -31,11 +31,13 @@ export function CozyButton({
     "inline-flex items-center justify-center gap-2 rounded-full font-[family-name:var(--font-display)] text-sm font-extrabold transition hover:-translate-y-0.5";
   const variants = {
     primary:
-      "bg-[var(--color-cozy-terracotta)] px-7 py-3.5 text-white shadow-[0_8px_24px_rgba(229,142,115,0.35)] hover:shadow-[0_12px_32px_rgba(229,142,115,0.45)]",
+      "bg-[var(--color-cozy-terracotta)] px-7 py-3.5 text-white shadow-[0_8px_24px_rgba(0,210,106,0.35)] hover:shadow-[0_12px_32px_rgba(0,210,106,0.45)]",
     outline:
-      "border-2 border-[var(--color-cozy-brown)]/20 bg-white px-6 py-3 text-[var(--color-cozy-brown)] hover:border-[var(--color-cozy-brown)]/40 hover:bg-[var(--color-cozy-cream)]",
+      "border-2 border-[var(--color-cozy-brown)]/15 bg-white px-6 py-3 text-[var(--color-cozy-brown)] hover:border-[var(--color-cozy-brown)]/30 hover:bg-[var(--color-cozy-surface)]",
+    light:
+      "border-2 border-white/40 bg-white/10 px-6 py-3 text-white hover:bg-white/20",
     sage:
-      "bg-[var(--color-cozy-sage)] px-6 py-3 text-[var(--color-cozy-brown)] hover:bg-[#98b88f]",
+      "bg-[var(--color-cozy-sage)] px-6 py-3 text-white hover:bg-[#003d6b]",
   };
   const cls = `${base} ${variants[variant]} ${className}`;
   if (external || href.startsWith("http") || href.startsWith("mailto:")) {
@@ -52,9 +54,13 @@ export function CozyButton({
   );
 }
 
-export function SectionEyebrow({ children }: { children: ReactNode }) {
+export function SectionEyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
   return (
-    <div className="mb-3 inline-flex items-center gap-2 text-xs font-extrabold tracking-[0.12em] text-[var(--color-cozy-brown)]/70 uppercase">
+    <div
+      className={`mb-3 inline-flex items-center gap-2 text-xs font-extrabold tracking-[0.12em] uppercase ${
+        light ? "text-white/70" : "text-[var(--color-cozy-brown-muted)]"
+      }`}
+    >
       <PawIcon className="size-3.5 text-[var(--color-cozy-terracotta)]" />
       {children}
     </div>
