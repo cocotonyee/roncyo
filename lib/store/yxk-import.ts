@@ -4,7 +4,7 @@ import catalog from "@/lib/store/yxk-catalog.json";
 
 /** Per-game publisher override — set in `lib/store/yxk-catalog.json` on each entry. */
 export type YxkCompanyOverride = {
-  companyName?: string;
+  companyName: string;
   companyCountry?: string;
   companyDescription?: string;
   companyEmail?: string;
@@ -29,8 +29,8 @@ export type YxkCatalogEntry = {
   platforms: StoreGameConfig["platforms"];
   trialAvailable?: boolean;
   trialLandscape?: boolean;
-  /** Optional — omit to use site defaults; set per game for different publishers */
-  company?: YxkCompanyOverride;
+  /** Per-game publisher — required on every catalog row */
+  company: YxkCompanyOverride;
 };
 
 const DEFAULT_COMPANY = {
@@ -44,11 +44,11 @@ const DEFAULT_COMPANY = {
 function resolveCompany(entry: YxkCatalogEntry) {
   const c = entry.company;
   return {
-    companyName: c?.companyName ?? DEFAULT_COMPANY.companyName,
-    companyCountry: c?.companyCountry ?? DEFAULT_COMPANY.companyCountry,
-    companyDescription: c?.companyDescription ?? DEFAULT_COMPANY.companyDescription,
-    companyEmail: c?.companyEmail ?? DEFAULT_COMPANY.companyEmail,
-    companyWebsite: c?.companyWebsite,
+    companyName: c.companyName,
+    companyCountry: c.companyCountry ?? DEFAULT_COMPANY.companyCountry,
+    companyDescription: c.companyDescription ?? DEFAULT_COMPANY.companyDescription,
+    companyEmail: c.companyEmail ?? DEFAULT_COMPANY.companyEmail,
+    companyWebsite: c.companyWebsite,
   };
 }
 

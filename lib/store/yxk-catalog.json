@@ -21,11 +21,19 @@
       "Clear levels to unlock the next challenge.",
       "Stay sharp — later stages introduce trickier layouts."
     ],
-    "categories": ["Puzzle", "Casual", "Level"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Puzzle",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "3.8.7",
     "size": "75.1 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
     "assetFolder": "zhaochuniuniu",
@@ -58,14 +66,28 @@
       "Use terrain and range to your advantage.",
       "Clear every wave to advance to the next stage."
     ],
-    "categories": ["Adventure", "Level", "Tower Defense"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Adventure",
+      "Level",
+      "Tower Defense"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.3.4",
     "size": "7.86 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "yongzheshouweizhan"
+    "assetFolder": "yongzheshouweizhan",
+    "company": {
+      "companyName": "JUYUN CULTURE MEDIA LLC",
+      "companyCountry": "United States of America",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "ybj325322@outlook.com"
+    }
   },
   {
     "yxkGameId": 320,
@@ -89,14 +111,28 @@
       "Plan ahead — limited space makes order matter.",
       "Complete the layout to finish the level."
     ],
-    "categories": ["Match", "Casual", "Level"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Match",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "3.8.5",
     "size": "5.98 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "yiqipindoudou"
+    "assetFolder": "yiqipindoudou",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 319,
@@ -120,14 +156,27 @@
       "Complete tasks to grow your homestead.",
       "Check in often to keep production flowing."
     ],
-    "categories": ["Casual", "Simulation"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Casual",
+      "Simulation"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.15",
     "size": "4.73 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "xiaoyangnongchang"
+    "assetFolder": "xiaoyangnongchang",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 318,
@@ -151,14 +200,28 @@
       "Chain multiple clears for bonus points.",
       "Keep the stack low to survive longer stages."
     ],
-    "categories": ["Match", "Casual", "Level"],
-    "languages": ["English"],
+    "categories": [
+      "Match",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "English"
+    ],
     "version": "2.4.4",
     "size": "19.9 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "fangkuaixiaoxiaoxiao"
+    "assetFolder": "fangkuaixiaoxiaoxiao",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 317,
@@ -182,14 +245,28 @@
       "Use new skills when stages get harder.",
       "Replay earlier levels to power up if stuck."
     ],
-    "categories": ["Adventure", "Level", "Growth"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Adventure",
+      "Level",
+      "Growth"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.7",
     "size": "12.7 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "zhengjiuxiaomumu"
+    "assetFolder": "zhengjiuxiaomumu",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 316,
@@ -213,14 +290,28 @@
       "Win the round to earn bragging rights.",
       "Jump to another game anytime for a new challenge."
     ],
-    "categories": ["Puzzle", "Casual", "Action"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Puzzle",
+      "Casual",
+      "Action"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.4",
     "size": "25.5 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "shuangrenyouxi"
+    "assetFolder": "shuangrenyouxi",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 315,
@@ -244,14 +335,28 @@
       "Survive each wave to reach the next stage.",
       "Stack abilities for stronger late-game builds."
     ],
-    "categories": ["Adventure", "Casual", "Level"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Adventure",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.9",
     "size": "11.2 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "mofaluandou"
+    "assetFolder": "mofaluandou",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 314,
@@ -275,14 +380,28 @@
       "Use special abilities on tough stages.",
       "Clear all waves to unlock the next level."
     ],
-    "categories": ["Casual", "Level", "Tower Defense"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Casual",
+      "Level",
+      "Tower Defense"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.10",
     "size": "50.2 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "eechuji"
+    "assetFolder": "eechuji",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 313,
@@ -306,14 +425,28 @@
       "Swap characters when a kit fits better.",
       "Clear the stage objective to advance."
     ],
-    "categories": ["Adventure", "Shooter", "Level"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Adventure",
+      "Shooter",
+      "Level"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.7",
     "size": "5.15 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": true,
-    "assetFolder": "chuangguanzhuanjia"
+    "assetFolder": "chuangguanzhuanjia",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 312,
@@ -337,14 +470,28 @@
       "Avoid stacking pieces above the danger line.",
       "Push for higher scores on later stages."
     ],
-    "categories": ["Match", "Casual", "Level"],
-    "languages": ["English"],
+    "categories": [
+      "Match",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "English"
+    ],
     "version": "2.4.7",
     "size": "6.00 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "blockpuzzle"
+    "assetFolder": "blockpuzzle",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 311,
@@ -368,14 +515,28 @@
       "Use items when the board gets tight.",
       "Collect rewards to expand your unlock roster."
     ],
-    "categories": ["Match", "Casual", "Level"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Match",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.12",
     "size": "12.1 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "fangkuaie"
+    "assetFolder": "fangkuaie",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 310,
@@ -399,14 +560,28 @@
       "Destroy enemies to earn merge materials.",
       "Push deeper as your arsenal grows stronger."
     ],
-    "categories": ["Casual", "Level", "Merge"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Casual",
+      "Level",
+      "Merge"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.10",
     "size": "14.6 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "zhanchexiangqianchong"
+    "assetFolder": "zhanchexiangqianchong",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 309,
@@ -430,14 +605,27 @@
       "Reinvest profits to unlock better talent and gear.",
       "Scale the agency to hit new revenue milestones."
     ],
-    "categories": ["Casual", "Simulation"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Casual",
+      "Simulation"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.4",
     "size": "32.8 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "wanghongzhubo"
+    "assetFolder": "wanghongzhubo",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 308,
@@ -461,14 +649,28 @@
       "Spend rewards on stat and skill upgrades.",
       "Switch heroes when a new kit suits the stage better."
     ],
-    "categories": ["Adventure", "Casual", "Level"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Adventure",
+      "Casual",
+      "Level"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.7",
     "size": "6.24 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": true,
-    "assetFolder": "shourenjueqi"
+    "assetFolder": "shourenjueqi",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 307,
@@ -492,14 +694,28 @@
       "Look for chain setups before you pop.",
       "Use cascades to beat tougher level goals."
     ],
-    "categories": ["Match", "Puzzle", "Casual"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Match",
+      "Puzzle",
+      "Casual"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.11",
     "size": "2.97 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "kuailexiaoxiaoxiao"
+    "assetFolder": "kuailexiaoxiaoxiao",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 306,
@@ -523,14 +739,28 @@
       "Clear boards to unlock the next challenge.",
       "Switch modes anytime for variety."
     ],
-    "categories": ["Match", "Puzzle", "Casual"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Match",
+      "Puzzle",
+      "Casual"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.11",
     "size": "7.68 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "kaigegongxiaoshe"
+    "assetFolder": "kaigegongxiaoshe",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   },
   {
     "yxkGameId": 305,
@@ -554,13 +784,26 @@
       "Spend earnings to unlock new rooms and features.",
       "Expand the resort to attract more visitors."
     ],
-    "categories": ["Casual", "Simulation"],
-    "languages": ["简体中文"],
+    "categories": [
+      "Casual",
+      "Simulation"
+    ],
+    "languages": [
+      "简体中文"
+    ],
     "version": "2.4.10",
     "size": "19.9 MB",
-    "platforms": ["web"],
+    "platforms": [
+      "web"
+    ],
     "trialAvailable": true,
     "trialLandscape": false,
-    "assetFolder": "jiangnanxiyucheng"
+    "assetFolder": "jiangnanxiyucheng",
+    "company": {
+      "companyName": "Roncy",
+      "companyCountry": "United States",
+      "companyDescription": "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+      "companyEmail": "support@roncyo.com"
+    }
   }
 ]
