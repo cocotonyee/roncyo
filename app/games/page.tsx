@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { GamesCatalog } from "@/components/GamesCatalog";
 import { games } from "@/lib/games";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "App Store",
-  description: `Browse and download apps published on ${site.brand} — mobile games, browser titles, and Telegram Mini Apps.`,
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "App Store — Browse Games & Apps",
+  description: `Browse the full ${site.brand} catalog — puzzle games, casual apps, tower defense, simulations, and web demos with publisher info and download links.`,
+  path: "/games",
+  keywords: ["game catalog", "browse mobile games", "app listings", "play demo"],
+});
 
 export default function GamesIndexPage() {
   return (

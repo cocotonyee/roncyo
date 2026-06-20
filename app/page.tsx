@@ -2,7 +2,15 @@ import Link from "next/link";
 import { AppStoreCard } from "@/components/AppStoreCard";
 import { CozyButton } from "@/components/CozyUI";
 import { games } from "@/lib/games";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+
+export const metadata = buildPageMetadata({
+  title: `${site.brand} App Store — Mobile Games & Web Apps`,
+  description: `Discover and play mobile games, puzzle apps, and web demos on ${site.brand}. Verified publishers, instant demos, Google Play and Telegram downloads.`,
+  path: "/",
+  keywords: ["free mobile games", "play games online", "puzzle games", "casual games catalog"],
+});
 
 const HIGHLIGHTS = [
   {

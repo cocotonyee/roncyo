@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { Breadcrumb, ContentPanel, HeroBand, InnerPage } from "@/components/InnerPage";
 import { Prose } from "@/components/Prose";
 import { getAllSlugs, getGameBySlug } from "@/lib/games";
-import { site, absoluteUrl } from "@/lib/site";
+import { buildPageMetadata, gameKeywords } from "@/lib/seo";
+import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,14 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) return { title: "Support" };
-  return {
-    title: `${game.title} — Support`,
-    description: `Support and FAQ for ${game.title}.`,
-    openGraph: {
-      title: `Support — ${game.title}`,
-      url: absoluteUrl(`/games/${slug}/support`),
-    },
-  };
+  return buildPageMetadata({
+    title: `${game.title} Support — Help & FAQ`,
+    description: `Support, troubleshooting, and contact information for ${game.title} on ${site.brand}.`,
+    path: `/games/${slug}/support`,
+    keywords: [...gameKeywords(game, game.companyName ?? site.brand), "support", "FAQ"],
+  });
 }
 
 export default async function GameSupportPage({ params }: Props) {

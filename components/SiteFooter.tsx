@@ -28,6 +28,12 @@ export function SiteFooter() {
             <Link href="/games" className="text-sm font-medium text-white/65 hover:text-white">
               App Store
             </Link>
+            <Link href="/about" className="text-sm font-medium text-white/65 hover:text-white">
+              About
+            </Link>
+            <Link href="/press" className="text-sm font-medium text-white/65 hover:text-white">
+              Press
+            </Link>
             <Link href="/support" className="text-sm font-medium text-white/65 hover:text-white">
               Support
             </Link>
@@ -48,6 +54,9 @@ export function SiteFooter() {
             </Link>
             <Link href="/cookie-policy" className="text-sm font-medium text-white/65 hover:text-white">
               Cookie Policy
+            </Link>
+            <Link href="/data-deletion" className="text-sm font-medium text-white/65 hover:text-white">
+              Data Deletion
             </Link>
           </nav>
         </div>

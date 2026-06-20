@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: `Contact ${site.brand} — support, business, and privacy.`,
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact — Support & Business Inquiries",
+  description: `Contact ${site.brand} for player support, publishing partnerships, privacy requests, and business inquiries.`,
+  path: "/contact",
+  keywords: ["contact", "game support", "publish games"],
+});
 
 const channels = [
   {

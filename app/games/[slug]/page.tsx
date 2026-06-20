@@ -5,9 +5,17 @@ import { GameScreenshotGallery } from "@/components/GameScreenshotGallery";
 import { GameInfoSidebar } from "@/components/GameInfoSidebar";
 import { GamePageHeader } from "@/components/GamePageHeader";
 import { PublisherPanel } from "@/components/PublisherPanel";
+import { RelatedGames } from "@/components/RelatedGames";
 import { getAllSlugs, getGameBySlug } from "@/lib/games";
 import { getPublisherById } from "@/lib/publishers";
 import { platformLabel } from "@/lib/platforms";
+import {
+  breadcrumbJsonLd,
+  buildPageMetadata,
+  gameKeywords,
+  gameSeoDescription,
+  gameSeoTitle,
+} from "@/lib/seo";
 import { site, absoluteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -22,21 +30,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!game) return { title: "App" };
   const publisher = getPublisherById(game.publisherId);
   const publisherName = game.companyName ?? publisher?.brandName ?? site.brand;
-  return {
-    title: game.title,
-    description: game.shortDescription,
-    openGraph: {
-      title: game.title,
-      description: game.shortDescription,
-      url: absoluteUrl(`/games/${slug}`),
-      images: game.heroImage.startsWith("http")
-        ? [{ url: game.heroImage, width: 1920, height: 1080, alt: game.title }]
-        : [{ url: absoluteUrl(game.heroImage), width: 1920, height: 1080, alt: game.title }],
-    },
-    other: publisher
-      ? { "application:developer": publisherName }
-      : undefined,
-  };
+
+  return buildPageMetadata({
+    title: gameSeoTitle(game),
+    description: gameSeoDescription(game, publisherName),
+    path: `/games/${slug}`,
+    keywords: gameKeywords(game, publisherName),
+    image: game.heroImage,
+    imageAlt: `${game.title} — ${game.genre} game on ${site.brand}`,
+    type: "article",
+  });
 }
 
 function platformLink(label: string, href?: string) {
@@ -75,6 +78,8 @@ export default async function GamePage({ params }: Props) {
     description: game.shortDescription,
     applicationCategory: "GameApplication",
     operatingSystem: game.platforms.join(", "),
+    url: absoluteUrl(`/games/${slug}`),
+    image: game.heroImage.startsWith("http") ? game.heroImage : absoluteUrl(game.heroImage),
     ...(game.rating != null && {
       aggregateRating: {
         "@type": "AggregateRating",
@@ -82,20 +87,36 @@ export default async function GamePage({ params }: Props) {
         reviewCount: game.reviewCount ?? 0,
       },
     }),
-    ...(publisher && {
-      author: {
-        "@type": "Organization",
-        name: publisherName,
-        url: publisher.website,
-      },
-    }),
+    author: {
+      "@type": "Organization",
+      name: publisherName,
+      url: game.companyWebsite ?? publisher?.website ?? absoluteUrl("/"),
+    },
+    offers: game.playUrl
+      ? {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          url: absoluteUrl(game.playUrl),
+        }
+      : undefined,
   };
+
+  const breadcrumbLd = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "App Store", path: "/games" },
+    { name: game.title, path: `/games/${slug}` },
+  ]);
 
   return (
     <div className="bg-[var(--color-cozy-surface)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <GamePageHeader game={game} />
@@ -164,14 +185,23 @@ export default async function GamePage({ params }: Props) {
                   Download & platforms
                 </h2>
                 <p className="mt-2 text-sm text-[var(--color-cozy-brown-muted)]">
-                  Choose your platform to download.
+                  Choose your platform to download or{" "}
+                  {game.playUrl ? (
+                    <Link href={game.playUrl} className="font-semibold text-[var(--color-cozy-terracotta)] hover:underline">
+                      play the demo
+                    </Link>
+                  ) : (
+                    "get the app"
+                  )}
+                  .
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   {game.platforms.includes("ios") &&
                     platformLink(platformLabel("ios"), game.appStoreUrl)}
                   {game.platforms.includes("android") &&
                     platformLink(platformLabel("android"), game.playStoreUrl)}
-                  {game.platforms.includes("web") && platformLink("Web / browser", game.webUrl)}
+                  {game.platforms.includes("web") &&
+                    platformLink("Web / browser", game.playUrl ?? game.webUrl)}
                   {game.platforms.includes("telegram") &&
                     game.telegramUrl &&
                     platformLink(platformLabel("telegram"), game.telegramUrl)}
@@ -179,6 +209,8 @@ export default async function GamePage({ params }: Props) {
                     platformLink(platformLabel("tiktok"), game.tiktokUrl)}
                 </div>
               </section>
+
+              <RelatedGames game={game} />
             </div>
 
             <div className="min-[960px]:sticky min-[960px]:top-[88px] min-[960px]:self-start">
@@ -189,8 +221,20 @@ export default async function GamePage({ params }: Props) {
           <footer className="mt-10 flex flex-col items-center gap-3 border-t border-[var(--color-cozy-brown)]/10 pt-8 text-center text-xs text-[var(--color-cozy-brown-muted)] min-[640px]:flex-row min-[640px]:justify-between min-[640px]:text-left">
             <p>
               Published by {publisherName} ·{" "}
-              <Link href="/privacy-policy" className="font-semibold hover:underline">
+              <Link href="/games" className="font-semibold hover:underline">
+                App Store
+              </Link>
+              {" · "}
+              <Link href={`/games/${slug}/support`} className="font-semibold hover:underline">
+                Support
+              </Link>
+              {" · "}
+              <Link href={`/games/${slug}/privacy`} className="font-semibold hover:underline">
                 Privacy
+              </Link>
+              {" · "}
+              <Link href="/privacy-policy" className="font-semibold hover:underline">
+                Site Privacy
               </Link>
               {" · "}
               <Link href="/terms-of-service" className="font-semibold hover:underline">
@@ -198,10 +242,10 @@ export default async function GamePage({ params }: Props) {
               </Link>
             </p>
             <a
-              href={`mailto:${site.emails.support}`}
+              href={`mailto:${game.companyEmail ?? site.emails.support}`}
               className="font-semibold text-[var(--color-cozy-terracotta)] hover:underline"
             >
-              {site.emails.support}
+              {game.companyEmail ?? site.emails.support}
             </a>
           </footer>
         </div>

@@ -4,12 +4,15 @@ import { LegalUpdatedBadge } from "@/components/LegalUpdated";
 import { Prose } from "@/components/Prose";
 import { games } from "@/lib/games";
 import { LEGAL_LAST_UPDATED } from "@/lib/legal";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Terms of Service",
-  description: `Terms of Service for ${site.brand} products and websites.`,
-};
+  description: `Terms of Service for ${site.brand} games, websites, and digital services.`,
+  path: "/terms-of-service",
+  keywords: ["terms of service", "user agreement"],
+});
 
 export default function TermsPage() {
   const gameExamples =

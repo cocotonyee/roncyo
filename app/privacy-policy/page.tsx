@@ -4,12 +4,15 @@ import { LegalUpdatedBadge } from "@/components/LegalUpdated";
 import { Prose } from "@/components/Prose";
 import { games } from "@/lib/games";
 import { LEGAL_LAST_UPDATED } from "@/lib/legal";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Privacy Policy",
-  description: `${site.brand} privacy policy — how we collect and use data.`,
-};
+  description: `${site.brand} privacy policy — how we collect, use, and protect data across our games, website, and services.`,
+  path: "/privacy-policy",
+  keywords: ["privacy policy", "data protection", "GDPR"],
+});
 
 export default function PrivacyPolicyPage() {
   const gameExamples =

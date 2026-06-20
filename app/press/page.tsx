@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { Prose } from "@/components/Prose";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Press",
-  description: `Press and media contact for ${site.brand}.`,
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Press & Media Kit",
+  description: `Press resources and media contact for ${site.brand} — game publisher facts, branding, and inquiry details.`,
+  path: "/press",
+  keywords: ["press", "media kit", "game publisher news"],
+});
 
 export default function PressPage() {
   return (

@@ -3,12 +3,15 @@ import Link from "next/link";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { Prose } from "@/components/Prose";
 import { games } from "@/lib/games";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Support",
-  description: `Support hub for all ${site.brand} games.`,
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Support Center — Game Help & FAQ",
+  description: `Get help with ${site.brand} games and apps. Support hub with links to per-app FAQ, contact, and troubleshooting.`,
+  path: "/support",
+  keywords: ["game support", "help center", "FAQ"],
+});
 
 export default function SupportHubPage() {
   return (

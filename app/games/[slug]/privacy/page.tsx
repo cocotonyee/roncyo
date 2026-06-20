@@ -5,7 +5,8 @@ import { Breadcrumb, ContentPanel, HeroBand, InnerPage } from "@/components/Inne
 import { LegalUpdatedBadge } from "@/components/LegalUpdated";
 import { Prose } from "@/components/Prose";
 import { getAllSlugs, getGameBySlug } from "@/lib/games";
-import { site, absoluteUrl } from "@/lib/site";
+import { buildPageMetadata, gameKeywords } from "@/lib/seo";
+import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,14 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) return { title: "Privacy" };
-  return {
-    title: `${game.title} — Privacy`,
-    description: `Privacy information specific to ${game.title}.`,
-    openGraph: {
-      title: `Privacy — ${game.title}`,
-      url: absoluteUrl(`/games/${slug}/privacy`),
-    },
-  };
+  return buildPageMetadata({
+    title: `${game.title} Privacy Policy`,
+    description: `Privacy policy and data practices for ${game.title}, published on ${site.brand}.`,
+    path: `/games/${slug}/privacy`,
+    keywords: [...gameKeywords(game, game.companyName ?? site.brand), "privacy policy"],
+  });
 }
 
 export default async function GamePrivacyPage({ params }: Props) {

@@ -139,5 +139,16 @@ export function getGamesByPublisher(publisherId: string) {
 export function getRelatedGames(slug: string, limit = 4) {
   const game = getGameBySlug(slug);
   if (!game) return [];
-  return games.filter((g) => g.slug !== slug && g.publisherId === game.publisherId).slice(0, limit);
+  const others = games.filter((g) => g.slug !== slug);
+  const sameGenre = others.filter((g) => g.genre === game.genre);
+  const sharedCategory = others.filter(
+    (g) => g.slug !== slug && game.categories?.some((c) => g.categories?.includes(c)),
+  );
+  const pool = [...sameGenre, ...sharedCategory, ...others];
+  const seen = new Set<string>();
+  return pool.filter((g) => {
+    if (seen.has(g.slug)) return false;
+    seen.add(g.slug);
+    return true;
+  }).slice(0, limit);
 }

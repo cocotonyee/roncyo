@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { LegalUpdatedBadge } from "@/components/LegalUpdated";
 import { Prose } from "@/components/Prose";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Cookie Policy",
-  description: `How ${site.brand} uses cookies on ${site.domain}.`,
-};
+  description: `How ${site.brand} uses cookies and similar technologies on ${site.domain}.`,
+  path: "/cookie-policy",
+  keywords: ["cookie policy", "tracking"],
+});
 
 export default function CookiePolicyPage() {
   return (

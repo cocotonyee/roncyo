@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { Prose } from "@/components/Prose";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: `About ${site.brand} — ${site.country} game developer.`,
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "About Us — Game Publisher & App Studio",
+  description: `Learn about ${site.brand}, an independent game publisher based in the ${site.country}. Mobile games, web demos, and professional app distribution.`,
+  path: "/about",
+  keywords: ["about Roncy", "game studio", "app publisher"],
+});
 
 export default function AboutPage() {
   return (

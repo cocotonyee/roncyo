@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { Prose } from "@/components/Prose";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Data Deletion",
-  description: `Request deletion of personal data held by ${site.brand}.`,
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Data Deletion Request",
+  description: `Request deletion of personal data associated with ${site.brand} games and services.`,
+  path: "/data-deletion",
+  keywords: ["data deletion", "account removal", "privacy request"],
+});
 
 export default function DataDeletionPage() {
   const mail = `mailto:${site.emails.support}?subject=${encodeURIComponent("Data Deletion Request")}`;
