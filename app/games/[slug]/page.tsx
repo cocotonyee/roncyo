@@ -10,13 +10,19 @@ import { getAllSlugs, getGameBySlug } from "@/lib/games";
 import { getPublisherById } from "@/lib/publishers";
 import { platformLabel } from "@/lib/platforms";
 import {
+  buildGameChangelog,
+  buildGameFaq,
+  buildGameplayContent,
+  gameVideoGameJsonLd,
+} from "@/lib/game-seo";
+import {
   breadcrumbJsonLd,
   buildPageMetadata,
   gameKeywords,
   gameSeoDescription,
   gameSeoTitle,
 } from "@/lib/seo";
-import { site, absoluteUrl } from "@/lib/site";
+import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -71,42 +77,19 @@ export default async function GamePage({ params }: Props) {
   const publisher = getPublisherById(game.publisherId);
   const publisherName = game.companyName ?? publisher?.brandName ?? site.brand;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: game.title,
-    description: game.shortDescription,
-    applicationCategory: "GameApplication",
-    operatingSystem: game.platforms.join(", "),
-    url: absoluteUrl(`/games/${slug}`),
-    image: game.heroImage.startsWith("http") ? game.heroImage : absoluteUrl(game.heroImage),
-    ...(game.rating != null && {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: game.rating,
-        reviewCount: game.reviewCount ?? 0,
-      },
-    }),
-    author: {
-      "@type": "Organization",
-      name: publisherName,
-      url: game.companyWebsite ?? publisher?.website ?? absoluteUrl("/"),
-    },
-    offers: game.playUrl
-      ? {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "USD",
-          url: absoluteUrl(game.playUrl),
-        }
-      : undefined,
-  };
-
+  const jsonLd = gameVideoGameJsonLd(game, slug, publisherName);
   const breadcrumbLd = breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "App Store", path: "/games" },
     { name: game.title, path: `/games/${slug}` },
   ]);
+
+  const gameplay = buildGameplayContent(game, publisherName);
+  const faqItems = buildGameFaq(game, publisherName, slug);
+  const changelog = buildGameChangelog(game);
+
+  const sectionClass =
+    "rounded-2xl border border-[var(--color-cozy-brown)]/10 bg-white p-6 shadow-[0_2px_12px_rgba(0,43,80,0.04)] min-[960px]:p-8";
 
   return (
     <div className="bg-[var(--color-cozy-surface)]">
@@ -168,7 +151,7 @@ export default async function GamePage({ params }: Props) {
               </section>
 
               {game.howToPlay && game.howToPlay.length > 0 ? (
-                <section className="rounded-2xl border border-[var(--color-cozy-brown)]/10 bg-white p-6 shadow-[0_2px_12px_rgba(0,43,80,0.04)] min-[960px]:p-8">
+                <section className={sectionClass}>
                   <h2 className="font-[family-name:var(--font-display)] text-sm font-extrabold tracking-wide text-[var(--color-cozy-brown)] uppercase">
                     How to play
                   </h2>
@@ -180,7 +163,80 @@ export default async function GamePage({ params }: Props) {
                 </section>
               ) : null}
 
-              <section className="rounded-2xl border border-[var(--color-cozy-brown)]/10 bg-white p-6 shadow-[0_2px_12px_rgba(0,43,80,0.04)] min-[960px]:p-8">
+              <article className={sectionClass}>
+                <section>
+                  <h2 className="font-[family-name:var(--font-display)] text-sm font-extrabold tracking-wide text-[var(--color-cozy-brown)] uppercase">
+                    Core features &amp; gameplay
+                  </h2>
+                  <p className="mt-4 text-base leading-[1.85] text-[var(--color-cozy-brown-muted)]">
+                    {gameplay.intro}
+                  </p>
+                  <details className="group mt-5 rounded-xl border border-[var(--color-cozy-brown)]/10 bg-[var(--color-cozy-surface)]/60 open:bg-[var(--color-cozy-surface)]">
+                    <summary className="cursor-pointer list-none px-5 py-4 text-sm font-bold text-[var(--color-cozy-terracotta)] marker:content-none [&::-webkit-details-marker]:hidden">
+                      <span className="group-open:hidden">Read the full gameplay guide →</span>
+                      <span className="hidden group-open:inline">Hide full gameplay guide ↑</span>
+                    </summary>
+                    <div className="space-y-4 border-t border-[var(--color-cozy-brown)]/8 px-5 py-4">
+                      {gameplay.expandedParagraphs.map((paragraph) => (
+                        <p
+                          key={paragraph.slice(0, 48)}
+                          className="text-sm leading-[1.85] text-[var(--color-cozy-brown-muted)]"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </details>
+                </section>
+              </article>
+
+              <section className={sectionClass} aria-labelledby="game-faq-heading">
+                <h2
+                  id="game-faq-heading"
+                  className="font-[family-name:var(--font-display)] text-sm font-extrabold tracking-wide text-[var(--color-cozy-brown)] uppercase"
+                >
+                  Frequently asked questions
+                </h2>
+                <div className="mt-5 space-y-3">
+                  {faqItems.map((item) => (
+                    <details
+                      key={item.question}
+                      className="rounded-xl border border-[var(--color-cozy-brown)]/10 bg-[var(--color-cozy-surface)]/40 open:bg-[var(--color-cozy-surface)]"
+                    >
+                      <summary className="cursor-pointer px-5 py-4 text-sm font-bold leading-snug text-[var(--color-cozy-brown)] marker:content-none [&::-webkit-details-marker]:hidden">
+                        {item.question}
+                      </summary>
+                      <p className="border-t border-[var(--color-cozy-brown)]/8 px-5 py-4 text-sm leading-[1.85] text-[var(--color-cozy-brown-muted)]">
+                        {item.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+
+              <section className={sectionClass} aria-labelledby="game-changelog-heading">
+                <h2
+                  id="game-changelog-heading"
+                  className="font-[family-name:var(--font-display)] text-sm font-extrabold tracking-wide text-[var(--color-cozy-brown)] uppercase"
+                >
+                  Update log
+                </h2>
+                <article className="mt-5 rounded-xl border border-[var(--color-cozy-brown)]/10 bg-[var(--color-cozy-surface)]/50 p-5">
+                  <h3 className="text-sm font-bold text-[var(--color-cozy-brown)]">
+                    Version {changelog.version}
+                    <span className="ml-2 font-medium text-[var(--color-cozy-brown-muted)]">
+                      · {changelog.date}
+                    </span>
+                  </h3>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-[1.85] text-[var(--color-cozy-brown-muted)]">
+                    {changelog.entries.map((entry) => (
+                      <li key={entry}>{entry}</li>
+                    ))}
+                  </ul>
+                </article>
+              </section>
+
+              <section className={sectionClass}>
                 <h2 className="font-[family-name:var(--font-display)] text-sm font-extrabold tracking-wide text-[var(--color-cozy-brown)] uppercase">
                   Download & platforms
                 </h2>
