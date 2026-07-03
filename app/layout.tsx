@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Nunito, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
+import { RoiifyBanner } from "@/components/RoiifyBanner";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ROIIFY_SDK_URL } from "@/lib/roiify";
 import { buildPageMetadata, organizationJsonLd } from "@/lib/seo";
 import { site, absoluteUrl } from "@/lib/site";
 import "./globals.css";
@@ -46,7 +49,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <SiteHeader />
         <main className="flex-1 pt-[72px]">{children}</main>
+        {/* Site-wide Roiify banner — root layout wraps every app route (incl. 404) */}
+        <RoiifyBanner />
         <SiteFooter />
+        <Script src={ROIIFY_SDK_URL} strategy="afterInteractive" />
       </body>
     </html>
   );
