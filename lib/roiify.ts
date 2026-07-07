@@ -5,7 +5,7 @@ export const ROIIFY_AD_SLOT_IDS = {
 
 /** Active placement — top banner only */
 export const ROIIFY_FIXED_SLOTS = {
-  topBar: "plc_wpqgpujk47sl",
+  topBar: "plc_3b7064bbsmtb",
 } as const;
 
 export const ROIIFY_SDK_URL = "https://www.roiify.net/sdk/roiify-ads.js";

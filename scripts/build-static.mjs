@@ -22,7 +22,7 @@ const COPY = {
 
 const ROIIFY = {
   sdk: "https://www.roiify.net/sdk/roiify-ads.js",
-  placement: "plc_wpqgpujk47sl",
+  placement: "plc_3b7064bbsmtb",
   rotationMs: 30_000,
 };
 
