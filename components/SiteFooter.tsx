@@ -13,6 +13,7 @@ const company = [
 
 const resources = [
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/locations", label: "Locations" },
   { href: "/llms.txt", label: "AI Site Info" },
 ] as const;
 

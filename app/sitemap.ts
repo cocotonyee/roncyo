@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllCaseStudySlugs } from "@/lib/case-studies";
 import { games } from "@/lib/games";
 import { getAllIndustrySlugs } from "@/lib/industries";
+import { getAllLocationSlugs } from "@/lib/locations";
 import { getAllServiceSlugs } from "@/lib/services";
 import { STATIC_SITEMAP_ROUTES } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -37,6 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const locationEntries: MetadataRoute.Sitemap = getAllLocationSlugs().map((slug) => ({
+    url: absoluteUrl(`/locations/${slug}`),
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: slug === "australia" || slug === "new-zealand" ? 0.78 : 0.72,
+  }));
+
   const gameEntries: MetadataRoute.Sitemap = games.flatMap((game) => {
     const gameUpdated = game.lastUpdated ? new Date(game.lastUpdated) : lastModified;
     return [
@@ -60,6 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serviceEntries,
     ...industryEntries,
     ...caseStudyEntries,
+    ...locationEntries,
     ...gameEntries,
   ];
 }

@@ -6,6 +6,7 @@ import { Reveal } from "@/components/automation/Reveal";
 import { Section, SectionHeader } from "@/components/automation/Section";
 import { homeIndustries, howItWorks } from "@/lib/automation";
 import { globalFaqs } from "@/lib/faqs";
+import { getCitiesByCountry } from "@/lib/locations";
 import { services } from "@/lib/services";
 import { buildPageMetadata, faqJsonLd, SEO_KEYWORDS } from "@/lib/seo";
 
@@ -19,6 +20,8 @@ export const metadata = buildPageMetadata({
 
 export default function HomePage() {
   const homeFaqs = globalFaqs.slice(0, 4);
+  const auCities = getCitiesByCountry("au");
+  const nzCities = getCitiesByCountry("nz");
 
   return (
     <>
@@ -134,6 +137,36 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <Section className="bg-[var(--color-surface)]">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Locations"
+            title="Serving Australia & New Zealand"
+            description="Remote delivery to businesses in every major city."
+            align="center"
+          />
+        </Reveal>
+        <div className="mt-10 flex flex-wrap justify-center gap-2">
+          {[...auCities, ...nzCities].map((city, i) => (
+            <Reveal key={city.slug} delay={i * 40}>
+              <Link
+                href={`/locations/${city.slug}`}
+                className="rounded-full border border-[var(--color-border)] bg-[var(--color-panel)] px-4 py-2 text-sm font-medium text-[var(--color-foreground)] no-underline transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
+              >
+                {city.title}
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={200}>
+          <p className="mt-6 text-center text-sm text-[var(--color-muted)]">
+            <Link href="/locations" className="text-[var(--color-accent-hover)] underline">
+              View all locations
+            </Link>
+          </p>
+        </Reveal>
+      </Section>
+
       <Section>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -146,10 +179,14 @@ export default function HomePage() {
               contracting business in Auckland, document chasing for your accounting firm in
               Sydney, or patient recalls for your dental practice in Melbourne, we build custom
               workflows delivered in days, not months.{" "}
+              <Link href="/locations" className="text-[var(--color-accent-hover)] underline">
+                View locations
+              </Link>
+              ,{" "}
               <Link href="/case-studies" className="text-[var(--color-accent-hover)] underline">
-                See case studies
-              </Link>{" "}
-              or{" "}
+                see case studies
+              </Link>
+              , or{" "}
               <Link href="/contact" className="text-[var(--color-accent-hover)] underline">
                 book a free consultation
               </Link>
