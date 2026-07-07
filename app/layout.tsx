@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { RoiifyAdLayout } from "@/components/RoiifyBanner";
+import { RoiifyScript } from "@/components/RoiifyScript";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ROIIFY_SDK_URL } from "@/lib/roiify";
 import { buildPageMetadata, organizationJsonLd, SEO_KEYWORDS } from "@/lib/seo";
 import { professionalServiceJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 import { site, absoluteUrl } from "@/lib/site";
@@ -55,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI crawler information" />
       </head>
       <body className="flex min-h-dvh flex-col overflow-x-hidden font-sans">
-        <Script src={ROIIFY_SDK_URL} strategy="afterInteractive" />
+        <RoiifyScript />
         {structuredData.map((schema) => (
           <script
             key={String(schema["@id"] ?? schema["@type"])}

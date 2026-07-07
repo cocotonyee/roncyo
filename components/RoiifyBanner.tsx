@@ -2,7 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { ROIIFY_SDK_LOADED_EVENT } from "@/components/RoiifyScript";
 import {
+  ROIIFY_AD_SLOT_IDS,
   ROIIFY_BANNER_PLACEMENTS,
   ROIIFY_DEFAULT_SLOT_OPTIONS,
   ROIIFY_FIXED_SLOTS,
@@ -37,17 +39,29 @@ function waitForRoiify(timeoutMs = 15_000): Promise<RoiifyAdsApi | null> {
     }
 
     const started = Date.now();
+
+    const onReady = () => {
+      cleanup();
+      resolve(window.RoiifyAds ?? null);
+    };
+
     const timer = window.setInterval(() => {
       if (window.RoiifyAds) {
-        window.clearInterval(timer);
-        resolve(window.RoiifyAds);
+        onReady();
         return;
       }
       if (Date.now() - started >= timeoutMs) {
-        window.clearInterval(timer);
+        cleanup();
         resolve(null);
       }
     }, 100);
+
+    const cleanup = () => {
+      window.clearInterval(timer);
+      window.removeEventListener(ROIIFY_SDK_LOADED_EVENT, onReady);
+    };
+
+    window.addEventListener(ROIIFY_SDK_LOADED_EVENT, onReady);
   });
 }
 
@@ -108,6 +122,7 @@ function RoiifyTopBar() {
 
   return (
     <aside
+      id={ROIIFY_AD_SLOT_IDS.top}
       className={`border-b ${horizontalShellClass}`}
       aria-label="Advertisement"
     >
@@ -133,6 +148,7 @@ function RoiifySideBar({ side }: { side: "left" | "right" }) {
 
   return (
     <aside
+      id={side === "left" ? ROIIFY_AD_SLOT_IDS.left : ROIIFY_AD_SLOT_IDS.right}
       className={`${sideShellClass} ${side === "left" ? "border-r" : "border-l"} sticky top-20 self-start`}
       aria-label="Advertisement"
     >
@@ -176,6 +192,7 @@ function RoiifyFooterAds() {
     <>
       {effectiveSlotCount >= 2 ? (
         <aside
+          id={ROIIFY_AD_SLOT_IDS.footerSecondary}
           className={`border-t ${horizontalShellClass} py-6`}
           aria-label="Advertisement"
         >
@@ -189,6 +206,7 @@ function RoiifyFooterAds() {
       ) : null}
 
       <aside
+        id={ROIIFY_AD_SLOT_IDS.footerPrimary}
         className={`border-t ${horizontalShellClass} py-6`}
         aria-label="Advertisement"
       >

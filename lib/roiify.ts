@@ -1,3 +1,12 @@
+/** DOM ids for ad slots — use in Playwright / e2e selectors */
+export const ROIIFY_AD_SLOT_IDS = {
+  top: "roiify-ad-top",
+  left: "roiify-ad-left",
+  right: "roiify-ad-right",
+  footerPrimary: "roiify-ad-footer-primary",
+  footerSecondary: "roiify-ad-footer-secondary",
+} as const;
+
 /** Roiify fixed layout slots — each maps to a named placement in the publisher console */
 export const ROIIFY_FIXED_SLOTS = {
   topBar: "plc_wpqgpujk47sl",
@@ -15,6 +24,12 @@ export const ROIIFY_BANNER_PLACEMENTS: readonly string[] = [
 export const ROIIFY_BANNER_PLACEMENT_ID = ROIIFY_BANNER_PLACEMENTS[0];
 
 export const ROIIFY_SDK_URL = "https://www.roiify.net/sdk/roiify-ads.js";
+
+/**
+ * Load via `<RoiifyScript />` (next/script, strategy="afterInteractive").
+ * Do not add `<link rel="preload" href={ROIIFY_SDK_URL} as="script" />` — that
+ * triggers "preloaded but not used" warnings when execution is delayed.
+ */
 
 /** How often footer banners rotate / refresh creatives (ms) */
 export const ROIIFY_ROTATION_INTERVAL_MS = 30_000;
