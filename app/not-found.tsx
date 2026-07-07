@@ -1,29 +1,27 @@
 import Link from "next/link";
-import { ContentPanel, InnerPage } from "@/components/InnerPage";
+import { AutomationButton } from "@/components/automation/Button";
 
 export default function NotFound() {
   return (
-    <InnerPage glow="grape">
-      <ContentPanel className="py-16 text-center">
-        <p
-          className="font-[family-name:var(--font-display)] text-7xl font-black tracking-tighter text-[var(--color-roncy-teal)]/25"
-          aria-hidden
-        >
-          404
-        </p>
-        <h1 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-black text-[var(--color-roncy-navy)]">
-          Page not found
-        </h1>
-        <p className="mx-auto mt-3 max-w-md text-[var(--color-roncy-muted)]">
-          The page you requested does not exist or has moved.
-        </p>
+    <section className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-20 text-center">
+      <p className="text-sm font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">
+        404
+      </p>
+      <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-semibold text-[var(--color-foreground)]">
+        Page not found
+      </h1>
+      <p className="mt-3 max-w-md text-sm text-[var(--color-muted)]">
+        The page you requested does not exist or has moved.
+      </p>
+      <div className="mt-8 flex gap-3">
+        <AutomationButton href="/">Back home</AutomationButton>
         <Link
-          href="/"
-          className="mt-8 inline-flex rounded-full bg-[var(--color-roncy-navy)] px-8 py-3 font-[family-name:var(--font-display)] text-sm font-extrabold text-white shadow-lg transition hover:bg-[var(--color-roncy-text)]"
+          href="/contact"
+          className="inline-flex items-center justify-center rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-foreground)]"
         >
-          Back home
+          Contact us
         </Link>
-      </ContentPanel>
-    </InnerPage>
+      </div>
+    </section>
   );
 }

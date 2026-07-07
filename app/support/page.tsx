@@ -1,79 +1,96 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
-import { Prose } from "@/components/Prose";
+import { PageHero } from "@/components/automation/PageHero";
+import { Reveal } from "@/components/automation/Reveal";
+import { Section, SectionHeader } from "@/components/automation/Section";
 import { games } from "@/lib/games";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Support Center — Game Help & FAQ",
-  description: `Get help with ${site.brand} games and apps. Support hub with links to per-app FAQ, contact, and troubleshooting.`,
+  title: "Support Center",
+  description: `Get help with ${site.brand} apps. Support hub with per-app FAQ, contact, and troubleshooting.`,
   path: "/support",
-  keywords: ["game support", "help center", "FAQ"],
+  keywords: ["app support", "help center", "FAQ"],
 });
 
 export default function SupportHubPage() {
   return (
-    <InnerPage glow="forest">
-      <PageIntro
+    <>
+      <PageHero
         eyebrow="Support"
         title="Help center"
-        lead={`Questions about a ${site.brand} game? Start with the title’s page — or email us directly.`}
-        tone="teal"
+        description={`Questions about a ${site.brand} app? Start with the title's support page — or email us directly.`}
+        variant="dark"
       />
-      <ContentPanel className="mb-8">
-        <div className="flex flex-col gap-4 min-[480px]:flex-row min-[480px]:items-center min-[480px]:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-[var(--color-roncy-muted)]">Primary support email</p>
-            <a
-              href={`mailto:${site.emails.support}`}
-              className="mt-1 inline-block font-[family-name:var(--font-display)] text-xl font-extrabold text-[var(--color-roncy-teal2)] hover:text-[var(--color-roncy-teal)]"
-            >
-              {site.emails.support}
-            </a>
+
+      <Section>
+        <Reveal>
+          <div className="panel-premium flex flex-col gap-4 p-6 min-[480px]:flex-row min-[480px]:items-center min-[480px]:justify-between">
+            <div>
+              <p className="text-sm font-medium text-[var(--color-muted)]">Primary support email</p>
+              <a
+                href={`mailto:${site.emails.support}`}
+                className="mt-1 inline-block text-xl font-semibold text-[var(--color-foreground)] hover:text-[var(--color-accent-hover)]"
+              >
+                {site.emails.support}
+              </a>
+            </div>
+            <p className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm text-[var(--color-muted)]">
+              Typical reply: <span className="font-semibold text-[var(--color-foreground)]">2–3 business days</span>
+            </p>
           </div>
-          <p className="rounded-full border border-[var(--color-roncy-border)] bg-[var(--color-roncy-surface)] px-4 py-2 text-sm font-semibold text-[var(--color-roncy-text)]">
-            Typical reply: <span className="text-[var(--color-roncy-navy)]">2–3 business days</span>
-          </p>
-        </div>
-      </ContentPanel>
-      <h2 className="mb-5 font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--color-roncy-navy)]">
-        Games
-      </h2>
-      <ul className="mb-10 flex flex-col gap-3">
-        {games.map((g) => (
-          <li key={g.slug}>
-            <Link
-              href={`/games/${g.slug}/support`}
-              className="flex items-center justify-between gap-4 rounded-[18px] border-2 border-[var(--color-roncy-border)] bg-white px-5 py-4 font-semibold text-[var(--color-roncy-navy)] shadow-sm transition hover:border-[var(--color-roncy-teal)] hover:shadow-[0_8px_28px_rgba(0,212,200,0.12)]"
-            >
-              <span>{g.title}</span>
-              <span className="text-[var(--color-roncy-teal2)]">FAQ →</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <ContentPanel>
-        <Prose contained={false}>
-          <h2 className="!mt-0">Data deletion</h2>
-          <p>
-            To request deletion of personal data, see our <Link href="/data-deletion">Data deletion</Link>{" "}
-            page or email{" "}
-            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a> with the subject line{" "}
-            <strong>Data Deletion Request</strong>.
-          </p>
-          <h2>Common topics</h2>
-          <ul>
-            <li>Refunds are handled by the store where you purchased (Apple, Google, etc.).</li>
-            <li>Include device model, OS version, and steps to reproduce for bug reports.</li>
-            <li>
-              Privacy questions should go to{" "}
-              <a href={`mailto:${site.emails.privacy}`}>{site.emails.privacy}</a>.
-            </li>
-          </ul>
-        </Prose>
-      </ContentPanel>
-    </InnerPage>
+        </Reveal>
+
+        <Reveal delay={80}>
+          <div className="mt-12">
+            <SectionHeader title="Apps" />
+          </div>
+        </Reveal>
+        <ul className="mt-6 flex flex-col gap-3">
+          {games.map((g, i) => (
+            <Reveal key={g.slug} delay={100 + i * 60}>
+              <li>
+                <Link
+                  href={`/games/${g.slug}/support`}
+                  className="panel-premium flex items-center justify-between gap-4 px-5 py-4 font-semibold text-[var(--color-foreground)] no-underline"
+                >
+                  <span>{g.title}</span>
+                  <span className="text-[var(--color-accent-hover)]">FAQ →</span>
+                </Link>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal delay={200}>
+          <div className="panel-premium mt-10 p-6 text-sm leading-relaxed text-[var(--color-muted)]">
+            <h2 className="text-base font-semibold text-[var(--color-foreground)]">Data deletion</h2>
+            <p className="mt-2">
+              To request deletion of personal data, see our{" "}
+              <Link href="/data-deletion" className="font-medium text-[var(--color-foreground)] underline">
+                Data deletion
+              </Link>{" "}
+              page or email{" "}
+              <a href={`mailto:${site.emails.support}`} className="underline">
+                {site.emails.support}
+              </a>{" "}
+              with the subject line <strong>Data Deletion Request</strong>.
+            </p>
+            <h2 className="mt-6 text-base font-semibold text-[var(--color-foreground)]">Common topics</h2>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              <li>Refunds are handled by the store where you purchased (Apple, Google, etc.).</li>
+              <li>Include device model, OS version, and steps to reproduce for bug reports.</li>
+              <li>
+                Privacy questions:{" "}
+                <a href={`mailto:${site.emails.privacy}`} className="underline">
+                  {site.emails.privacy}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </Reveal>
+      </Section>
+    </>
   );
 }

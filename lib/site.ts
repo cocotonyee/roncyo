@@ -3,12 +3,12 @@ const SUPPORT = "support@roncyo.com" as const;
 
 export const site = {
   /** Public name — use in UI, marketing, and general copy */
-  brand: "Roncy",
+  brand: "Roncyo",
   /** Legal entity — use sparingly (e.g. one line in formal legal pages / press facts) */
   legalName: "RONCY LLC",
   domain: "roncyo.com",
   country: "United States",
-  tagline: "Professional game publishing platform",
+  tagline: "AI Business Automation Studio for local businesses in Australia & New Zealand",
   logo: "/logo.png",
   emails: {
     support: SUPPORT,

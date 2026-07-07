@@ -1,10 +1,18 @@
 import type { Game } from "@/lib/games";
 import type { StoreGameConfig } from "@/lib/store/config";
 import { resolveStoreAssets } from "@/lib/store/assets";
+import { site } from "@/lib/site";
+
+const fallbackImage = site.logo;
 
 export function buildGameFromStore(config: StoreGameConfig): Game {
   const hasTopBanner = config.hasTopBanner !== false;
-  const assets = resolveStoreAssets(config.storeDir, config.screenshots, hasTopBanner);
+  const assets = config.storeDir
+    ? resolveStoreAssets(config.storeDir, config.screenshots, hasTopBanner)
+    : { logo: undefined, topBanner: undefined, screenshots: [] as string[] };
+
+  const logo = assets.logo ?? fallbackImage;
+  const hero = assets.topBanner ?? assets.logo ?? fallbackImage;
 
   return {
     slug: config.slug,
@@ -18,10 +26,10 @@ export function buildGameFromStore(config: StoreGameConfig): Game {
     companyDescription: config.companyDescription,
     companyEmail: config.companyEmail,
     companyWebsite: config.companyWebsite,
-    logoUrl: assets.logo,
+    logoUrl: logo,
     topBannerUrl: assets.topBanner,
     screenshots: assets.screenshots,
-    heroImage: assets.topBanner ?? assets.logo,
+    heroImage: hero,
     cardColor: "#e3f2fd",
     cardEmoji: "🐱",
     version: config.version,

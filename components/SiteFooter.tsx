@@ -4,64 +4,90 @@ import { site } from "@/lib/site";
 
 const year = new Date().getFullYear();
 
+const company = [
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+const resources = [
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/llms.txt", label: "AI Site Info" },
+] as const;
+
+const legal = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/cookie-policy", label: "Cookie Policy" },
+  { href: "/data-deletion", label: "Data Deletion" },
+  { href: "/support", label: "Support" },
+] as const;
+
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-white/10 bg-[var(--color-cozy-sage-dark)] px-5 py-10 sm:px-8 lg:px-[52px]">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-8 min-[768px]:grid-cols-3">
-          <div>
+    <footer className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg)] px-5 py-14 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex">
-              <SiteLogo className="h-8 w-auto" />
+              <SiteLogo className="site-logo h-8 w-auto" />
             </Link>
-            <p className="mt-2 text-sm leading-relaxed text-white/70">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--color-muted)]">
               {site.tagline}
             </p>
-            <p className="mt-3 text-xs text-white/50">
+            <p className="mt-4 text-xs text-[var(--color-muted)]">
               {site.legalName} · {site.country}
             </p>
           </div>
 
-          <nav aria-label="Store" className="flex flex-col gap-2">
-            <p className="text-xs font-bold tracking-wide text-white/90 uppercase">
-              Store
+          <nav aria-label="Company" className="flex flex-col gap-2.5">
+            <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
+              Company
             </p>
-            <Link href="/games" className="text-sm font-medium text-white/65 hover:text-white">
-              App Store
-            </Link>
-            <Link href="/about" className="text-sm font-medium text-white/65 hover:text-white">
-              About
-            </Link>
-            <Link href="/press" className="text-sm font-medium text-white/65 hover:text-white">
-              Press
-            </Link>
-            <Link href="/support" className="text-sm font-medium text-white/65 hover:text-white">
-              Support
-            </Link>
-            <Link href="/contact" className="text-sm font-medium text-white/65 hover:text-white">
-              Contact
-            </Link>
+            {company.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          <nav aria-label="Legal" className="flex flex-col gap-2">
-            <p className="text-xs font-bold tracking-wide text-white/90 uppercase">
+          <nav aria-label="Resources" className="flex flex-col gap-2.5">
+            <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
+              Resources
+            </p>
+            {resources.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <nav aria-label="Legal" className="flex flex-col gap-2.5">
+            <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
               Legal
             </p>
-            <Link href="/privacy-policy" className="text-sm font-medium text-white/65 hover:text-white">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="text-sm font-medium text-white/65 hover:text-white">
-              Terms of Service
-            </Link>
-            <Link href="/cookie-policy" className="text-sm font-medium text-white/65 hover:text-white">
-              Cookie Policy
-            </Link>
-            <Link href="/data-deletion" className="text-sm font-medium text-white/65 hover:text-white">
-              Data Deletion
-            </Link>
+            {legal.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-white/50 min-[768px]:text-left">
+        <div className="mt-12 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)]">
           © {year} {site.legalName}. All rights reserved.
         </div>
       </div>

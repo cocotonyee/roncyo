@@ -1,95 +1,79 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
-import { buildPageMetadata } from "@/lib/seo";
+import { ContactForm } from "@/components/automation/ContactForm";
+import { Breadcrumbs } from "@/components/automation/Breadcrumbs";
+import { PageHero } from "@/components/automation/PageHero";
+import { Reveal } from "@/components/automation/Reveal";
+import { Section } from "@/components/automation/Section";
+import { buildPageMetadata, contactPageJsonLd, SEO_KEYWORDS } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Contact — Support & Business Inquiries",
-  description: `Contact ${site.brand} for player support, publishing partnerships, privacy requests, and business inquiries.`,
+export const metadata = buildPageMetadata({
+  title: "Contact — Book a Free Automation Consultation",
+  description:
+    "Request a free consultation for custom AI automation in Australia or New Zealand. Tell us about your repetitive tasks and we'll map what to automate first.",
   path: "/contact",
-  keywords: ["contact", "game support", "publish games"],
+  keywords: [
+    ...SEO_KEYWORDS,
+    "free automation consultation",
+    "business automation quote",
+    "AI automation consultation Australia",
+  ],
 });
 
-const channels = [
-  {
-    title: "Support",
-    email: site.emails.support,
-    body: "Player help, bugs, account or data questions.",
-    icon: "🎮",
-    tint: "#D4F7F5",
-  },
-  {
-    title: "Privacy & legal",
-    email: site.emails.privacy,
-    body: "Privacy policy questions and data requests.",
-    icon: "🔒",
-    tint: "#F3E8FF",
-  },
-  {
-    title: "Business & general",
-    email: site.emails.hello,
-    body: "Partnerships, licensing, and other non-support topics.",
-    icon: "✉️",
-    tint: "#FFF3CC",
-  },
-  {
-    title: "Legal notices",
-    email: site.emails.legal,
-    body: "Formal notices and terms-related correspondence.",
-    icon: "📜",
-    tint: "#FFE8E8",
-  },
-] as const;
-
 export default function ContactPage() {
+  const schema = contactPageJsonLd();
+
   return (
-    <InnerPage glow="coralSky">
-      <PageIntro
-        eyebrow="Contact"
-        title="Get in touch"
-        lead="We respond to most messages within 2–3 business days. Include your platform (iOS, Android, web) and game name when reporting an issue."
-        tone="teal"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="grid gap-5 sm:grid-cols-2">
-        {channels.map((c) => (
-          <a
-            key={c.title}
-            href={`mailto:${c.email}`}
-            className="group rounded-[24px] border-2 border-[var(--color-roncy-border)] bg-white p-6 shadow-[0_12px_40px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:border-[var(--color-roncy-teal)] hover:shadow-[0_20px_48px_rgba(0,212,200,0.12)]"
-          >
-            <div
-              className="mb-4 flex size-12 items-center justify-center rounded-2xl text-2xl transition group-hover:scale-105"
-              style={{ background: c.tint }}
-            >
-              {c.icon}
-            </div>
-            <h2 className="font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--color-roncy-navy)]">
-              {c.title}
-            </h2>
-            <p className="mt-2 font-[family-name:var(--font-display)] text-sm font-bold text-[var(--color-roncy-teal2)] group-hover:text-[var(--color-roncy-teal)]">
-              {c.email}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--color-roncy-muted)]">{c.body}</p>
-          </a>
-        ))}
-      </div>
-      <ContentPanel className="mt-10">
-        <p className="text-center text-sm text-[var(--color-roncy-muted)]">
-          Prefer the hub? Visit{" "}
-          <Link href="/support" className="font-semibold text-[var(--color-roncy-teal2)] hover:underline">
-            Support
-          </Link>{" "}
-          or{" "}
-          <Link
-            href="/data-deletion"
-            className="font-semibold text-[var(--color-roncy-teal2)] hover:underline"
-          >
-            Data deletion
-          </Link>
-          .
-        </p>
-      </ContentPanel>
-    </InnerPage>
+
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
+      />
+
+      <PageHero
+        eyebrow="Contact"
+        title="Book a free consultation"
+        description="Share the repetitive work slowing your team down. We'll reply within one business day."
+      />
+
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-[1fr_300px]">
+          <Reveal>
+            <ContactForm />
+          </Reveal>
+
+          <Reveal delay={100}>
+            <aside className="space-y-6">
+              <div className="panel-premium p-5 text-sm">
+                <p className="font-semibold text-[var(--color-foreground)]">Email</p>
+                <a
+                  href={`mailto:${site.emails.hello}`}
+                  className="mt-1 block text-[var(--color-muted)] hover:text-[var(--color-foreground)]"
+                >
+                  {site.emails.hello}
+                </a>
+              </div>
+              <div className="panel-premium p-5 text-sm">
+                <p className="font-semibold text-[var(--color-foreground)]">Regions served</p>
+                <p className="mt-1 text-[var(--color-muted)]">
+                  Australia (Sydney, Melbourne, Brisbane, Perth, Adelaide) &amp; New Zealand
+                  (Auckland, Wellington, Christchurch)
+                </p>
+              </div>
+              <div className="panel-premium p-5 text-sm">
+                <p className="font-semibold text-[var(--color-foreground)]">Typical delivery</p>
+                <p className="mt-1 text-[var(--color-muted)]">72 hours from project sign-off</p>
+              </div>
+            </aside>
+          </Reveal>
+        </div>
+      </Section>
+    </>
   );
 }

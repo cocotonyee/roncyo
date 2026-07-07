@@ -36,7 +36,7 @@ export default async function GameSupportPage({ params }: Props) {
         <Breadcrumb
           light
           items={[
-            { href: "/games", label: "Games" },
+            { href: "/support", label: "Support" },
             { href: `/games/${game.slug}`, label: game.title },
             { label: "Support" },
           ]}

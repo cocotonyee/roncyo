@@ -41,7 +41,7 @@ export default async function GamePrivacyPage({ params }: Props) {
         <Breadcrumb
           light
           items={[
-            { href: "/games", label: "Games" },
+            { href: "/support", label: "Support" },
             { href: `/games/${game.slug}`, label: game.title },
             { label: "Privacy" },
           ]}

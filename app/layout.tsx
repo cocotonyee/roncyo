@@ -1,24 +1,22 @@
 import type { Metadata } from "next";
-import { Nunito, Plus_Jakarta_Sans } from "next/font/google";
-import Script from "next/script";
-import { RoiifyAdLayout } from "@/components/RoiifyBanner";
+import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ROIIFY_SDK_URL } from "@/lib/roiify";
-import { buildPageMetadata, organizationJsonLd } from "@/lib/seo";
+import { buildPageMetadata, organizationJsonLd, SEO_KEYWORDS } from "@/lib/seo";
+import { professionalServiceJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 import { site, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
-const display = Nunito({
+const display = Inter({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Plus_Jakarta_Sans({
+const body = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
   variable: "--font-body",
   display: "swap",
 });
@@ -26,35 +24,44 @@ const body = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   ...buildPageMetadata({
-    title: `${site.brand} — ${site.tagline}`,
-    description: `${site.brand} is a professional app and game publishing platform. Browse mobile games, web demos, publisher profiles, support, and compliance documentation.`,
+    title: `${site.brand} — AI Business Automation Studio`,
+    description: site.tagline,
     path: "/",
-    keywords: ["app publishing platform", "game distribution", "mobile app store"],
+    keywords: [...SEO_KEYWORDS],
   }),
   title: {
-    default: `${site.brand} — ${site.tagline}`,
+    default: `${site.brand} — AI Business Automation Studio`,
     template: `%s | ${site.brand}`,
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  other: {
+    "ai-content": absoluteUrl("/llms.txt"),
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const orgLd = organizationJsonLd();
+  const structuredData = [organizationJsonLd(), professionalServiceJsonLd(), webSiteJsonLd()];
 
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html lang="en-AU" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site information" />
+        <link rel="alternate" type="text/plain" href="/ai.txt" title="AI crawler information" />
+      </head>
       <body className="flex min-h-dvh flex-col overflow-x-hidden font-sans">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
-        />
+        {structuredData.map((schema) => (
+          <script
+            key={String(schema["@id"] ?? schema["@type"])}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
         <SiteHeader />
-        <div className="flex min-h-0 flex-1 flex-col pt-[72px]">
-          <RoiifyAdLayout>
-            <main className="flex-1">{children}</main>
-          </RoiifyAdLayout>
-          <SiteFooter />
-        </div>
-        <Script src={ROIIFY_SDK_URL} strategy="afterInteractive" />
+        <main className="flex-1 pt-16">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

@@ -1,52 +1,73 @@
-import type { Metadata } from "next";
-import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
-import { Prose } from "@/components/Prose";
-import { buildPageMetadata } from "@/lib/seo";
+import { AutomationButton } from "@/components/automation/Button";
+import { CtaBand, PageHero } from "@/components/automation/PageHero";
+import { Reveal } from "@/components/automation/Reveal";
+import { Section, SectionHeader } from "@/components/automation/Section";
+import { howItWorks } from "@/lib/automation";
+import { buildPageMetadata, SEO_KEYWORDS } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "About Us — Game Publisher & App Studio",
-  description: `Learn about ${site.brand}, an independent game publisher based in the ${site.country}. Mobile games, web demos, and professional app distribution.`,
+export const metadata = buildPageMetadata({
+  title: "About Roncyo — AI Business Automation Studio",
+  description:
+    "Roncyo helps local businesses in Australia and New Zealand save time through custom AI automation. We eliminate repetitive work without replacing your existing software.",
   path: "/about",
-  keywords: ["about Roncy", "game studio", "app publisher"],
+  keywords: [...SEO_KEYWORDS],
 });
 
 export default function AboutPage() {
   return (
-    <InnerPage glow="lavender">
-      <PageIntro
+    <>
+      <PageHero
         eyebrow="About"
-        title={site.brand}
-        lead={`Independent studio based in the ${site.country}. We ship ${site.tagline} with clear support and honest privacy practices.`}
-        tone="navy"
+        title="We help local businesses save time through automation"
+        description={`${site.brand} is an AI Business Automation Studio for service businesses in Australia and New Zealand. We map your repetitive tasks, build custom workflows, and deliver automation that pays for itself in hours saved.`}
       />
-      <ContentPanel>
-        <Prose contained={false}>
-          <p>
-            We design and publish mobile and browser games, with a focus on clear player
-            communication and honest data practices.
-          </p>
-          <p className="text-sm text-[var(--color-roncy-muted)]">
-            Legal entity: {site.legalName} ({site.country}).
-          </p>
-          <p>
-            For business, press, or general inquiries, email{" "}
-            <a href={`mailto:${site.emails.hello}`}>{site.emails.hello}</a>. For player support, use{" "}
-            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>.
-          </p>
-          <h2>What we do</h2>
-          <ul>
-            <li>Develop and operate casual and puzzle-style games</li>
-            <li>Publish on major app stores and the open web where applicable</li>
-            <li>Maintain public support and legal pages for every live product</li>
-          </ul>
-          <h2>Registration &amp; jurisdiction</h2>
-          <p>
-            {site.brand} operates from the {site.country}. Information on this page is provided for
-            store reviewers, payment providers, and partners verifying that we are an active publisher.
-          </p>
-        </Prose>
-      </ContentPanel>
-    </InnerPage>
+
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-2">
+          <Reveal>
+            <div>
+              <SectionHeader title="What we believe" />
+              <p className="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">
+                Business owners don&apos;t care whether we use AI, scripts, or integrations. They care
+                whether they can hire one fewer part-timer, leave the office an hour earlier, and
+                stop worrying about missed follow-ups.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
+                Every project starts with a free consultation. We map the workflow, quote a fixed scope,
+                and deliver a working automation — usually within 72 hours.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div>
+              <SectionHeader title="How we work" />
+              <ol className="mt-6 space-y-4">
+                {howItWorks.map((step) => (
+                  <li key={step.step} className="panel-premium flex gap-4 p-4">
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-foreground)] text-xs font-semibold text-[var(--color-bg)]">
+                      {step.step}
+                    </span>
+                    <div>
+                      <p className="font-medium text-[var(--color-foreground)]">{step.title}</p>
+                      <p className="mt-1 text-sm text-[var(--color-muted)]">{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Reveal>
+        </div>
+        <Reveal delay={150}>
+          <div className="mt-10">
+            <AutomationButton href="/contact">Book a Free Consultation</AutomationButton>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Reveal>
+        <CtaBand />
+      </Reveal>
+    </>
   );
 }

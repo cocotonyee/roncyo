@@ -3,97 +3,304 @@
 @theme {
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  /* Poki-inspired palette — cool blues, no warm tones */
-  --color-cozy-cream: #009cff;
+
+  --color-bg: #ffffff;
+  --color-panel: #ffffff;
+  --color-foreground: #0a0a0a;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-surface: #f9fafb;
+  --color-accent: #03d8cb;
+  --color-accent-hover: #02b5ab;
+
+  /* Legacy tokens — legal / game pages still reference these */
+  --color-cozy-cream: #03d8cb;
   --color-cozy-sage: #002b50;
   --color-cozy-sage-dark: #001428;
-  --color-cozy-terracotta: #00d26a;
-  --color-cozy-terracotta-dark: #00b85c;
+  --color-cozy-terracotta: #03d8cb;
+  --color-cozy-terracotta-dark: #02b5ab;
   --color-cozy-brown: #002b50;
   --color-cozy-brown-muted: #475569;
   --color-cozy-card: #ffffff;
-  --color-cozy-peach: #e3f2fd;
-  --color-cozy-mint: #b3e5fc;
-  --color-cozy-lavender: #dbeafe;
-  --color-cozy-surface: #f0f7ff;
-  --color-cozy-on-blue: #ffffff;
-  --color-cozy-on-blue-muted: rgba(255, 255, 255, 0.82);
-  /* Legacy tokens — mapped to Poki palette for inner/legal pages */
-  --color-roncy-yellow: #ffdc00;
-  --color-roncy-yellow2: #ffc400;
-  --color-roncy-teal: #009cff;
-  --color-roncy-teal2: #0077cc;
-  --color-roncy-coral: #00d26a;
-  --color-roncy-purple: #6366f1;
-  --color-roncy-navy: #002b50;
-  --color-roncy-bg: #009cff;
+  --color-cozy-peach: #f3f4f6;
+  --color-cozy-mint: #ecfeff;
+  --color-cozy-lavender: #f9fafb;
+  --color-cozy-surface: #f9fafb;
+  --color-cozy-on-blue: #0a0a0a;
+  --color-cozy-on-blue-muted: #6b7280;
+  --color-roncy-yellow: #03d8cb;
+  --color-roncy-yellow2: #02b5ab;
+  --color-roncy-teal: #0a0a0a;
+  --color-roncy-teal2: #374151;
+  --color-roncy-coral: #03d8cb;
+  --color-roncy-purple: #6b7280;
+  --color-roncy-navy: #0a0a0a;
+  --color-roncy-bg: #ffffff;
   --color-roncy-surface: #ffffff;
-  --color-roncy-border: #cbd5e1;
-  --color-roncy-muted: #475569;
-  --color-roncy-text: #002b50;
-  --color-roncy-accent: #00d26a;
-  --color-roncy-accent-dim: #00b85c;
+  --color-roncy-border: #e5e7eb;
+  --color-roncy-muted: #6b7280;
+  --color-roncy-text: #0a0a0a;
+  --color-roncy-accent: #03d8cb;
+  --color-roncy-accent-dim: #02b5ab;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 body {
-  @apply min-h-dvh bg-[var(--color-roncy-bg)] text-[var(--color-cozy-on-blue)] antialiased;
+  @apply min-h-dvh bg-[var(--color-bg)] text-[var(--color-foreground)] antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #050505;
+    --color-panel: #111111;
+    --color-foreground: #fafafa;
+    --color-muted: #a1a1aa;
+    --color-border: #27272a;
+    --color-surface: #0f0f0f;
+  }
+
+  .panel-premium:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .panel-icon {
+    background: linear-gradient(135deg, #18181b 0%, #042f2e 100%);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #18181b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+  }
 }
 
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-[var(--color-roncy-yellow)];
+  @apply outline-2 outline-offset-2 outline-[var(--color-accent)];
 }
 
-@keyframes roncy-up {
+/* ── CTA band — always dark regardless of color scheme ── */
+.cta-band {
+  background: #050505;
+  color: #ffffff;
+}
+
+/* ── Hero dark section ── */
+.hero-dark {
+  background: #050505;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black, transparent);
+}
+
+.hero-glow {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+}
+
+.hero-glow-accent {
+  background: radial-gradient(circle, rgba(3, 216, 203, 0.12) 0%, transparent 70%);
+}
+
+@keyframes hero-enter {
   from {
-    transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(24px);
   }
   to {
+    opacity: 1;
     transform: none;
   }
 }
 
-@keyframes roncy-float {
+.hero-enter {
+  animation: hero-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-enter-delay {
+  animation: hero-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.hero-enter-visual {
+  animation: hero-enter 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Premium panels ── */
+.panel-premium {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-panel);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.panel-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, rgba(3, 216, 203, 0.35) 100%);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.panel-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.panel-premium:hover::before {
+  opacity: 1;
+}
+
+.panel-icon {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #f9fafb 0%, #ecfeff 100%);
+  border: 1px solid var(--color-border);
+  font-size: 1.25rem;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panel-premium:hover .panel-icon {
+  transform: scale(1.08);
+}
+
+/* ── Flow visual ── */
+.flow-line {
+  animation: flow-dash 3s linear infinite;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.flow-node {
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+@keyframes node-pulse {
   0%,
   100% {
-    transform: translateY(0) rotate(var(--roncy-rot, 0deg));
+    opacity: 1;
+    transform: scale(1);
   }
   50% {
-    transform: translateY(-18px) rotate(var(--roncy-rot, 0deg));
+    opacity: 0.85;
+    transform: scale(1.04);
   }
 }
 
-.roncy-ease {
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
-.animate-roncy-up {
-  opacity: 1;
-  animation: roncy-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* ── Marquee ── */
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Timeline ── */
+.timeline-line {
+  position: absolute;
+  top: 1.25rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border) 10%, var(--color-border) 90%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-roncy-up {
-    animation: none;
+  .hero-enter,
+  .hero-enter-delay,
+  .hero-enter-visual,
+  .reveal,
+  .reveal-visible,
+  .marquee-track,
+  .flow-line,
+  .flow-node,
+  .animate-pulse-soft {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .panel-premium:hover {
     transform: none;
   }
-}
-
-.animate-roncy-float {
-  animation: roncy-float var(--roncy-dur, 4s) ease-in-out infinite;
-  animation-delay: var(--roncy-delay, 0s);
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-cozy-sage-dark);
+  background: #f3f4f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0077cc;
+  background: #d1d5db;
   border-radius: 10px;
 }

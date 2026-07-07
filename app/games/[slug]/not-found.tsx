@@ -12,10 +12,10 @@ export default function GameNotFound() {
           That product page does not exist.
         </p>
         <Link
-          href="/games"
+          href="/support"
           className="mt-8 inline-flex rounded-full bg-[var(--color-roncy-teal)] px-8 py-3 font-[family-name:var(--font-display)] text-sm font-extrabold text-white shadow-[0_8px_28px_rgba(0,212,200,0.3)] transition hover:-translate-y-0.5"
         >
-          View all games
+          Support center
         </Link>
       </ContentPanel>
     </InnerPage>

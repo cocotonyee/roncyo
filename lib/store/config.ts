@@ -9,8 +9,8 @@ import type { GamePlatform } from "@/lib/games";
  * - 1.png, 2.png, 3.png — screenshots (or list custom names in `screenshots`)
  */
 export type StoreGameConfig = {
-  /** Folder under `public/store/` (e.g. `mochicat`) */
-  storeDir: string;
+  /** Folder under `public/store/` — optional; falls back to site logo when omitted */
+  storeDir?: string;
   /** URL path: `/games/[slug]` */
   slug: string;
 
