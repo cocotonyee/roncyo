@@ -90,10 +90,10 @@ export function RoiifyAdSlot({
 }
 
 const horizontalShellClass =
-  "border-white/10 bg-[var(--color-cozy-sage-dark)] px-5 py-4 sm:px-8 lg:px-[52px]";
+  "border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4 sm:px-8 lg:px-12";
 
 const sideShellClass =
-  "hidden w-[160px] shrink-0 border-[var(--color-cozy-brown)]/8 bg-[var(--color-cozy-sage-dark)]/40 px-3 py-6 xl:block";
+  "hidden w-[160px] shrink-0 border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-6 xl:block";
 
 function RoiifyTopBar() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -133,7 +133,7 @@ function RoiifySideBar({ side }: { side: "left" | "right" }) {
 
   return (
     <aside
-      className={`${sideShellClass} ${side === "left" ? "border-r" : "border-l"} sticky top-[88px] self-start`}
+      className={`${sideShellClass} ${side === "left" ? "border-r" : "border-l"} sticky top-20 self-start`}
       aria-label="Advertisement"
     >
       <RoiifyAdSlot placementId={placementId} refreshKey={refreshKey} className="min-h-[280px]" />
