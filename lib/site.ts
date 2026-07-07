@@ -9,7 +9,7 @@ export const site = {
   domain: "roncyo.com",
   country: "United States",
   tagline: "AI Business Automation Studio for local businesses in Australia & New Zealand",
-  logo: "/logo.png",
+  logo: "/favicon.png",
   emails: {
     support: SUPPORT,
     privacy: SUPPORT,

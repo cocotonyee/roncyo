@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { RoiifyAdLayout } from "@/components/RoiifyBanner";
+import { RoiifyScript } from "@/components/RoiifyScript";
 import { buildPageMetadata, SEO_KEYWORDS } from "@/lib/seo";
-import { site, absoluteUrl } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import "./globals.css";
-
-const display = Inter({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
@@ -31,18 +18,22 @@ export const metadata: Metadata = {
     template: `%s | ${site.brand}`,
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
-  },
-  other: {
-    "ai-content": absoluteUrl("/llms.txt"),
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "32x12" }],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x65" }],
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${display.variable} ${body.variable}`}>
-      <body className="flex min-h-dvh flex-col overflow-x-hidden font-sans">{children}</body>
+    <html lang="en-AU">
+      <body className="shell">
+        <RoiifyScript />
+        <div className="shell__main">
+          <RoiifyAdLayout>
+            <main className="content">{children}</main>
+          </RoiifyAdLayout>
+        </div>
+      </body>
     </html>
   );
 }
