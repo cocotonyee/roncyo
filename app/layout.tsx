@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <RoiifyAdLayout>
             <main className="flex-1">{children}</main>
           </RoiifyAdLayout>
-          <SiteFooter />
+          {site.showFooter ? <SiteFooter /> : null}
         </div>
       </body>
     </html>

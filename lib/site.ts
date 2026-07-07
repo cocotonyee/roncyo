@@ -16,6 +16,8 @@ export const site = {
     legal: SUPPORT,
     hello: SUPPORT,
   },
+  /** Set true to show SiteFooter in layout */
+  showFooter: false,
 } as const;
 
 export function absoluteUrl(path: string) {
