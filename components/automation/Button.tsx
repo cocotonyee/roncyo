@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/AppLink";
 import type { ReactNode } from "react";
 
 const base =
@@ -25,8 +25,8 @@ export function AutomationButton({
   className = "",
 }: Props) {
   return (
-    <Link href={href} className={`${variants[variant]} ${className}`.trim()}>
+    <AppLink href={href} className={`${variants[variant]} ${className}`.trim()}>
       {children}
-    </Link>
+    </AppLink>
   );
 }

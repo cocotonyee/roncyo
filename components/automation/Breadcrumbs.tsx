@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/AppLink";
 
 export type BreadcrumbItem = { name: string; path: string };
 
@@ -14,9 +14,9 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
               {isLast ? (
                 <span className="font-medium text-[var(--color-foreground)]">{item.name}</span>
               ) : (
-                <Link href={item.path} className="transition hover:text-[var(--color-foreground)]">
+                <AppLink href={item.path} className="transition hover:text-[var(--color-foreground)]">
                   {item.name}
-                </Link>
+                </AppLink>
               )}
             </li>
           );

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/AppLink";
 import type { CaseStudy } from "@/lib/case-studies";
 import type { IndustryPage } from "@/lib/industries";
 import type { ServicePage } from "@/lib/services";
@@ -27,12 +27,12 @@ export function SeoCrossLinks({ industries, services, caseStudies }: Props) {
           <ul className="mt-3 space-y-2">
             {industries.map((industry) => (
               <li key={industry.slug}>
-                <Link
+                <AppLink
                   href={`/industries/${industry.slug}`}
                   className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
                 >
                   {industry.title}
-                </Link>
+                </AppLink>
               </li>
             ))}
           </ul>
@@ -47,12 +47,12 @@ export function SeoCrossLinks({ industries, services, caseStudies }: Props) {
           <ul className="mt-3 space-y-2">
             {services.map((service) => (
               <li key={service.slug}>
-                <Link
+                <AppLink
                   href={`/services/${service.slug}`}
                   className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
                 >
                   {service.title}
-                </Link>
+                </AppLink>
               </li>
             ))}
           </ul>
@@ -67,12 +67,12 @@ export function SeoCrossLinks({ industries, services, caseStudies }: Props) {
           <ul className="mt-3 space-y-2">
             {caseStudies.map((study) => (
               <li key={study.slug}>
-                <Link
+                <AppLink
                   href={`/case-studies/${study.slug}`}
                   className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
                 >
                   {study.title}
-                </Link>
+                </AppLink>
               </li>
             ))}
           </ul>

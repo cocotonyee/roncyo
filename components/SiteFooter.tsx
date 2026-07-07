@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/AppLink";
 import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/site";
 
@@ -31,9 +31,9 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex">
+            <AppLink href="/" className="inline-flex">
               <SiteLogo className="site-logo h-8 w-auto" />
-            </Link>
+            </AppLink>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--color-muted)]">
               {site.tagline}
             </p>
@@ -47,13 +47,13 @@ export function SiteFooter() {
               Company
             </p>
             {company.map((item) => (
-              <Link
+              <AppLink
                 key={item.href}
                 href={item.href}
                 className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
               >
                 {item.label}
-              </Link>
+              </AppLink>
             ))}
           </nav>
 
@@ -62,13 +62,13 @@ export function SiteFooter() {
               Resources
             </p>
             {resources.map((item) => (
-              <Link
+              <AppLink
                 key={item.href}
                 href={item.href}
                 className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
               >
                 {item.label}
-              </Link>
+              </AppLink>
             ))}
           </nav>
 
@@ -77,13 +77,13 @@ export function SiteFooter() {
               Legal
             </p>
             {legal.map((item) => (
-              <Link
+              <AppLink
                 key={item.href}
                 href={item.href}
                 className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
               >
                 {item.label}
-              </Link>
+              </AppLink>
             ))}
           </nav>
         </div>

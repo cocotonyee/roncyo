@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { AppLink } from "@/components/AppLink";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AutomationButton } from "@/components/automation/Button";
@@ -21,9 +21,9 @@ export function SiteHeader() {
   return (
     <header className="fixed top-0 right-0 left-0 z-[200] border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
-        <Link href="/" className="flex shrink-0 items-center">
+        <AppLink href="/" className="flex shrink-0 items-center">
           <SiteLogo className="site-logo h-8 w-auto" />
-        </Link>
+        </AppLink>
 
         <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex list-none items-center gap-8">
@@ -31,7 +31,7 @@ export function SiteHeader() {
               const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <li key={item.href}>
-                  <Link
+                  <AppLink
                     href={item.href}
                     className={`text-sm font-medium transition-colors ${
                       active
@@ -40,7 +40,7 @@ export function SiteHeader() {
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </AppLink>
                 </li>
               );
             })}
@@ -68,13 +68,13 @@ export function SiteHeader() {
           <ul className="flex flex-col gap-1 px-5 py-2">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link
+                <AppLink
                   href={item.href}
                   className="block rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--color-foreground)] hover:bg-[var(--color-surface)]"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </AppLink>
               </li>
             ))}
             <li className="pt-2">
