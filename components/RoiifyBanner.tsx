@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { ROIIFY_SDK_LOADED_EVENT } from "@/components/RoiifyScript";
 import {
   ROIIFY_AD_SLOT_IDS,
   ROIIFY_DEFAULT_SLOT_OPTIONS,
   ROIIFY_FIXED_SLOTS,
-  ROIIFY_ROTATION_INTERVAL_MS,
   type RoiifyAdSlotOptions,
 } from "@/lib/roiify";
 
@@ -60,12 +59,10 @@ function waitForRoiify(timeoutMs = 15_000): Promise<RoiifyAdsApi | null> {
 
 export function RoiifyAdSlot({
   placementId,
-  refreshKey = 0,
   options = ROIIFY_DEFAULT_SLOT_OPTIONS,
   className = "",
 }: {
   placementId: string;
-  refreshKey?: number;
   options?: RoiifyAdSlotOptions;
   className?: string;
 }) {
@@ -85,7 +82,7 @@ export function RoiifyAdSlot({
     return () => {
       cancelled = true;
     };
-  }, [placementId, refreshKey, options]);
+  }, [placementId, options]);
 
   return (
     <div
@@ -97,20 +94,10 @@ export function RoiifyAdSlot({
 }
 
 function RoiifyTopBar() {
-  const [refreshKey, setRefreshKey] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setRefreshKey((current) => current + 1);
-    }, ROIIFY_ROTATION_INTERVAL_MS);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
   return (
     <aside id={ROIIFY_AD_SLOT_IDS.top} className="ad-strip" aria-label="Advertisement">
       <div className="ad-strip__inner">
-        <RoiifyAdSlot placementId={ROIIFY_FIXED_SLOTS.topBar} refreshKey={refreshKey} />
+        <RoiifyAdSlot placementId={ROIIFY_FIXED_SLOTS.topBar} />
       </div>
     </aside>
   );

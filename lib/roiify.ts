@@ -16,9 +16,6 @@ export const ROIIFY_SDK_URL = "https://www.roiify.net/sdk/roiify-ads.js";
  * triggers "preloaded but not used" warnings when execution is delayed.
  */
 
-/** How often the top banner refreshes creatives (ms) */
-export const ROIIFY_ROTATION_INTERVAL_MS = 30_000;
-
 export type RoiifyAdSlotOptions = {
   theme?: "auto" | "light" | "dark";
   width?: "auto" | "fixed";
