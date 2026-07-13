@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "build:static": "node scripts/build-static.mjs",
+    "dev": "node scripts/build-static.mjs && npx --yes serve out -l 3000",
+    "build": "node scripts/build-static.mjs",
+    "start": "npx --yes serve out -l 3000",
+    "build:next": "next build",
     "lint": "next lint",
     "play:base": "node scripts/ensure-play-base.mjs",
     "import:yxk": "node scripts/import-yxk-games.mjs"
