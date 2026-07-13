@@ -9,7 +9,7 @@ export const site = {
   domain: "roncyo.com",
   country: "United States",
   tagline: "AI Business Automation Studio for local businesses in Australia & New Zealand",
-  logo: "/favicon.png",
+  logo: "/logo.png",
   emails: {
     support: SUPPORT,
     privacy: SUPPORT,
@@ -17,7 +17,7 @@ export const site = {
     hello: SUPPORT,
   },
   /** Set true to show SiteFooter in layout */
-  showFooter: false,
+  showFooter: true,
 } as const;
 
 export function absoluteUrl(path: string) {
