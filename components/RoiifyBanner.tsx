@@ -88,32 +88,36 @@ export function RoiifyAdSlot({
     <div
       ref={containerRef}
       data-roiify-format={options.format ?? "banner"}
-      className={`ad-slot ${className}`.trim()}
+      className={`min-h-20 w-full ${className}`.trim()}
     />
   );
 }
 
-function RoiifyTopBar() {
+function RoiifyBottomBar() {
   return (
-    <aside id={ROIIFY_AD_SLOT_IDS.top} className="ad-strip" aria-label="Advertisement">
-      <div className="ad-strip__inner">
-        <RoiifyAdSlot placementId={ROIIFY_FIXED_SLOTS.topBar} />
+    <aside
+      id={ROIIFY_AD_SLOT_IDS.bottom}
+      className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4 sm:px-8 lg:px-12"
+      aria-label="Advertisement"
+    >
+      <div className="mx-auto max-w-7xl">
+        <RoiifyAdSlot placementId={ROIIFY_FIXED_SLOTS.bottomBar} />
       </div>
     </aside>
   );
 }
 
-/** Top banner only — wraps page content below the ad strip */
+/** Bottom banner — page content above the ad strip */
 export function RoiifyAdLayout({ children }: { children: ReactNode }) {
   return (
-    <>
-      <RoiifyTopBar />
-      {children}
-    </>
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="min-w-0 flex-1">{children}</div>
+      <RoiifyBottomBar />
+    </div>
   );
 }
 
 /** @deprecated Use RoiifyAdLayout */
 export function RoiifyBanner() {
-  return <RoiifyTopBar />;
+  return <RoiifyBottomBar />;
 }

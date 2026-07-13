@@ -1,11 +1,11 @@
-/** DOM id for the top ad slot — use in Playwright / e2e selectors */
+/** DOM id for the bottom ad slot — use in Playwright / e2e selectors */
 export const ROIIFY_AD_SLOT_IDS = {
-  top: "roiify-ad-top",
+  bottom: "roiify-ad-bottom",
 } as const;
 
-/** Active placement — top banner only */
+/** Active placement — bottom banner */
 export const ROIIFY_FIXED_SLOTS = {
-  topBar: "plc_3b7064bbsmtb",
+  bottomBar: "plc_3b7064bbsmtb",
 } as const;
 
 export const ROIIFY_SDK_URL = "https://www.roiify.net/sdk/roiify-ads.js";
