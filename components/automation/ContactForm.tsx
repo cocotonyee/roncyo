@@ -3,12 +3,30 @@
 import { useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
 
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
 const fields = [
   { name: "name", label: "Name", type: "text", required: true },
   { name: "business", label: "Business", type: "text", required: true },
   { name: "email", label: "Email", type: "email", required: true },
   { name: "website", label: "Website", type: "url", required: false },
 ] as const;
+
+type Web3FormsResult = {
+  success?: boolean;
+  message?: string;
+};
+
+async function readJsonResponse(response: Response): Promise<Web3FormsResult> {
+  const text = await response.text();
+  if (!text) return {};
+  try {
+    return JSON.parse(text) as Web3FormsResult;
+  } catch {
+    return { message: text.slice(0, 200) };
+  }
+}
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -20,27 +38,55 @@ export function ContactForm() {
     setLoading(true);
     setError(null);
 
+    if (!accessKey) {
+      setError("Contact form is not configured. Add NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in Vercel.");
+      setLoading(false);
+      return;
+    }
+
     const data = new FormData(event.currentTarget);
-    const payload = {
-      name: String(data.get("name") ?? ""),
-      business: String(data.get("business") ?? ""),
-      email: String(data.get("email") ?? ""),
-      website: String(data.get("website") ?? ""),
-      task: String(data.get("task") ?? ""),
-      botcheck: data.get("botcheck") === "on",
-    };
+    const name = String(data.get("name") ?? "").trim();
+    const business = String(data.get("business") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const website = String(data.get("website") ?? "").trim();
+    const task = String(data.get("task") ?? "").trim();
+
+    if (data.get("botcheck") === "on") {
+      setSubmitted(true);
+      setLoading(false);
+      return;
+    }
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(WEB3FORMS_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Automation enquiry — ${business}`,
+          from_name: name,
+          email,
+          replyto: email,
+          botcheck: false,
+          message: [
+            `Name: ${name}`,
+            `Business: ${business}`,
+            `Email: ${email}`,
+            `Website: ${website || "—"}`,
+            "",
+            "Repetitive task:",
+            task,
+          ].join("\n"),
+        }),
       });
 
-      const result = (await response.json()) as { error?: string };
+      const result = await readJsonResponse(response);
 
-      if (!response.ok) {
-        throw new Error(result.error ?? "Something went wrong. Please try again.");
+      if (!response.ok || !result.success) {
+        throw new Error(result.message ?? "Failed to send message. Please email us directly.");
       }
 
       setSubmitted(true);
