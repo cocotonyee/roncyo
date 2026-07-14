@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      /* Canonical host: apex only (Roiify / SEO expect roncyo.com, not www) */
+      /* Canonical host: apex only (www → roncyo.com) */
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.roncyo.com" }],

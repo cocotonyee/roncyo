@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { RoiifyAdLayout } from "@/components/RoiifyBanner";
-import { RoiifyScript } from "@/components/RoiifyScript";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { organizationJsonLd } from "@/lib/seo";
@@ -18,7 +16,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      <RoiifyScript />
       {structuredData.map((schema) => (
         <script
           key={String(schema["@id"] ?? schema["@type"])}
@@ -28,9 +25,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       ))}
       <SiteHeader />
       <div className="flex min-h-0 flex-1 flex-col pt-16">
-        <RoiifyAdLayout>
-          <main className="flex-1">{children}</main>
-        </RoiifyAdLayout>
+        <main className="flex-1">{children}</main>
         {site.showFooter ? <SiteFooter /> : null}
       </div>
     </>
