@@ -87,12 +87,39 @@ export default function PrivacyPolicyPage() {
           <p>
             Our services may use third-party analytics tools and advertising partners. These third
             parties may collect information as described in their own privacy policies, including
-            device identifiers, usage information, and ad performance data, where permitted by law and
-            platform rules.
+            device identifiers, usage information, cookies, and ad performance data, where permitted
+            by law and platform rules.
           </p>
           <p>
-            If our services display ads, those ads may be contextual or personalized depending on
-            your device settings, region, and applicable law.
+            <strong>Google AdSense on this website.</strong> Our website ({site.domain}) uses Google
+            AdSense to display advertisements. Google and its partners may use cookies or similar
+            technologies to serve ads based on your prior visits to this website or other websites,
+            and to measure how ads perform. This may include personalized ads depending on your
+            settings, region, and applicable law.
+          </p>
+          <p>
+            You can learn more about how Google uses information from sites and apps that use its
+            services at{" "}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              https://policies.google.com/technologies/partner-sites
+            </a>
+            , and review Google&apos;s Privacy Policy at{" "}
+            <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">
+              https://policies.google.com/privacy
+            </a>
+            . You may opt out of personalized advertising via{" "}
+            <a href="https://adssettings.google.com" rel="noopener noreferrer" target="_blank">
+              Google Ads Settings
+            </a>{" "}
+            or other industry opt-out tools where available.
+          </p>
+          <p>
+            If our apps or games display ads, those ads may also be contextual or personalized
+            depending on your device settings, region, and applicable law.
           </p>
 
           <h2>4. Sharing of Information</h2>
