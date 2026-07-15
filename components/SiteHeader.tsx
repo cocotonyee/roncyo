@@ -3,15 +3,14 @@
 import { AppLink } from "@/components/AppLink";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { AutomationButton } from "@/components/automation/Button";
 import { SiteLogo } from "@/components/SiteLogo";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/industries", label: "Industries" },
+  { href: "/games", label: "Games" },
+  { href: "/categories", label: "Categories" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/support", label: "Support" },
 ] as const;
 
 export function SiteHeader() {
@@ -28,7 +27,10 @@ export function SiteHeader() {
         <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex list-none items-center gap-8">
             {nav.map((item) => {
-              const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <li key={item.href}>
                   <AppLink
@@ -48,9 +50,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <AutomationButton href="/contact" className="hidden !px-5 !py-2.5 text-[13px] sm:inline-flex">
-            Book a Free Consultation
-          </AutomationButton>
+          <AppLink
+            href="/games"
+            className="hidden rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-[13px] font-semibold text-black transition hover:bg-[var(--color-accent-hover)] sm:inline-flex"
+          >
+            Play games
+          </AppLink>
           <button
             type="button"
             className="flex size-10 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-foreground)] lg:hidden"
@@ -78,9 +83,13 @@ export function SiteHeader() {
               </li>
             ))}
             <li className="pt-2">
-              <AutomationButton href="/contact" className="w-full">
-                Book a Free Consultation
-              </AutomationButton>
+              <AppLink
+                href="/games"
+                className="flex w-full items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-black"
+                onClick={() => setOpen(false)}
+              >
+                Play games
+              </AppLink>
             </li>
           </ul>
         </nav>

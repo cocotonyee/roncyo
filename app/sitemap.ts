@@ -1,9 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllCaseStudySlugs } from "@/lib/case-studies";
 import { games } from "@/lib/games";
-import { getAllIndustrySlugs } from "@/lib/industries";
-import { getAllLocationSlugs } from "@/lib/locations";
-import { getAllServiceSlugs } from "@/lib/services";
 import { STATIC_SITEMAP_ROUTES } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -17,37 +13,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }));
 
-  const serviceEntries: MetadataRoute.Sitemap = getAllServiceSlugs().map((slug) => ({
-    url: absoluteUrl(`/services/${slug}`),
+  const categories = Array.from(new Set(games.flatMap((g) => g.categories ?? [])));
+  const categoryEntries: MetadataRoute.Sitemap = categories.map((cat) => ({
+    url: absoluteUrl(`/categories/${encodeURIComponent(cat.toLowerCase())}`),
     lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
-  const industryEntries: MetadataRoute.Sitemap = getAllIndustrySlugs().map((slug) => ({
-    url: absoluteUrl(`/industries/${slug}`),
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }));
-
-  const caseStudyEntries: MetadataRoute.Sitemap = getAllCaseStudySlugs().map((slug) => ({
-    url: absoluteUrl(`/case-studies/${slug}`),
-    lastModified,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "weekly" as const,
     priority: 0.7,
-  }));
-
-  const locationEntries: MetadataRoute.Sitemap = getAllLocationSlugs().map((slug) => ({
-    url: absoluteUrl(`/locations/${slug}`),
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: slug === "australia" || slug === "new-zealand" ? 0.78 : 0.72,
   }));
 
   const gameEntries: MetadataRoute.Sitemap = games.flatMap((game) => {
     const gameUpdated = game.lastUpdated ? new Date(game.lastUpdated) : lastModified;
     return [
+      {
+        url: absoluteUrl(`/games/${game.slug}`),
+        lastModified: gameUpdated,
+        changeFrequency: "weekly" as const,
+        priority: 0.85,
+      },
       {
         url: absoluteUrl(`/games/${game.slug}/support`),
         lastModified: gameUpdated,
@@ -63,12 +45,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  return [
-    ...staticEntries,
-    ...serviceEntries,
-    ...industryEntries,
-    ...caseStudyEntries,
-    ...locationEntries,
-    ...gameEntries,
-  ];
+  return [...staticEntries, ...categoryEntries, ...gameEntries];
 }

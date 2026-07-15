@@ -8,7 +8,7 @@ export const site = {
   legalName: "RONCY LLC",
   domain: "roncyo.com",
   country: "United States",
-  tagline: "AI Business Automation Studio for local businesses in Australia & New Zealand",
+  tagline: "Free online games — play instantly, no download",
   logo: "/logo.png",
   emails: {
     support: SUPPORT,

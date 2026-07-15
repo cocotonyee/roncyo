@@ -152,3 +152,23 @@ export function getRelatedGames(slug: string, limit = 4) {
     return true;
   }).slice(0, limit);
 }
+
+export function getAllCategories() {
+  const counts = new Map<string, number>();
+  for (const game of games) {
+    for (const category of game.categories ?? [game.genre]) {
+      counts.set(category, (counts.get(category) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts.entries())
+    .map(([name, count]) => ({ name, count, slug: name.toLowerCase().replace(/\s+/g, "-") }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+}
+
+export function getGamesByCategory(categorySlug: string) {
+  return games.filter((game) =>
+    (game.categories ?? [game.genre]).some(
+      (category) => category.toLowerCase().replace(/\s+/g, "-") === categorySlug,
+    ),
+  );
+}

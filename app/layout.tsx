@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { buildPageMetadata, SEO_KEYWORDS } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, site } from "@/lib/site";
 import "./globals.css";
 
@@ -21,13 +21,13 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   ...buildPageMetadata({
-    title: `${site.brand} — AI Business Automation Studio`,
+    title: `${site.brand} — Free Online Games`,
     description: site.tagline,
     path: "/",
-    keywords: [...SEO_KEYWORDS],
+    keywords: ["free online games", "browser games", "Roncyo"],
   }),
   title: {
-    default: `${site.brand} — AI Business Automation Studio`,
+    default: `${site.brand} — Free Online Games`,
     template: `%s | ${site.brand}`,
   },
   icons: {

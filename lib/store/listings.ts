@@ -1,8 +1,51 @@
 import type { StoreGameConfig } from "@/lib/store/config";
 import { site } from "@/lib/site";
 
-/** Published games — compliance pages only (privacy / support). */
+/** Live catalog for the Roncyo games portal */
 export const storeListings: StoreGameConfig[] = [
+  {
+    slug: "gravity-ball",
+    storeDir: undefined,
+    companyName: site.brand,
+    companyCountry: site.country,
+    companyDescription:
+      "Roncyo publishes free-to-play browser games and mobile titles for players worldwide.",
+    companyEmail: site.emails.support,
+    gameName: "Gravity Ball",
+    genre: "Arcade",
+    shortDescription:
+      "Tilt, bounce, and race through gravity-twisting arenas — instant play in your browser.",
+    about:
+      "Gravity Ball is a fast arcade challenge built for the web. Jump in instantly — no install, no wait. Perfect for short sessions on desktop or mobile.",
+    features: [
+      "Instant browser play",
+      "Arcade physics challenges",
+      "Works on desktop and mobile",
+      "Free to play",
+    ],
+    howToPlay: [
+      "Use controls shown on screen to move the ball.",
+      "Watch gravity shifts and timing windows.",
+      "Clear stages and chase a higher score.",
+    ],
+    platforms: ["web"],
+    version: "1.0.0",
+    lastUpdated: "2026-07-13",
+    releaseDate: "2026-07-13",
+    contentRating: "Everyone",
+    categories: ["Arcade", "Casual", "Action"],
+    languages: ["English"],
+    size: "Browser",
+    badges: ["featured", "new"],
+    rating: 4.6,
+    reviewCount: 128,
+    playUrl: "/play/gravity-ball/",
+    playButtonLabel: "Play now",
+    sdks: [],
+    collectsPersonalData: false,
+    childrenTargeted: false,
+    progressNote: "Scores may be saved locally in your browser.",
+  },
   {
     slug: "mochi-cats",
     companyName: site.brand,
@@ -25,6 +68,7 @@ export const storeListings: StoreGameConfig[] = [
     categories: ["Puzzle", "Casual", "Merge"],
     languages: ["English", "简体中文", "日本語"],
     size: "48 MB",
+    badges: ["featured"],
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.roncyo.mochicats",
     telegramUrl: "https://t.me/MochiCatsBot/mochi",
     sdks: ["Google Play services", "Ad SDKs"],

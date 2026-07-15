@@ -5,6 +5,15 @@ import { site } from "@/lib/site";
 
 const fallbackImage = site.logo;
 
+const genreEmoji: Record<string, string> = {
+  Arcade: "⚡",
+  Puzzle: "🧩",
+  "Merge Puzzle": "🐱",
+  "Block Puzzle": "🧱",
+  Casual: "✨",
+  Action: "🔥",
+};
+
 export function buildGameFromStore(config: StoreGameConfig): Game {
   const hasTopBanner = config.hasTopBanner !== false;
   const assets = config.storeDir
@@ -13,6 +22,8 @@ export function buildGameFromStore(config: StoreGameConfig): Game {
 
   const logo = assets.logo ?? fallbackImage;
   const hero = assets.topBanner ?? assets.logo ?? fallbackImage;
+  const localPlayPath =
+    config.playUrl && config.playUrl.startsWith("/play/") ? config.playUrl : undefined;
 
   return {
     slug: config.slug,
@@ -31,7 +42,7 @@ export function buildGameFromStore(config: StoreGameConfig): Game {
     screenshots: assets.screenshots,
     heroImage: hero,
     cardColor: "#e3f2fd",
-    cardEmoji: "🐱",
+    cardEmoji: genreEmoji[config.genre] ?? "🎮",
     version: config.version,
     lastUpdated: config.lastUpdated,
     releaseDate: config.releaseDate,
@@ -54,6 +65,7 @@ export function buildGameFromStore(config: StoreGameConfig): Game {
     telegramMiniAppPath: config.telegramMiniAppPath,
     playButtonLabel: config.playButtonLabel,
     playUrl: config.playUrl,
+    localPlayPath,
     yxkGameId: config.yxkGameId,
     trialLandscape: config.trialLandscape,
     sdks: config.sdks ?? [],

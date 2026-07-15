@@ -3,36 +3,16 @@ import type { Game } from "@/lib/games";
 import type { FaqItem } from "@/lib/faqs";
 import { site, absoluteUrl } from "@/lib/site";
 
-/** Core + long-tail SEO keywords for landing pages (no blog). */
+/** Core SEO keywords for the games portal. */
 export const SEO_KEYWORDS = [
-  "AI Automation Australia",
-  "AI Automation New Zealand",
-  "Business Process Automation",
-  "Workflow Automation",
-  "AI Automation for Dentists",
-  "AI Automation for Electricians",
-  "AI Automation for Plumbers",
-  "AI Automation for Accountants",
-  "custom business automation",
-  "local business automation",
-  "small business automation",
-  "automate repetitive tasks",
-  "email automation for small business",
-  "browser automation services",
-  "spreadsheet automation",
-  "PDF automation",
-  "reporting automation",
-  "automation for tradies Australia",
-  "business automation Sydney",
-  "business automation Melbourne",
-  "business automation Brisbane",
-  "business automation Perth",
-  "business automation Adelaide",
-  "business automation Auckland",
-  "business automation Wellington",
-  "business automation Christchurch",
-  "AI automation for professional services",
-  "custom workflow automation",
+  "free online games",
+  "browser games",
+  "play games online",
+  "arcade games",
+  "puzzle games",
+  "casual games",
+  "Roncyo games",
+  "web games no download",
   "Roncyo",
 ] as const;
 
@@ -197,13 +177,10 @@ export function organizationJsonLd() {
 /** Static marketing and legal routes for sitemap generation. */
 export const STATIC_SITEMAP_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "weekly" as const },
-  { path: "/services", priority: 0.9, changeFrequency: "monthly" as const },
-  { path: "/case-studies", priority: 0.75, changeFrequency: "monthly" as const },
-  { path: "/industries", priority: 0.85, changeFrequency: "monthly" as const },
-  { path: "/locations", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/about", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/support", priority: 0.4, changeFrequency: "monthly" as const },
+  { path: "/games", priority: 0.95, changeFrequency: "weekly" as const },
+  { path: "/categories", priority: 0.85, changeFrequency: "weekly" as const },
+  { path: "/about", priority: 0.6, changeFrequency: "monthly" as const },
+  { path: "/support", priority: 0.5, changeFrequency: "monthly" as const },
   { path: "/privacy-policy", priority: 0.5, changeFrequency: "yearly" as const },
   { path: "/terms-of-service", priority: 0.5, changeFrequency: "yearly" as const },
   { path: "/cookie-policy", priority: 0.4, changeFrequency: "yearly" as const },

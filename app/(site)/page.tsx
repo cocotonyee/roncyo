@@ -1,206 +1,136 @@
 import { AppLink } from "@/components/AppLink";
-import { AutomationMarquee } from "@/components/automation/Marquee";
-import { CtaBand, HomeHero } from "@/components/automation/PageHero";
-import { FaqSection } from "@/components/automation/FaqSection";
-import { Reveal } from "@/components/automation/Reveal";
-import { Section, SectionHeader } from "@/components/automation/Section";
-import { homeIndustries, howItWorks } from "@/lib/automation";
-import { globalFaqs } from "@/lib/faqs";
-import { getCitiesByCountry } from "@/lib/locations";
-import { services } from "@/lib/services";
-import { buildPageMetadata, faqJsonLd, SEO_KEYWORDS } from "@/lib/seo";
+import { AppStoreCard } from "@/components/AppStoreCard";
+import { games } from "@/lib/games";
+import { buildPageMetadata } from "@/lib/seo";
+import { site } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "Roncyo — AI Business Automation for Local Businesses in Australia & NZ",
+  title: "Roncyo — Free Online Games",
   description:
-    "Custom AI automation for local businesses in Australia and New Zealand. Eliminate repetitive work with workflow, email, browser, spreadsheet, PDF, and reporting automation. Free consultation.",
+    "Play free browser games instantly on Roncyo. Arcade, puzzle, and casual titles — no downloads. Discover featured games and popular categories.",
   path: "/",
-  keywords: [...SEO_KEYWORDS],
+  keywords: [
+    "free online games",
+    "browser games",
+    "play games online",
+    "arcade games",
+    "puzzle games",
+    "Roncyo games",
+  ],
 });
 
+const categories = Array.from(
+  new Set(games.flatMap((g) => g.categories ?? [])),
+).sort();
+
 export default function HomePage() {
-  const homeFaqs = globalFaqs.slice(0, 4);
-  const auCities = getCitiesByCountry("au");
-  const nzCities = getCitiesByCountry("nz");
+  const featured = games.filter((g) => g.badges?.includes("featured"));
+  const playable = games.filter((g) => g.playUrl?.startsWith("/play/") || g.localPlayPath);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(homeFaqs)) }}
-      />
-
-      <HomeHero />
-
-      <Section id="services">
-        <Reveal>
-          <SectionHeader
-            eyebrow="What we automate"
-            title="Practical automation — not hype"
-            description="We wire together the tools you already use so repetitive work happens automatically."
-            align="center"
-          />
-        </Reveal>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((card, i) => (
-            <Reveal key={card.slug} delay={i * 80}>
+      <section className="relative overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 20% 0%, rgba(3,216,203,0.18), transparent), radial-gradient(ellipse 60% 50% at 90% 20%, rgba(3,216,203,0.08), transparent)",
+          }}
+        />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-24">
+          <div>
+            <p className="text-sm font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">
+              {site.brand} Games
+            </p>
+            <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-5xl lg:text-6xl">
+              Free online games.
+              <br />
+              Play instantly.
+            </h1>
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
+              {site.tagline}. Browse our catalog, jump into featured titles, and keep sessions short
+              and fun.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
               <AppLink
-                href={`/services/${card.slug}`}
-                className="panel-premium group block h-full p-6 no-underline"
+                href="/games"
+                className="inline-flex rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[var(--color-accent-hover)]"
               >
-                <div className="panel-icon" aria-hidden>
-                  {card.icon}
-                </div>
-                <h3 className="mt-5 text-base font-semibold text-[var(--color-foreground)] transition group-hover:text-[var(--color-accent-hover)]">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">
-                  {card.description}
-                </p>
+                Browse all games
               </AppLink>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+              {playable[0] ? (
+                <AppLink
+                  href={playable[0].playUrl ?? `/games/${playable[0].slug}`}
+                  className="inline-flex rounded-full border border-[var(--color-border)] bg-[var(--color-panel)] px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition hover:border-[var(--color-foreground)]"
+                >
+                  Play {playable[0].title}
+                </AppLink>
+              ) : null}
+            </div>
+          </div>
 
-      <Section className="overflow-hidden bg-[var(--color-surface)]">
-        <Reveal>
-          <SectionHeader
-            eyebrow="Typical automations"
-            title="The tasks we remove from your week"
-            align="center"
-          />
-        </Reveal>
-        <div className="mt-10">
-          <AutomationMarquee />
-        </div>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <SectionHeader
-            eyebrow="How it works"
-            title="From call to live automation"
-            align="center"
-          />
-        </Reveal>
-        <div className="relative mt-16">
-          <div className="timeline-line hidden lg:block" aria-hidden />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {howItWorks.map((step, i) => (
-              <Reveal key={step.step} delay={i * 100} className="h-full">
-                <article className="panel-premium relative h-full p-6 lg:pt-8">
-                  <span className="relative z-10 inline-flex size-10 items-center justify-center rounded-full bg-[var(--color-foreground)] text-sm font-semibold text-[var(--color-bg)] ring-4 ring-[var(--color-bg)]">
-                    {step.step}
+          <div className="grid gap-3 sm:grid-cols-2">
+            {(featured.length ? featured : games).slice(0, 4).map((game) => (
+              <AppLink
+                key={game.slug}
+                href={`/games/${game.slug}`}
+                className="group flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-panel)] p-4 transition hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
+              >
+                <span className="flex size-12 items-center justify-center rounded-xl bg-[var(--color-surface)] text-2xl">
+                  {game.cardEmoji}
+                </span>
+                <span className="min-w-0">
+                  <span className="block truncate text-sm font-semibold text-[var(--color-foreground)] group-hover:text-[var(--color-accent-hover)]">
+                    {game.title}
                   </span>
-                  <h3 className="mt-5 text-base font-semibold text-[var(--color-foreground)]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">
-                    {step.description}
-                  </p>
-                </article>
-              </Reveal>
+                  <span className="block truncate text-xs text-[var(--color-muted)]">{game.genre}</span>
+                </span>
+              </AppLink>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
-      <Section className="bg-[var(--color-surface)]">
-        <Reveal>
-          <SectionHeader
-            eyebrow="Industries"
-            title="Built for local service businesses"
-            description="AI automation for dentists, electricians, plumbers, accountants, and professional services across Australia and New Zealand."
-            align="center"
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {homeIndustries.map((industry, i) => (
-            <Reveal key={industry.href} delay={i * 80}>
-              <AppLink
-                href={industry.href}
-                className="panel-premium group block h-full p-6 no-underline"
-              >
-                <h3 className="text-lg font-semibold text-[var(--color-foreground)] transition group-hover:text-[var(--color-accent-hover)]">
-                  {industry.title}
-                </h3>
-                <p className="mt-3 text-sm text-[var(--color-muted)]">
-                  View automations
-                  <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </p>
-              </AppLink>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="bg-[var(--color-surface)]">
-        <Reveal>
-          <SectionHeader
-            eyebrow="Locations"
-            title="Serving Australia & New Zealand"
-            description="Remote delivery to businesses in every major city."
-            align="center"
-          />
-        </Reveal>
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {[...auCities, ...nzCities].map((city, i) => (
-            <Reveal key={city.slug} delay={i * 40}>
-              <AppLink
-                href={`/locations/${city.slug}`}
-                className="rounded-full border border-[var(--color-border)] bg-[var(--color-panel)] px-4 py-2 text-sm font-medium text-[var(--color-foreground)] no-underline transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-              >
-                {city.title}
-              </AppLink>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal delay={200}>
-          <p className="mt-6 text-center text-sm text-[var(--color-muted)]">
-            <AppLink href="/locations" className="text-[var(--color-accent-hover)] underline">
-              View all locations
-            </AppLink>
-          </p>
-        </Reveal>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-3xl">
-              Business process automation for Australia &amp; New Zealand
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
-              Roncyo helps local businesses automate repetitive tasks — without replacing the
-              software you already trust. Whether you need email follow-ups for your electrical
-              contracting business in Auckland, document chasing for your accounting firm in
-              Sydney, or patient recalls for your dental practice in Melbourne, we build custom
-              workflows delivered in days, not months.{" "}
-              <AppLink href="/locations" className="text-[var(--color-accent-hover)] underline">
-                View locations
-              </AppLink>
-              ,{" "}
-              <AppLink href="/case-studies" className="text-[var(--color-accent-hover)] underline">
-                see case studies
-              </AppLink>
-              , or{" "}
-              <AppLink href="/contact" className="text-[var(--color-accent-hover)] underline">
-                book a free consultation
-              </AppLink>
-              .
+      <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:px-12">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.14em] text-[var(--color-accent)] uppercase">
+              Featured
             </p>
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-semibold text-[var(--color-foreground)] sm:text-3xl">
+              Play these next
+            </h2>
           </div>
-        </Reveal>
-      </Section>
+          <AppLink href="/games" className="text-sm font-semibold text-[var(--color-accent-hover)]">
+            View all →
+          </AppLink>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {games.map((game) => (
+            <AppStoreCard key={game.slug} game={game} />
+          ))}
+        </div>
+      </section>
 
-      <FaqSection faqs={homeFaqs} />
-
-      <Reveal>
-        <CtaBand />
-      </Reveal>
+      <section className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:px-12">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[var(--color-foreground)]">
+            Categories
+          </h2>
+          <p className="mt-2 text-sm text-[var(--color-muted)]">Jump in by mood or genre.</p>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <AppLink
+                key={cat}
+                href={`/categories/${encodeURIComponent(cat.toLowerCase())}`}
+                className="rounded-full border border-[var(--color-border)] bg-[var(--color-panel)] px-4 py-2 text-sm font-medium text-[var(--color-foreground)] transition hover:border-[var(--color-accent)]"
+              >
+                {cat}
+              </AppLink>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

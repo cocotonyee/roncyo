@@ -4,17 +4,11 @@ import { site } from "@/lib/site";
 
 const year = new Date().getFullYear();
 
-const company = [
-  { href: "/services", label: "Services" },
-  { href: "/industries", label: "Industries" },
+const explore = [
+  { href: "/games", label: "All games" },
+  { href: "/categories", label: "Categories" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-] as const;
-
-const resources = [
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/locations", label: "Locations" },
-  { href: "/llms.txt", label: "AI Site Info" },
+  { href: "/support", label: "Support" },
 ] as const;
 
 const legal = [
@@ -22,15 +16,14 @@ const legal = [
   { href: "/terms", label: "Terms" },
   { href: "/cookie-policy", label: "Cookie Policy" },
   { href: "/data-deletion", label: "Data Deletion" },
-  { href: "/support", label: "Support" },
 ] as const;
 
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg)] px-5 py-14 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="sm:col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
             <AppLink href="/" className="inline-flex">
               <SiteLogo className="site-logo h-8 w-auto" />
             </AppLink>
@@ -42,26 +35,11 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <nav aria-label="Company" className="flex flex-col gap-2.5">
+          <nav aria-label="Explore" className="flex flex-col gap-2.5">
             <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
-              Company
+              Explore
             </p>
-            {company.map((item) => (
-              <AppLink
-                key={item.href}
-                href={item.href}
-                className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-foreground)]"
-              >
-                {item.label}
-              </AppLink>
-            ))}
-          </nav>
-
-          <nav aria-label="Resources" className="flex flex-col gap-2.5">
-            <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
-              Resources
-            </p>
-            {resources.map((item) => (
+            {explore.map((item) => (
               <AppLink
                 key={item.href}
                 href={item.href}
@@ -89,7 +67,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)]">
-          © {year} {site.legalName}. All rights reserved.
+          © {year} {site.legalName}. Free online games on {site.domain}.
         </div>
       </div>
     </footer>

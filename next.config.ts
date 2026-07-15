@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      /* Canonical host: apex only (www → roncyo.com) */
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.roncyo.com" }],
@@ -17,26 +16,27 @@ const nextConfig: NextConfig = {
       },
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/terms", destination: "/terms-of-service", permanent: true },
+      /* Legacy B2B marketing routes → games hub */
+      { source: "/services", destination: "/games", permanent: false },
+      { source: "/services/:path*", destination: "/games", permanent: false },
+      { source: "/industries", destination: "/games", permanent: false },
+      { source: "/industries/:path*", destination: "/games", permanent: false },
+      { source: "/case-studies", destination: "/games", permanent: false },
+      { source: "/case-studies/:path*", destination: "/games", permanent: false },
+      { source: "/locations", destination: "/games", permanent: false },
+      { source: "/locations/:path*", destination: "/games", permanent: false },
+      { source: "/contact", destination: "/support", permanent: false },
       { source: "/press", destination: "/about", permanent: true },
-      { source: "/games", destination: "/support", permanent: false },
-      {
-        source: "/games/:slug",
-        destination: "/games/:slug/support",
-        permanent: false,
-      },
-      { source: "/games/:slug/play", destination: "/games/:slug/support", permanent: true },
-      { source: "/games/:slug/trial", destination: "/games/:slug/support", permanent: true },
+      /* Legacy game aliases */
       { source: "/games/kitty-merge", destination: "/games/mochi-cats", permanent: true },
       { source: "/games/kitty-merge/support", destination: "/games/mochi-cats/support", permanent: true },
       { source: "/games/kitty-merge/privacy", destination: "/games/mochi-cats/privacy", permanent: true },
-      { source: "/games/kitty-merge/play", destination: "/games/mochi-cats", permanent: true },
       { source: "/games/sample-puzzle", destination: "/games/cozy-cat-block-puzzle", permanent: true },
       { source: "/games/sample-puzzle/support", destination: "/games/cozy-cat-block-puzzle/support", permanent: true },
       { source: "/games/sample-puzzle/privacy", destination: "/games/cozy-cat-block-puzzle/privacy", permanent: true },
       { source: "/games/mochi-drop", destination: "/games/mochi-cats", permanent: true },
       { source: "/games/mochi-drop/support", destination: "/games/mochi-cats/support", permanent: true },
       { source: "/games/mochi-drop/privacy", destination: "/games/mochi-cats/privacy", permanent: true },
-      { source: "/games/mochi-drop/play", destination: "/games/mochi-cats", permanent: true },
     ];
   },
 };
