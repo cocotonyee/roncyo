@@ -3,16 +3,15 @@ import type { Game } from "@/lib/games";
 import type { FaqItem } from "@/lib/faqs";
 import { site, absoluteUrl } from "@/lib/site";
 
-/** Core SEO keywords for the games portal. */
+/** Core SEO keywords for the publishing platform. */
 export const SEO_KEYWORDS = [
-  "free online games",
-  "browser games",
-  "play games online",
-  "arcade games",
-  "puzzle games",
-  "casual games",
-  "Roncyo games",
-  "web games no download",
+  "game publishing platform",
+  "HTML5 game distribution",
+  "website monetization",
+  "ad monetization",
+  "game distribution",
+  "publisher platform",
+  "ads.txt",
   "Roncyo",
 ] as const;
 
@@ -162,10 +161,6 @@ export function organizationJsonLd() {
     logo: absoluteUrl(site.logo),
     email: site.emails.support,
     description: site.tagline,
-    areaServed: [
-      { "@type": "Country", name: "Australia" },
-      { "@type": "Country", name: "New Zealand" },
-    ],
     knowsAbout: [...SEO_KEYWORDS],
     address: {
       "@type": "PostalAddress",
@@ -177,10 +172,9 @@ export function organizationJsonLd() {
 /** Static marketing and legal routes for sitemap generation. */
 export const STATIC_SITEMAP_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "weekly" as const },
-  { path: "/games", priority: 0.95, changeFrequency: "weekly" as const },
-  { path: "/categories", priority: 0.85, changeFrequency: "weekly" as const },
-  { path: "/about", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/support", priority: 0.5, changeFrequency: "monthly" as const },
+  { path: "/docs", priority: 0.95, changeFrequency: "weekly" as const },
+  { path: "/about", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/support", priority: 0.6, changeFrequency: "monthly" as const },
   { path: "/privacy-policy", priority: 0.5, changeFrequency: "yearly" as const },
   { path: "/terms-of-service", priority: 0.5, changeFrequency: "yearly" as const },
   { path: "/cookie-policy", priority: 0.4, changeFrequency: "yearly" as const },

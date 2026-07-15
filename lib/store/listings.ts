@@ -1,51 +1,11 @@
 import type { StoreGameConfig } from "@/lib/store/config";
 import { site } from "@/lib/site";
 
-/** Live catalog for the Roncyo games portal */
+/**
+ * Titles that need public compliance URLs (privacy / support) for stores or Mini Apps.
+ * This is not a consumer play catalog.
+ */
 export const storeListings: StoreGameConfig[] = [
-  {
-    slug: "gravity-ball",
-    storeDir: undefined,
-    companyName: site.brand,
-    companyCountry: site.country,
-    companyDescription:
-      "Roncyo publishes free-to-play browser games and mobile titles for players worldwide.",
-    companyEmail: site.emails.support,
-    gameName: "Gravity Ball",
-    genre: "Arcade",
-    shortDescription:
-      "Tilt, bounce, and race through gravity-twisting arenas — instant play in your browser.",
-    about:
-      "Gravity Ball is a fast arcade challenge built for the web. Jump in instantly — no install, no wait. Perfect for short sessions on desktop or mobile.",
-    features: [
-      "Instant browser play",
-      "Arcade physics challenges",
-      "Works on desktop and mobile",
-      "Free to play",
-    ],
-    howToPlay: [
-      "Use controls shown on screen to move the ball.",
-      "Watch gravity shifts and timing windows.",
-      "Clear stages and chase a higher score.",
-    ],
-    platforms: ["web"],
-    version: "1.0.0",
-    lastUpdated: "2026-07-13",
-    releaseDate: "2026-07-13",
-    contentRating: "Everyone",
-    categories: ["Arcade", "Casual", "Action"],
-    languages: ["English"],
-    size: "Browser",
-    badges: ["featured", "new"],
-    rating: 4.6,
-    reviewCount: 128,
-    playUrl: "/play/gravity-ball/",
-    playButtonLabel: "Play now",
-    sdks: [],
-    collectsPersonalData: false,
-    childrenTargeted: false,
-    progressNote: "Scores may be saved locally in your browser.",
-  },
   {
     slug: "mochi-cats",
     companyName: site.brand,

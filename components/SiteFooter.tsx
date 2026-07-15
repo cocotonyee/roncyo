@@ -4,9 +4,8 @@ import { site } from "@/lib/site";
 
 const year = new Date().getFullYear();
 
-const explore = [
-  { href: "/games", label: "All games" },
-  { href: "/categories", label: "Categories" },
+const product = [
+  { href: "/docs", label: "Documentation" },
   { href: "/about", label: "About" },
   { href: "/support", label: "Support" },
 ] as const;
@@ -35,11 +34,11 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <nav aria-label="Explore" className="flex flex-col gap-2.5">
+          <nav aria-label="Product" className="flex flex-col gap-2.5">
             <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
-              Explore
+              Product
             </p>
-            {explore.map((item) => (
+            {product.map((item) => (
               <AppLink
                 key={item.href}
                 href={item.href}
@@ -67,7 +66,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)]">
-          © {year} {site.legalName}. Free online games on {site.domain}.
+          © {year} {site.legalName}. Publishing &amp; monetization platform.
         </div>
       </div>
     </footer>

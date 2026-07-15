@@ -37,7 +37,7 @@ export default async function GameSupportPage({ params }: Props) {
           light
           items={[
             { href: "/support", label: "Support" },
-            { href: `/games/${game.slug}`, label: game.title },
+            { label: game.title },
             { label: "Support" },
           ]}
         />

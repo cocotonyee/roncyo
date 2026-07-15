@@ -1,12 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import {
-  CalendarIcon,
-  MailIcon,
-  PublisherIcon,
-  ShieldIcon,
-  TagIcon,
-} from "@/components/StoreIcons";
+import { CalendarIcon, MailIcon, PublisherIcon } from "@/components/StoreIcons";
 import type { Game } from "@/lib/games";
 import type { Publisher } from "@/lib/publishers";
 import { site } from "@/lib/site";

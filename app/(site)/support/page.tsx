@@ -1,53 +1,39 @@
 import { AppLink } from "@/components/AppLink";
-import { games } from "@/lib/games";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "Support Center",
-  description: `Get help with ${site.brand} games and apps. Per-title support pages and email contact.`,
+  title: "Support & Partnerships",
+  description: `Contact ${site.brand} for publishing, distribution, and monetization support.`,
   path: "/support",
-  keywords: ["game support", "help center", "Roncyo support"],
+  keywords: ["Roncyo support", "publisher support", "partnerships"],
 });
 
-export default function SupportHubPage() {
+export default function SupportPage() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-12 sm:px-8 lg:px-12">
+    <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:px-12">
       <p className="text-xs font-semibold tracking-[0.14em] text-[var(--color-accent)] uppercase">
         Support
       </p>
-      <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold text-[var(--color-foreground)] sm:text-4xl">
-        Help center
+      <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-4xl">
+        Partnerships &amp; help
       </h1>
-      <p className="mt-3 max-w-2xl text-sm text-[var(--color-muted)]">
-        Pick a title for FAQs and troubleshooting, or email us at{" "}
-        <a
-          href={`mailto:${site.emails.support}`}
-          className="font-medium text-[var(--color-foreground)] underline"
-        >
+      <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+        For onboarding, distribution, ads.txt, or payment questions, email us with your studio name
+        and property details.
+      </p>
+      <p className="mt-6 text-lg font-semibold text-[var(--color-foreground)]">
+        <a className="underline hover:text-[var(--color-accent-hover)]" href={`mailto:${site.emails.support}`}>
           {site.emails.support}
         </a>
+      </p>
+      <p className="mt-8 text-sm text-[var(--color-muted)]">
+        Looking for product documentation? Start at{" "}
+        <AppLink href="/docs" className="font-medium text-[var(--color-accent-hover)] underline">
+          /docs
+        </AppLink>
         .
       </p>
-
-      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {games.map((game) => (
-          <li key={game.slug}>
-            <AppLink
-              href={`/games/${game.slug}/support`}
-              className="block rounded-2xl border border-[var(--color-border)] bg-[var(--color-panel)] p-5 transition hover:border-[var(--color-accent)]"
-            >
-              <span className="text-2xl" aria-hidden>
-                {game.cardEmoji}
-              </span>
-              <h2 className="mt-3 text-base font-semibold text-[var(--color-foreground)]">
-                {game.title}
-              </h2>
-              <p className="mt-1 text-sm text-[var(--color-muted)]">Support & privacy →</p>
-            </AppLink>
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }

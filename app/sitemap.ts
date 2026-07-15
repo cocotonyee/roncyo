@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllDocSlugs } from "@/lib/docs";
 import { games } from "@/lib/games";
 import { STATIC_SITEMAP_ROUTES } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -13,37 +14,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }));
 
-  const categories = Array.from(new Set(games.flatMap((g) => g.categories ?? [])));
-  const categoryEntries: MetadataRoute.Sitemap = categories.map((cat) => ({
-    url: absoluteUrl(`/categories/${encodeURIComponent(cat.toLowerCase())}`),
+  const docEntries: MetadataRoute.Sitemap = getAllDocSlugs().map((slug) => ({
+    url: absoluteUrl(`/docs/${slug}`),
     lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }));
 
-  const gameEntries: MetadataRoute.Sitemap = games.flatMap((game) => {
+  /** Compliance URLs for store / Mini App listings — not a public play catalog. */
+  const gameComplianceEntries: MetadataRoute.Sitemap = games.flatMap((game) => {
     const gameUpdated = game.lastUpdated ? new Date(game.lastUpdated) : lastModified;
     return [
-      {
-        url: absoluteUrl(`/games/${game.slug}`),
-        lastModified: gameUpdated,
-        changeFrequency: "weekly" as const,
-        priority: 0.85,
-      },
       {
         url: absoluteUrl(`/games/${game.slug}/support`),
         lastModified: gameUpdated,
         changeFrequency: "monthly" as const,
-        priority: 0.4,
+        priority: 0.35,
       },
       {
         url: absoluteUrl(`/games/${game.slug}/privacy`),
         lastModified: gameUpdated,
         changeFrequency: "yearly" as const,
-        priority: 0.4,
+        priority: 0.35,
       },
     ];
   });
 
-  return [...staticEntries, ...categoryEntries, ...gameEntries];
+  return [...staticEntries, ...docEntries, ...gameComplianceEntries];
 }

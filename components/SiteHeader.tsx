@@ -7,8 +7,7 @@ import { SiteLogo } from "@/components/SiteLogo";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/games", label: "Games" },
-  { href: "/categories", label: "Categories" },
+  { href: "/docs", label: "Docs" },
   { href: "/about", label: "About" },
   { href: "/support", label: "Support" },
 ] as const;
@@ -24,7 +23,7 @@ export function SiteHeader() {
           <SiteLogo className="site-logo h-8 w-auto" />
         </AppLink>
 
-        <nav aria-label="Primary" className="hidden lg:block">
+        <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex list-none items-center gap-8">
             {nav.map((item) => {
               const active =
@@ -51,14 +50,14 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <AppLink
-            href="/games"
+            href="/docs"
             className="hidden rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-[13px] font-semibold text-black transition hover:bg-[var(--color-accent-hover)] sm:inline-flex"
           >
-            Play games
+            Docs
           </AppLink>
           <button
             type="button"
-            className="flex size-10 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-foreground)] lg:hidden"
+            className="flex size-10 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-foreground)] md:hidden"
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
@@ -69,7 +68,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <nav aria-label="Mobile" className="border-t border-[var(--color-border)] bg-[var(--color-bg)] pb-4 lg:hidden">
+        <nav aria-label="Mobile" className="border-t border-[var(--color-border)] bg-[var(--color-bg)] pb-4 md:hidden">
           <ul className="flex flex-col gap-1 px-5 py-2">
             {nav.map((item) => (
               <li key={item.href}>
@@ -82,15 +81,6 @@ export function SiteHeader() {
                 </AppLink>
               </li>
             ))}
-            <li className="pt-2">
-              <AppLink
-                href="/games"
-                className="flex w-full items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-black"
-                onClick={() => setOpen(false)}
-              >
-                Play games
-              </AppLink>
-            </li>
           </ul>
         </nav>
       ) : null}

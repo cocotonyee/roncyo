@@ -3,11 +3,11 @@ import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "About Roncyo — Free Online Games",
+  title: "About Roncyo",
   description:
-    "Roncyo publishes and distributes free online games and mobile titles. Play instantly in your browser or find our apps on the stores you already use.",
+    "Roncyo is a publishing and monetization platform for games and websites — partner documentation and distribution, not a public play catalog.",
   path: "/about",
-  keywords: ["Roncyo games", "game publisher", "free online games"],
+  keywords: ["Roncyo", "game publishing platform", "site monetization"],
 });
 
 export default function AboutPage() {
@@ -17,36 +17,37 @@ export default function AboutPage() {
         About
       </p>
       <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-4xl">
-        A home for free online games
+        A platform for publishers
       </h1>
       <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
-        {site.brand} is a games destination by {site.legalName}. We publish browser playables and
-        mobile titles — with a catalog built for quick sessions, clear categories, and instant play
-        when games support the web.
+        {site.brand} ({site.legalName}) helps studios and site owners{" "}
+        <strong className="font-semibold text-[var(--color-foreground)]">publish</strong>,{" "}
+        <strong className="font-semibold text-[var(--color-foreground)]">distribute</strong>, and{" "}
+        <strong className="font-semibold text-[var(--color-foreground)]">monetize</strong> with
+        advertising.
       </p>
       <p className="mt-4 text-base leading-relaxed text-[var(--color-muted)]">
-        The site is supported by advertising so players can keep games free. See our{" "}
-        <AppLink href="/privacy-policy" className="underline hover:text-[var(--color-foreground)]">
-          Privacy Policy
-        </AppLink>{" "}
-        and{" "}
-        <AppLink href="/cookie-policy" className="underline hover:text-[var(--color-foreground)]">
-          Cookie Policy
-        </AppLink>{" "}
-        for how ads work on {site.domain}.
+        This website is the platform introduction and documentation hub. It is{" "}
+        <strong className="font-semibold text-[var(--color-foreground)]">not</strong> a consumer game
+        directory or instant-play arcade.
+      </p>
+      <p className="mt-4 text-base leading-relaxed text-[var(--color-muted)]">
+        Compliance pages for specific titles (privacy / support) may still live under{" "}
+        <code className="text-[var(--color-foreground)]">/games/…</code> when a store or Mini App
+        requires a public URL.
       </p>
       <div className="mt-10 flex flex-wrap gap-3">
         <AppLink
-          href="/games"
+          href="/docs"
           className="inline-flex rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-black"
         >
-          Browse games
+          Read docs
         </AppLink>
         <AppLink
           href="/support"
           className="inline-flex rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-foreground)]"
         >
-          Support
+          Contact us
         </AppLink>
       </div>
     </section>
