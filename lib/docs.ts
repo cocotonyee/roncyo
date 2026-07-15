@@ -6,149 +6,166 @@ export type DocPage = {
 };
 
 export const docsIndex = {
-  title: "Documentation",
+  title: "Developer documentation",
   description:
-    "How Roncyo works for publishers — distribution, ads, and requirements for games and websites.",
+    "Guides for building with Roncyo — platform access, distribution, monetization, and integration.",
 } as const;
 
 export const docPages: DocPage[] = [
   {
-    slug: "overview",
-    title: "Platform overview",
-    description: "What Roncyo is and how publishing, distribution, and monetization fit together.",
+    slug: "getting-started",
+    title: "Getting started",
+    description: "How to open a partner account and ship your first integration.",
     sections: [
       {
-        heading: "What Roncyo does",
+        heading: "Welcome",
         body: [
-          "Roncyo helps publishers put games and websites in front of players and visitors, then earn through advertising.",
-          "We focus on distribution and ad monetization — not a consumer play catalog. This website is the product home and documentation for partners.",
+          "Roncyo Open Platform is for developers and partners who build digital products and want distribution plus ad monetization.",
+          "This site is the public developer hub: product overview and docs. Product surfaces and SDKs are provisioned after your partnership is approved.",
         ],
       },
       {
-        heading: "Who it is for",
+        heading: "Steps",
         body: [
-          "Independent studios, HTML5 / web publishers, and site owners who want inventory filled with ads and clear reporting.",
-          "Mobile or Telegram games can also connect via store listing and compliance pages we host for you.",
-        ],
-      },
-      {
-        heading: "What this site is not",
-        body: [
-          "Roncyo.com is not a Poki-style free play portal. Players do not browse a public game directory here.",
-          "Playable builds (if any) are delivered through partner channels we agree with you — not a public trial arcade on this domain.",
+          "1. Email support@roncyo.com with your company name, product type, target platforms, and markets.",
+          "2. Complete onboarding (compliance contacts, creative, age rating where required).",
+          "3. Receive integration keys / placement IDs and follow the integration guide.",
+          "4. Go live with ads.txt / SDK config we provide, then monitor revenue reporting.",
         ],
       },
     ],
   },
   {
-    slug: "publishing",
-    title: "Publishing & distribution",
-    description: "How titles and sites are accepted, listed, and distributed.",
+    slug: "overview",
+    title: "Platform overview",
+    description: "What the Open Platform offers developers and content partners.",
     sections: [
       {
-        heading: "Onboarding",
+        heading: "What Roncyo is",
         body: [
-          "Contact support@roncyo.com with your studio name, titles, platforms (web, Android, iOS, Telegram), and target markets.",
-          "We confirm creative, age rating, and compliance materials (privacy, support contacts) before go-live.",
+          "Roncyo operates an open developer platform: tools and commercial rails to distribute digital products and monetize traffic with advertising.",
+          "Think of this site like a partner developer portal — introduction and documentation — not an end-user destination app.",
         ],
       },
       {
-        heading: "What we need from you",
+        heading: "Who it is for",
         body: [
-          "Build or URL for web games; store links for mobile; Mini App / bot links for Telegram where relevant.",
-          "Screenshots or icon art, short description, content rating, and a privacy contact email.",
-          "Confirmation that your content complies with applicable store and advertising policies.",
+          "Product teams, independent developers, and companies shipping web apps, mobile apps, Mini Apps, or content sites.",
+          "If you need distribution partners and authorized ad fill with clear reporting, this platform is built for you.",
         ],
       },
       {
-        heading: "Distribution",
+        heading: "Core capabilities",
         body: [
-          "We place approved inventory across ad and traffic partners according to the agreement for each title.",
-          "You keep ownership of your IP; Roncyo provides distribution, ad fill, and operational support.",
+          "Distribution: place approved inventory with traffic and demand partners under defined commercial terms.",
+          "Monetization: authorized advertising (for example Google AdSense / network placements) with ads.txt where required.",
+          "Operations: compliance URL hosting when storefronts need privacy or support links on our domain.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "distribution",
+    title: "Distribution",
+    description: "How products are accepted and distributed through Roncyo partners.",
+    sections: [
+      {
+        heading: "Onboarding materials",
+        body: [
+          "Company legal name, product name, platforms (web, Android, iOS, Telegram, etc.), and regions you want to serve.",
+          "Store or product URLs, icons/screenshots, short description, content rating, and a privacy contact email.",
+          "Confirmation that content meets applicable store and advertising policies.",
+        ],
+      },
+      {
+        heading: "How distribution works",
+        body: [
+          "Approved inventory is placed with ad and traffic partners according to each product agreement.",
+          "You retain IP ownership. Roncyo provides distribution ops, ad fill coordination, and partner support.",
         ],
       },
     ],
   },
   {
     slug: "monetization",
-    title: "Ads & revenue",
-    description: "How advertising and revenue share work on the platform.",
+    title: "Monetization",
+    description: "Advertising, revenue share, and policy basics.",
     sections: [
       {
         heading: "Advertising",
         body: [
-          "Monetization is primarily ad-based (for example Google AdSense / authorized networks on web properties).",
-          "Ad formats and placements follow network policies and what we enable for each property.",
+          "Primary monetization is advertising on properties we enable together (web tags and/or in-app SDKs).",
+          "Formats and placements follow network policies and what is enabled for your account.",
         ],
       },
       {
         heading: "Revenue",
         body: [
-          "Publisher revenue share, payment schedule, and thresholds are defined in your partnership agreement.",
-          "We use ads.txt and related authorizations so demand partners can verify inventory on roncyo.com and related properties.",
+          "Revenue share, payout schedule, and thresholds are defined in your partnership agreement.",
+          "ads.txt and related authorizations help demand partners verify inventory sold on Roncyo properties.",
         ],
       },
       {
-        heading: "Compliance",
+        heading: "Policies",
         body: [
-          "Privacy Policy and Cookie Policy on this site disclose advertising technologies used on our web surfaces.",
-          "Per-title privacy and support pages remain available for games that require store or Mini App compliance URLs.",
+          "Site Privacy Policy and Cookie Policy describe advertising technologies on our web surfaces.",
+          "Per-product privacy and support URLs can be hosted under /apps/[slug]/ when a storefront requires them.",
         ],
       },
     ],
   },
   {
     slug: "ads-txt",
-    title: "ads.txt setup",
-    description: "Authorize ad buyers for inventory served on Roncyo properties.",
+    title: "ads.txt",
+    description: "Authorize sellers of digital inventory on your domain.",
     sections: [
       {
         heading: "What ads.txt is",
         body: [
-          "ads.txt is a text file at the domain root that lists authorized sellers of your digital inventory.",
-          "Buyers and exchanges use it to reduce unauthorized reselling.",
+          "ads.txt lists authorized sellers of your digital advertising inventory at the domain root.",
+          "Buyers use it to reduce unauthorized inventory reselling.",
         ],
       },
       {
         heading: "On roncyo.com",
         body: [
-          "Our live file is https://roncyo.com/ads.txt and currently authorizes Google for publisher ID pub-7172279368890576.",
-          "If you host inventory on another domain under a Roncyo deal, we will tell you the exact ads.txt lines to publish.",
+          "Live file: https://roncyo.com/ads.txt — currently authorizes Google for pub-7172279368890576.",
+          "If inventory lives on another domain under a Roncyo deal, we send the exact lines to publish.",
         ],
       },
       {
-        heading: "Checking status",
+        heading: "Verification",
         body: [
-          "After deploy, open /ads.txt in a browser and confirm the lines match what we sent you.",
-          "Ad networks may take hours to re-crawl; AdSense “ads.txt” status updates are often delayed.",
+          "After deploy, open /ads.txt and confirm lines match our instructions.",
+          "Networks may take hours to re-crawl; AdSense status updates are often delayed.",
         ],
       },
     ],
   },
   {
     slug: "integration",
-    title: "Technical integration",
-    description: "High-level requirements for web and app partners.",
+    title: "Integration",
+    description: "Technical requirements for web and app partners.",
     sections: [
       {
         heading: "Web",
         body: [
-          "Serve a stable HTTPS origin, publish ads.txt, and allow placement of the ad tags we specify.",
-          "Do not block crawlers needed for ads.txt or AdSense verification on the production host.",
+          "Serve a stable HTTPS origin, publish ads.txt, and allow the ad tags we specify.",
+          "Do not block crawlers needed for ads.txt or AdSense verification on production.",
         ],
       },
       {
         heading: "Apps & Mini Apps",
         body: [
-          "Provide store listing URLs and privacy / support URLs. Roncyo can host compliance pages under /games/[slug]/privacy and /support when needed.",
-          "In-app ad SDKs follow your mobile ad partner contracts; we coordinate naming and data disclosures.",
+          "Provide storelisting URLs plus privacy / support URLs. Roncyo can host compliance pages under /apps/[slug]/privacy and /support when needed.",
+          "In-app ad SDKs follow your mobile ad contracts; we align naming and disclosures.",
         ],
       },
       {
         heading: "Support",
         body: [
-          "Technical and partnership questions: support@roncyo.com.",
-          "Include studio name, property URL or package name, and a short description of the issue.",
+          "Technical questions: support@roncyo.com.",
+          "Include company name, property URL or package name, and a short description of the issue.",
         ],
       },
     ],

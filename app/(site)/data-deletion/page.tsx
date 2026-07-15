@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Data Deletion Request",
-  description: `Request deletion of personal data associated with ${site.brand} games and services.`,
+  description: `Request deletion of personal data associated with ${site.brand} apps and services.`,
   path: "/data-deletion",
   keywords: ["data deletion", "account removal", "privacy request"],
 });
@@ -19,7 +19,7 @@ export default function DataDeletionPage() {
       <PageIntro
         eyebrow="Privacy"
         title="Request data deletion"
-        lead={`${site.brand} respects your right to control personal data associated with our games and websites.`}
+        lead={`${site.brand} respects your right to control personal data associated with our apps and websites.`}
         tone="coral"
       />
       <ContentPanel className="mb-8 border-[var(--color-roncy-teal)]/30 bg-gradient-to-br from-[var(--color-roncy-surface)] to-white text-center">
@@ -46,10 +46,10 @@ export default function DataDeletionPage() {
           </p>
           <p>Please include:</p>
           <ul>
-            <li>Your name or in-game username (if applicable)</li>
-            <li>The game or app name</li>
+            <li>Your name or username (if applicable)</li>
+            <li>The app or product name</li>
             <li>Device type and platform (iOS, Android, web)</li>
-            <li>Registered email or account ID associated with the game (if any)</li>
+            <li>Registered email or account ID associated with the product (if any)</li>
           </ul>
           <p>
             We aim to process requests within <strong>30 days</strong> and will confirm when deletion

@@ -3,32 +3,32 @@ import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "Roncyo — Game & Site Publishing Platform",
+  title: "Roncyo Open Platform — For Developers",
   description:
-    "Roncyo is a publishing and distribution platform for games and websites — monetize with ads, keep ownership of your IP. Docs for partners, not a public play catalog.",
+    "Roncyo Open Platform: documentation and tools for developers to build, distribute, and monetize digital products with advertising.",
   path: "/",
   keywords: [
-    "game publishing platform",
-    "HTML5 game distribution",
-    "website monetization",
-    "ad distribution",
-    "game publisher platform",
+    "open platform",
+    "developer platform",
+    "Roncyo developers",
+    "content distribution",
+    "ad monetization API",
     "Roncyo",
   ],
 });
 
 const pillars = [
   {
-    title: "Publish",
-    body: "Bring web games, mobile titles, or content sites. We handle partner-facing listing and compliance URLs when needed.",
+    title: "Build",
+    body: "Ship web apps, mobile apps, Mini Apps, or content sites. We give partners a clear path from onboarding to production.",
   },
   {
     title: "Distribute",
-    body: "Place approved inventory with traffic and demand partners under clear commercial terms — not a public player arcade.",
+    body: "Connect approved inventory to traffic and demand partners under commercial terms you agree to up front.",
   },
   {
     title: "Monetize",
-    body: "Fill with authorized ads, maintain ads.txt, and share revenue per your agreement.",
+    body: "Enable authorized ads, publish ads.txt where required, and share revenue per your developer agreement.",
   },
 ] as const;
 
@@ -45,16 +45,16 @@ export default function HomePage() {
         />
         <div className="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           <p className="text-sm font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">
-            {site.brand} Platform
+            {site.brand} Open Platform
           </p>
           <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-5xl lg:text-6xl">
-            Publish. Distribute.
+            For developers.
             <br />
-            Monetize with ads.
+            Build. Distribute. Monetize.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
-            {site.tagline} Roncyo is a partner platform for studios and site owners — this site is
-            introduction and documentation, not a free-play game portal.
+            {site.tagline} Public site for introduction and docs — similar in role to a developer
+            open platform, not an end-user feed or entertainment catalog.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <AppLink
@@ -64,10 +64,10 @@ export default function HomePage() {
               Read the docs
             </AppLink>
             <AppLink
-              href="/support"
+              href="/docs/getting-started"
               className="inline-flex rounded-full border border-[var(--color-border)] bg-[var(--color-panel)] px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition hover:border-[var(--color-foreground)]"
             >
-              Contact partnerships
+              Getting started
             </AppLink>
           </div>
         </div>
@@ -75,10 +75,10 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:px-12">
         <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[var(--color-foreground)] sm:text-3xl">
-          Built for publishers
+          Built for developers &amp; partners
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-[var(--color-muted)] sm:text-base">
-          Three jobs. One commercial relationship.
+          One platform relationship. Clear docs. Commercial distribution and ads.
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {pillars.map((item) => (
@@ -96,10 +96,11 @@ export default function HomePage() {
       <section className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:px-12">
           <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[var(--color-foreground)]">
-            Start with the docs
+            Start in the docs
           </h2>
           <p className="mt-3 max-w-xl text-sm text-[var(--color-muted)]">
-            Overview, publishing requirements, ads &amp; revenue, ads.txt, and technical integration.
+            Getting started, platform overview, distribution, monetization, ads.txt, and
+            integration.
           </p>
           <AppLink
             href="/docs"

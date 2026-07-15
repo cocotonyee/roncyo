@@ -3,15 +3,15 @@ import type { Game } from "@/lib/games";
 import type { FaqItem } from "@/lib/faqs";
 import { site, absoluteUrl } from "@/lib/site";
 
-/** Core SEO keywords for the publishing platform. */
+/** Core SEO keywords for the Open Platform. */
 export const SEO_KEYWORDS = [
-  "game publishing platform",
-  "HTML5 game distribution",
-  "website monetization",
+  "open platform",
+  "developer platform",
+  "developer documentation",
+  "content distribution",
   "ad monetization",
-  "game distribution",
-  "publisher platform",
   "ads.txt",
+  "partner platform",
   "Roncyo",
 ] as const;
 

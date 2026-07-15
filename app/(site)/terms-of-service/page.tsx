@@ -2,30 +2,24 @@ import type { Metadata } from "next";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { LegalUpdatedBadge } from "@/components/LegalUpdated";
 import { Prose } from "@/components/Prose";
-import { games } from "@/lib/games";
 import { LEGAL_LAST_UPDATED } from "@/lib/legal";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Terms of Service",
-  description: `Terms of Service for ${site.brand} games, websites, and digital services.`,
+  description: `Terms of Service for ${site.brand} websites, apps, platform services, and digital products.`,
   path: "/terms-of-service",
   keywords: ["terms of service", "user agreement"],
 });
 
 export default function TermsPage() {
-  const gameExamples =
-    games.length > 0
-      ? `${games.map((g) => g.title).join(", ")} and other current or future titles`
-      : "our current or future titles";
-
   return (
     <InnerPage wide glow="storm">
       <PageIntro
         eyebrow="Legal"
         title="Terms of Service"
-        lead="Rules for using our games, apps, websites, and related services."
+        lead="Rules for using our websites, apps, platform services, and related products."
         tone="navy"
       />
       <ContentPanel>
@@ -35,17 +29,17 @@ export default function TermsPage() {
             <strong>Effective date:</strong> {LEGAL_LAST_UPDATED}
           </p>
           <p>
-            These Terms of Service (&quot;Terms&quot;) govern your access to and use of the games,
-            apps, websites, and related services provided by {site.legalName} (&quot;RONCY,&quot;
-            &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). By accessing or using our services,
-            you agree to these Terms.
+            These Terms of Service (&quot;Terms&quot;) govern your access to and use of the websites,
+            apps, platform services, and related digital products provided by {site.legalName}{" "}
+            (&quot;RONCY,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). By accessing or
+            using our services, you agree to these Terms.
           </p>
 
           <h2>1. Who We Are</h2>
           <p>
-            {site.legalName} is a software and game development company. These Terms apply to all
-            games, websites, and related services published or operated by {site.legalName},
-            including but not limited to {gameExamples}.
+            {site.legalName} operates the Roncyo Open Platform and related digital products and
+            services. These Terms apply to all websites, apps, and services published or operated by{" "}
+            {site.legalName}.
           </p>
 
           <h2>2. Use of Our Services</h2>
@@ -72,7 +66,7 @@ export default function TermsPage() {
 
           <h2>5. Virtual Items and Game Progress</h2>
           <p>
-            Our games may include points, progress, unlocks, cosmetic items, or other virtual content.
+            Our apps may include points, progress, unlocks, cosmetic items, or other virtual content.
             These items are licensed, not sold, and have no real-world monetary value unless explicitly
             stated otherwise. We may modify, rebalance, or remove virtual content at any time as part
             of maintaining or improving our services.

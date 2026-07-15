@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   title: docsIndex.title,
   description: docsIndex.description,
   path: "/docs",
-  keywords: ["Roncyo docs", "publishing documentation", "game distribution docs"],
+  keywords: ["Roncyo docs", "developer documentation", "open platform docs"],
 });
 
 export default function DocsIndexPage() {

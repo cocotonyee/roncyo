@@ -2,24 +2,21 @@ import type { StoreGameConfig } from "@/lib/store/config";
 import { site } from "@/lib/site";
 
 /**
- * Titles that need public compliance URLs (privacy / support) for stores or Mini Apps.
- * This is not a consumer play catalog.
+ * Storefront compliance records only (privacy / support URLs).
+ * Not listed on the public Open Platform marketing surface.
  */
 export const storeListings: StoreGameConfig[] = [
   {
     slug: "mochi-cats",
     companyName: site.brand,
     companyCountry: site.country,
-    companyDescription:
-      "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+    companyDescription: "RONCY LLC — digital products and platform services.",
     companyEmail: site.emails.support,
     gameName: "Mochi Cat",
-    genre: "Merge Puzzle",
-    shortDescription:
-      "Drop adorable cats, merge matching kitties, and keep the stack from overflowing.",
-    about:
-      "Mochi Cat is a cute cat merge puzzle with relaxing casual play and high-score challenges.",
-    features: ["Merge puzzle gameplay", "Casual sessions", "High-score challenges"],
+    genre: "App",
+    shortDescription: "Mobile app published by Roncyo partners.",
+    about: "Product compliance listing for storefront privacy and support URLs.",
+    features: ["Store compliance"],
     platforms: ["android", "telegram"],
     version: "1.4.2",
     lastUpdated: "2025-11-18",
@@ -43,21 +40,13 @@ export const storeListings: StoreGameConfig[] = [
     slug: "cozy-cat-block-puzzle",
     companyName: site.brand,
     companyCountry: site.country,
-    companyDescription:
-      "Independent game studio crafting mobile puzzle games with cute art and player-first design.",
+    companyDescription: "RONCY LLC — digital products and platform services.",
     companyEmail: site.emails.support,
     gameName: "Cozy Cat Block Puzzle",
-    genre: "Block Puzzle",
-    shortDescription:
-      "Drag cozy block shapes onto the grid and clear lines with your feline friends cheering you on.",
-    about:
-      "Cozy Cat Block Puzzle is a warm grid puzzle for cat lovers and classic block fans.",
-    features: [
-      "Classic block puzzle",
-      "Cat art and animations",
-      "Telegram Mini App",
-      "Android on Google Play",
-    ],
+    genre: "App",
+    shortDescription: "Mobile app published by Roncyo partners.",
+    about: "Product compliance listing for storefront privacy and support URLs.",
+    features: ["Store compliance"],
     platforms: ["android", "telegram"],
     version: "2.1.0",
     lastUpdated: "2026-01-08",

@@ -6,7 +6,7 @@ export function professionalServiceJsonLd() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${absoluteUrl("/")}#service`,
-    name: site.brand,
+    name: `${site.brand} Open Platform`,
     url: absoluteUrl("/"),
     logo: absoluteUrl(site.logo),
     email: site.emails.support,
@@ -14,20 +14,20 @@ export function professionalServiceJsonLd() {
     provider: { "@id": `${absoluteUrl("/")}#organization` },
     areaServed: { "@type": "Country", name: "United States" },
     serviceType: [
-      "Game Publishing",
-      "Game Distribution",
-      "Website Monetization",
-      "Advertising Distribution",
+      "Developer Platform",
+      "Content Distribution",
+      "Ad Monetization",
+      "Partner Integration",
     ],
     knowsAbout: [...SEO_KEYWORDS],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Publishing & Monetization",
+      name: "Open Platform",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Game Publishing" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Game Distribution" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Ad Monetization" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "ads.txt & Ad Integration" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Developer documentation" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Distribution" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ad monetization" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Integration support" } },
       ],
     },
   };
@@ -38,7 +38,7 @@ export function webSiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${absoluteUrl("/")}#website`,
-    name: site.brand,
+    name: `${site.brand} Open Platform`,
     url: absoluteUrl("/"),
     description: site.tagline,
     inLanguage: ["en"],
@@ -46,7 +46,7 @@ export function webSiteJsonLd() {
     potentialAction: {
       "@type": "ReadAction",
       target: absoluteUrl("/docs"),
-      name: "Read documentation",
+      name: "Read developer documentation",
     },
   };
 }

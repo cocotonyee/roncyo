@@ -21,18 +21,13 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   ...buildPageMetadata({
-    title: `${site.brand} — Publishing & Monetization Platform`,
+    title: `${site.brand} Open Platform — For Developers`,
     description: site.tagline,
     path: "/",
-    keywords: [
-      "game publishing platform",
-      "website monetization",
-      "HTML5 distribution",
-      "Roncyo",
-    ],
+    keywords: ["open platform", "developer platform", "Roncyo developers", "Roncyo"],
   }),
   title: {
-    default: `${site.brand} — Publishing & Monetization Platform`,
+    default: `${site.brand} Open Platform — For Developers`,
     template: `%s | ${site.brand}`,
   },
   icons: {

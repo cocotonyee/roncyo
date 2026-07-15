@@ -6,6 +6,7 @@ const year = new Date().getFullYear();
 
 const product = [
   { href: "/docs", label: "Documentation" },
+  { href: "/docs/getting-started", label: "Getting started" },
   { href: "/about", label: "About" },
   { href: "/support", label: "Support" },
 ] as const;
@@ -66,7 +67,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)]">
-          © {year} {site.legalName}. Publishing &amp; monetization platform.
+          © {year} {site.legalName}. Open platform for developers.
         </div>
       </div>
     </footer>

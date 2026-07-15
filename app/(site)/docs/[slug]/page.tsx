@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${doc.title} — Docs`,
     description: doc.description,
     path: `/docs/${doc.slug}`,
-    keywords: [doc.title, "Roncyo documentation", "publishing"],
+    keywords: [doc.title, "Roncyo documentation", "developer platform"],
   });
 }
 

@@ -2,30 +2,24 @@ import type { Metadata } from "next";
 import { ContentPanel, InnerPage, PageIntro } from "@/components/InnerPage";
 import { LegalUpdatedBadge } from "@/components/LegalUpdated";
 import { Prose } from "@/components/Prose";
-import { games } from "@/lib/games";
 import { LEGAL_LAST_UPDATED } from "@/lib/legal";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Privacy Policy",
-  description: `${site.brand} privacy policy — how we collect, use, and protect data across our games, website, and services.`,
+  description: `${site.brand} privacy policy — how we collect, use, and protect data across our website, apps, and related services.`,
   path: "/privacy-policy",
   keywords: ["privacy policy", "data protection", "GDPR"],
 });
 
 export default function PrivacyPolicyPage() {
-  const gameExamples =
-    games.length > 0
-      ? `${games.map((g) => g.title).join(", ")} and other titles`
-      : "our other titles";
-
   return (
     <InnerPage wide glow="indigo">
       <PageIntro
         eyebrow="Legal"
         title="Privacy Policy"
-        lead="How we collect, use, and share information across our games, apps, and websites."
+        lead="How we collect, use, and share information across our website, apps, and related services."
         tone="navy"
       />
       <ContentPanel>
@@ -37,15 +31,15 @@ export default function PrivacyPolicyPage() {
           <p>
             This Privacy Policy explains how {site.legalName} (&quot;RONCY,&quot; &quot;we,&quot;
             &quot;us,&quot; or &quot;our&quot;) collects, uses, and shares information when you use
-            our games, apps, websites, and related services, including but not limited to{" "}
-            {gameExamples} published by {site.legalName}.
+            our websites, apps, platform services, and related digital products operated by{" "}
+            {site.legalName}.
           </p>
 
           <h2>1. Information We May Collect</h2>
 
           <h3>a. Information you provide directly</h3>
           <p>
-            In many of our games, we do not require you to create an account or directly submit
+            In many of our apps and products, we do not require you to create an account or directly submit
             personal information. If you contact us, however, we may collect information such as your
             name, email address, and the contents of your message.
           </p>
@@ -74,7 +68,7 @@ export default function PrivacyPolicyPage() {
           <h2>2. How We Use Information</h2>
           <p>We may use information we collect to:</p>
           <ul>
-            <li>Provide, operate, maintain, and improve our games and services</li>
+            <li>Provide, operate, maintain, and improve our apps, platform, and services</li>
             <li>Save gameplay progress and support core functionality</li>
             <li>Analyze performance, engagement, and technical issues</li>
             <li>Fix bugs and prevent abuse or fraud</li>
@@ -118,7 +112,7 @@ export default function PrivacyPolicyPage() {
             or other industry opt-out tools where available.
           </p>
           <p>
-            If our apps or games display ads, those ads may also be contextual or personalized
+            If our apps or websites display ads, those ads may also be contextual or personalized
             depending on your device settings, region, and applicable law.
           </p>
 

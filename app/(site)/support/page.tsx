@@ -3,10 +3,10 @@ import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "Support & Partnerships",
-  description: `Contact ${site.brand} for publishing, distribution, and monetization support.`,
+  title: "Developer Support",
+  description: `Contact ${site.brand} Open Platform for onboarding, integration, and monetization support.`,
   path: "/support",
-  keywords: ["Roncyo support", "publisher support", "partnerships"],
+  keywords: ["Roncyo support", "developer support", "open platform"],
 });
 
 export default function SupportPage() {
@@ -16,11 +16,11 @@ export default function SupportPage() {
         Support
       </p>
       <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-4xl">
-        Partnerships &amp; help
+        Developer &amp; partner help
       </h1>
       <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
-        For onboarding, distribution, ads.txt, or payment questions, email us with your studio name
-        and property details.
+        For account onboarding, integration, ads.txt, or payouts, email us with your company name
+        and product details.
       </p>
       <p className="mt-6 text-lg font-semibold text-[var(--color-foreground)]">
         <a className="underline hover:text-[var(--color-accent-hover)]" href={`mailto:${site.emails.support}`}>
@@ -28,9 +28,9 @@ export default function SupportPage() {
         </a>
       </p>
       <p className="mt-8 text-sm text-[var(--color-muted)]">
-        Looking for product documentation? Start at{" "}
-        <AppLink href="/docs" className="font-medium text-[var(--color-accent-hover)] underline">
-          /docs
+        Prefer docs first?{" "}
+        <AppLink href="/docs/getting-started" className="font-medium text-[var(--color-accent-hover)] underline">
+          Getting started
         </AppLink>
         .
       </p>

@@ -6,9 +6,9 @@ import { useState } from "react";
 import { SiteLogo } from "@/components/SiteLogo";
 
 const nav = [
-  { href: "/", label: "Home" },
+  { href: "/", label: "Platform" },
   { href: "/docs", label: "Docs" },
-  { href: "/about", label: "About" },
+  { href: "/docs/getting-started", label: "Get started" },
   { href: "/support", label: "Support" },
 ] as const;
 

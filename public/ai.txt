@@ -1,27 +1,19 @@
 # Roncyo — AI crawler information
 # https://roncyo.com/ai.txt
 
-> Roncyo is a publishing and monetization platform for games and websites.
+> Roncyo Open Platform: developer documentation and partner tools for distribution and ad monetization.
 
 ## Primary resource
 
 https://roncyo.com/llms.txt
 
-## What we do
-
-Help publishers distribute games and websites and earn through advertising. This website is the platform intro and documentation hub — not a free-play game portal.
-
 ## Key pages
 
 - Home: https://roncyo.com/
 - Docs: https://roncyo.com/docs
-- About: https://roncyo.com/about
+- Getting started: https://roncyo.com/docs/getting-started
 - Support: https://roncyo.com/support
 
 ## Contact
 
 Email: support@roncyo.com
-
-## Crawling
-
-Public marketing and docs pages are indexable. API routes (/api/) are not for indexing.

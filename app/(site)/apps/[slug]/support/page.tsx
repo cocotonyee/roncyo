@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumb, ContentPanel, HeroBand, InnerPage } from "@/components/InnerPage";
 import { Prose } from "@/components/Prose";
 import { getAllSlugs, getGameBySlug } from "@/lib/games";
-import { buildPageMetadata, gameKeywords } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -15,20 +15,20 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const game = getGameBySlug(slug);
-  if (!game) return { title: "Support" };
+  const app = getGameBySlug(slug);
+  if (!app) return { title: "Support" };
   return buildPageMetadata({
-    title: `${game.title} Support — Help & FAQ`,
-    description: `Support, troubleshooting, and contact information for ${game.title} on ${site.brand}.`,
-    path: `/games/${slug}/support`,
-    keywords: [...gameKeywords(game, game.companyName ?? site.brand), "support", "FAQ"],
+    title: `${app.title} Support`,
+    description: `Support and contact for ${app.title} on ${site.brand}.`,
+    path: `/apps/${slug}/support`,
+    noIndex: true,
   });
 }
 
-export default async function GameSupportPage({ params }: Props) {
+export default async function AppSupportPage({ params }: Props) {
   const { slug } = await params;
-  const game = getGameBySlug(slug);
-  if (!game) notFound();
+  const app = getGameBySlug(slug);
+  if (!app) notFound();
 
   return (
     <InnerPage glow="ocean">
@@ -37,15 +37,15 @@ export default async function GameSupportPage({ params }: Props) {
           light
           items={[
             { href: "/support", label: "Support" },
-            { label: game.title },
+            { label: app.title },
             { label: "Support" },
           ]}
         />
         <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(1.5rem,3.5vw,2.25rem)] font-black tracking-tight text-white">
-          Support — {game.title}
+          Support — {app.title}
         </h1>
         <p className="mt-3 max-w-xl text-sm text-white/85">
-          FAQs and how to reach us for this title. Include device model and OS version in bug reports.
+          Help for this product. Include device model and OS version in bug reports.
         </p>
       </HeroBand>
 
@@ -65,13 +65,13 @@ export default async function GameSupportPage({ params }: Props) {
       <ContentPanel>
         <Prose contained={false}>
           <h2 className="!mt-0">Frequently asked questions</h2>
-          <h3>The game crashes on startup. What should I do?</h3>
+          <h3>The app crashes on startup. What should I do?</h3>
           <p>
-            Force-quit the app and restart your device. If it continues, uninstall and reinstall. If
-            the problem persists, email us with your device and OS version.
+            Force-quit and restart your device. If it continues, reinstall. If the problem persists,
+            email us with your device and OS version.
           </p>
           <h3>I lost my progress. Can it be restored?</h3>
-          <p>{game.progressNote}</p>
+          <p>{app.progressNote}</p>
           <h3>How do I request a refund?</h3>
           <p>
             Purchases through Apple are managed by Apple; purchases through Google are managed by
@@ -84,11 +84,11 @@ export default async function GameSupportPage({ params }: Props) {
             <strong>Data Deletion Request</strong>.
           </p>
           <h2>Known issues</h2>
-          <p>{game.knownIssues ?? "No known issues listed at this time."}</p>
+          <p>{app.knownIssues ?? "No known issues listed at this time."}</p>
           <h2>Report a bug</h2>
           <p>
             Email <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a> with subject
-            line: <strong>{game.title} — Bug report</strong>. Include steps to reproduce and a
+            line: <strong>{app.title} — Bug report</strong>. Include steps to reproduce and a
             screenshot if possible.
           </p>
         </Prose>

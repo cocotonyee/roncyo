@@ -1,35 +1,29 @@
 # Roncyo (roncyo.com)
 
-> Roncyo is a publishing and monetization platform for games and websites. This site is introduction and partner documentation — not a public free-play game catalog.
-
-## What Roncyo does
-
-Publish games and sites, distribute inventory with partners, and monetize with advertising (including ads.txt / authorized demand such as Google AdSense on web properties).
+> Roncyo Open Platform — a developer-facing platform to build, distribute, and monetize digital products with advertising. Public site = introduction + docs (similar role to a “for developers” portal).
 
 ## What this site is
 
-- Product introduction: https://roncyo.com/
-- Documentation: https://roncyo.com/docs
+- Open Platform home: https://roncyo.com/
+- Developer docs: https://roncyo.com/docs
+- Getting started: https://roncyo.com/docs/getting-started
 - About: https://roncyo.com/about
-- Partnerships / support: https://roncyo.com/support
+- Support: https://roncyo.com/support
 
 ## What this site is not
 
-Roncyo.com is not a consumer arcade or game directory. Players do not browse or trial a public game catalog here.
+Not a consumer entertainment feed, catalog, or trial arcade.
 
 ## Documentation
 
 | Doc | URL |
 |-----|-----|
+| Getting started | https://roncyo.com/docs/getting-started |
 | Platform overview | https://roncyo.com/docs/overview |
-| Publishing & distribution | https://roncyo.com/docs/publishing |
-| Ads & revenue | https://roncyo.com/docs/monetization |
-| ads.txt setup | https://roncyo.com/docs/ads-txt |
-| Technical integration | https://roncyo.com/docs/integration |
-
-## Compliance pages (store / Mini App)
-
-Per-title privacy and support URLs may exist under `/games/[slug]/privacy` and `/games/[slug]/support` when required by stores — these are not a play catalog.
+| Distribution | https://roncyo.com/docs/distribution |
+| Monetization | https://roncyo.com/docs/monetization |
+| ads.txt | https://roncyo.com/docs/ads-txt |
+| Integration | https://roncyo.com/docs/integration |
 
 ## Legal
 
@@ -42,4 +36,4 @@ Per-title privacy and support URLs may exist under `/games/[slug]/privacy` and `
 
 Email: support@roncyo.com
 
-Related AI file: https://roncyo.com/ai.txt
+Related: https://roncyo.com/ai.txt
