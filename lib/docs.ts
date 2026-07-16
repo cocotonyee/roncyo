@@ -116,8 +116,8 @@ export const docPages: DocPage[] = [
   },
   {
     slug: "ads-txt",
-    title: "ads.txt",
-    description: "Authorize sellers of digital inventory on your domain.",
+    title: "ads.txt & app-ads.txt",
+    description: "Authorize sellers of digital inventory on your domain (web and apps).",
     sections: [
       {
         heading: "What ads.txt is",
@@ -127,17 +127,25 @@ export const docPages: DocPage[] = [
         ],
       },
       {
-        heading: "On roncyo.com",
+        heading: "On roncyo.com (web)",
         body: [
-          "Live file: https://roncyo.com/ads.txt — currently authorizes Google for pub-7172279368890576.",
+          "Live file: https://roncyo.com/ads.txt — authorizes Google AdSense for pub-7172279368890576.",
           "If inventory lives on another domain under a Roncyo deal, we send the exact lines to publish.",
+        ],
+      },
+      {
+        heading: "app-ads.txt (mobile apps)",
+        body: [
+          "For AdMob / store apps, publish https://roncyo.com/app-ads.txt on the same developer website listed on Google Play or the App Store.",
+          "Live file currently authorizes Google for pub-2087019693829766 (DIRECT).",
+          "After deploy, wait at least 24 hours for AdMob to crawl, then check status in the AdMob console.",
         ],
       },
       {
         heading: "Verification",
         body: [
-          "After deploy, open /ads.txt and confirm lines match our instructions.",
-          "Networks may take hours to re-crawl; AdSense status updates are often delayed.",
+          "After deploy, open /ads.txt and /app-ads.txt in a browser and confirm lines match our instructions.",
+          "Networks may take hours to re-crawl; AdSense and AdMob status updates are often delayed.",
         ],
       },
     ],
