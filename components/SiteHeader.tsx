@@ -6,10 +6,10 @@ import { useState } from "react";
 import { SiteLogo } from "@/components/SiteLogo";
 
 const nav = [
-  { href: "/", label: "Platform" },
-  { href: "/docs", label: "Docs" },
-  { href: "/docs/getting-started", label: "Get started" },
-  { href: "/support", label: "Support" },
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
@@ -50,10 +50,10 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <AppLink
-            href="/docs"
+            href="/contact"
             className="hidden rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-[13px] font-semibold text-black transition hover:bg-[var(--color-accent-hover)] sm:inline-flex"
           >
-            Docs
+            Start a project
           </AppLink>
           <button
             type="button"
@@ -81,6 +81,15 @@ export function SiteHeader() {
                 </AppLink>
               </li>
             ))}
+            <li>
+              <AppLink
+                href="/contact"
+                className="mt-2 block rounded-xl bg-[var(--color-accent)] px-3 py-2.5 text-center text-sm font-semibold text-black"
+                onClick={() => setOpen(false)}
+              >
+                Start a project
+              </AppLink>
+            </li>
           </ul>
         </nav>
       ) : null}

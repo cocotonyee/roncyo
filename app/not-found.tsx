@@ -1,5 +1,5 @@
 import { AppLink } from "@/components/AppLink";
-import { AutomationButton } from "@/components/automation/Button";
+import { CtaButton } from "@/components/CtaButton";
 
 export default function NotFound() {
   return (
@@ -14,7 +14,7 @@ export default function NotFound() {
         The page you requested does not exist or has moved.
       </p>
       <div className="mt-8 flex gap-3">
-        <AutomationButton href="/">Back home</AutomationButton>
+        <CtaButton href="/">Back home</CtaButton>
         <AppLink
           href="/contact"
           className="inline-flex items-center justify-center rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-foreground)]"

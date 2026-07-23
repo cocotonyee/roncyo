@@ -4,10 +4,10 @@ import { site } from "@/lib/site";
 
 const year = new Date().getFullYear();
 
-const product = [
-  { href: "/docs", label: "Documentation" },
-  { href: "/docs/getting-started", label: "Getting started" },
+const company = [
+  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
   { href: "/support", label: "Support" },
 ] as const;
 
@@ -35,11 +35,11 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <nav aria-label="Product" className="flex flex-col gap-2.5">
+          <nav aria-label="Company" className="flex flex-col gap-2.5">
             <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-foreground)] uppercase">
-              Product
+              Company
             </p>
-            {product.map((item) => (
+            {company.map((item) => (
               <AppLink
                 key={item.href}
                 href={item.href}
@@ -67,7 +67,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted)]">
-          © {year} {site.legalName}. Open platform for developers.
+          © {year} {site.legalName}. Websites · Games · Automation · SaaS.
         </div>
       </div>
     </footer>

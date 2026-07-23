@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "build:static": "node scripts/build-static.mjs",
-    "lint": "next lint",
-    "play:base": "node scripts/ensure-play-base.mjs",
-    "import:yxk": "node scripts/import-yxk-games.mjs"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "^15.1.0",

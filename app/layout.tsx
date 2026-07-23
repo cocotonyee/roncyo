@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope, Syne } from "next/font/google";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, site } from "@/lib/site";
 import "./globals.css";
 
-const display = Inter({
+const display = Syne({
   subsets: ["latin"],
   weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Inter({
+const body = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   variable: "--font-body",
   display: "swap",
 });
@@ -21,13 +21,12 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   ...buildPageMetadata({
-    title: `${site.brand} Open Platform — For Developers`,
+    title: `${site.brand} — Websites, Games, Automation & SaaS`,
     description: site.tagline,
     path: "/",
-    keywords: ["open platform", "developer platform", "Roncyo developers", "Roncyo"],
   }),
   title: {
-    default: `${site.brand} Open Platform — For Developers`,
+    default: `${site.brand} — Websites, Games, Automation & SaaS`,
     template: `%s | ${site.brand}`,
   },
   icons: {
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${display.variable} ${body.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site information" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI crawler information" />

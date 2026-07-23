@@ -1,7 +1,7 @@
 # Roncyo — AI crawler information
 # https://roncyo.com/ai.txt
 
-> Roncyo Open Platform: developer documentation and partner tools for distribution and ad monetization.
+> Roncyo builds websites, games, AI automation, Ronfax, and SaaS products.
 
 ## Primary resource
 
@@ -10,9 +10,8 @@ https://roncyo.com/llms.txt
 ## Key pages
 
 - Home: https://roncyo.com/
-- Docs: https://roncyo.com/docs
-- Getting started: https://roncyo.com/docs/getting-started
-- Support: https://roncyo.com/support
+- Services: https://roncyo.com/services
+- Contact: https://roncyo.com/contact
 
 ## Contact
 

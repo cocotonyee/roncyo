@@ -16,26 +16,24 @@ const nextConfig: NextConfig = {
       },
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/terms", destination: "/terms-of-service", permanent: true },
-      /* Old catalog / play routes */
-      { source: "/games", destination: "/", permanent: false },
-      { source: "/categories", destination: "/docs", permanent: false },
-      { source: "/categories/:path*", destination: "/docs", permanent: false },
+      /* Legacy portal / play / docs */
+      { source: "/games", destination: "/services", permanent: false },
+      { source: "/categories", destination: "/services", permanent: false },
+      { source: "/categories/:path*", destination: "/services", permanent: false },
       { source: "/play", destination: "/", permanent: false },
       { source: "/play/:path*", destination: "/", permanent: false },
-      { source: "/docs/publishing", destination: "/docs/distribution", permanent: true },
-      { source: "/apps", destination: "/docs", permanent: false },
-      /* Legacy B2B → Open Platform */
-      { source: "/services", destination: "/", permanent: false },
-      { source: "/services/:path*", destination: "/", permanent: false },
-      { source: "/industries", destination: "/", permanent: false },
-      { source: "/industries/:path*", destination: "/", permanent: false },
-      { source: "/case-studies", destination: "/", permanent: false },
-      { source: "/case-studies/:path*", destination: "/", permanent: false },
+      { source: "/docs", destination: "/services", permanent: false },
+      { source: "/docs/:path*", destination: "/services", permanent: false },
+      { source: "/apps", destination: "/services", permanent: false },
+      /* Legacy B2B SEO hubs */
+      { source: "/industries", destination: "/services", permanent: false },
+      { source: "/industries/:path*", destination: "/services", permanent: false },
+      { source: "/case-studies", destination: "/about", permanent: false },
+      { source: "/case-studies/:path*", destination: "/about", permanent: false },
       { source: "/locations", destination: "/", permanent: false },
       { source: "/locations/:path*", destination: "/", permanent: false },
-      { source: "/contact", destination: "/support", permanent: false },
       { source: "/press", destination: "/about", permanent: true },
-      /* Aliases first, then generic /games → /apps */
+      /* Compliance aliases */
       { source: "/games/kitty-merge", destination: "/apps/mochi-cats/privacy", permanent: true },
       {
         source: "/games/kitty-merge/support",

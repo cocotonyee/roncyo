@@ -1,174 +1,38 @@
 export type GamePlatform = "ios" | "android" | "web" | "telegram" | "tiktok";
 
+/** Minimal app record for store compliance pages (privacy / support). */
 export type Game = {
   slug: string;
   title: string;
   genre: string;
   shortDescription: string;
-  /** Publisher / client that owns this app listing */
   publisherId: string;
-  /** Folder under `public/store/` — when set, logo/top/screenshots load from there */
-  storeDir?: string;
-  /** From store config; overrides publisher display name when set */
   companyName?: string;
-  companyCountry?: string;
-  companyDescription?: string;
   companyEmail?: string;
-  companyWebsite?: string;
-  logoUrl?: string;
-  topBannerUrl?: string;
-  screenshots?: string[];
-  /** Full-bleed hero (`/public/...` or `https://...`) */
-  heroImage: string;
-  /** Card accent on homepage */
-  cardColor: string;
-  cardEmoji: string;
-  /** App store metadata */
-  version?: string;
   lastUpdated?: string;
-  releaseDate?: string;
-  contentRating?: string;
   categories?: string[];
-  languages?: string[];
-  size?: string;
-  /** Optional store-style rating (omit if not available) */
-  rating?: number;
-  reviewCount?: number;
-  badges?: ("new" | "featured" | "editor-choice")[];
-  about: string;
-  story?: string;
-  features: string[];
-  howToPlay?: string[];
   platforms: GamePlatform[];
-  /**
-   * Self-hosted Web build under `public/play/[slug]/` (served at `/play/[slug]/`).
-   * Drop your game's index.html + assets there to play on `/games/[slug]`.
-   */
-  localPlayPath?: string;
-  /** Primary “play” CTA; if omitted, uses local → embed → store URLs */
-  playUrl?: string;
-  playButtonLabel?: string;
-  /** yxk.jyb99999.cn game id for trial token API */
-  yxkGameId?: number;
-  trialLandscape?: boolean;
-  appStoreUrl?: string;
-  playStoreUrl?: string;
-  webUrl?: string;
-  /** External embed URL (itch.io, etc.) — used if no localPlayPath */
-  embedUrl?: string;
-  /** Telegram bot link, e.g. https://t.me/YourBot */
-  telegramUrl?: string;
-  /**
-   * Static Mini App files under `public/play/[slug]/` — for BotFather only.
-   * Website shows “Play in Telegram”, not an iframe.
-   */
-  telegramMiniApp?: boolean;
-  /** Defaults to `/play/[slug]/` */
-  telegramMiniAppPath?: string;
-  tiktokUrl?: string;
   sdks: string[];
   collectsPersonalData: boolean;
   childrenTargeted: boolean;
   progressNote: string;
   knownIssues?: string;
+  heroImage: string;
+  cardColor: string;
+  cardEmoji: string;
+  about: string;
+  features: string[];
 };
 
 import { buildGameFromStore } from "@/lib/store/build-game";
 import { storeListings } from "@/lib/store/listings";
 
-export function resolvePlayCTA(game: Game): { href: string; label: string } | null {
-  if (game.telegramMiniApp && game.telegramUrl) {
-    return {
-      href: game.telegramUrl,
-      label: game.playButtonLabel ?? "Open in Telegram",
-    };
-  }
-  if (game.playUrl) {
-    return {
-      href: game.playUrl,
-      label: game.playButtonLabel ?? "Download",
-    };
-  }
-  if (game.playStoreUrl)
-    return {
-      href: game.playStoreUrl,
-      label: game.playButtonLabel ?? "Get on Google Play",
-    };
-  if (game.appStoreUrl)
-    return { href: game.appStoreUrl, label: game.playButtonLabel ?? "Download on App Store" };
-  if (game.telegramUrl)
-    return { href: game.telegramUrl, label: game.playButtonLabel ?? "Open in Telegram" };
-  if (game.webUrl) return { href: game.webUrl, label: game.playButtonLabel ?? "Visit website" };
-  if (game.tiktokUrl)
-    return { href: game.tiktokUrl, label: game.playButtonLabel ?? "Open on TikTok" };
-  return null;
-}
-
 export const games: Game[] = storeListings.map(buildGameFromStore);
-
-/** Homepage featured game cards (live titles only) */
-export const featuredGameCards = games.map((g) => ({
-  slug: g.slug,
-  title: g.title,
-  genre: g.genre,
-  color: g.cardColor,
-  emoji: g.cardEmoji,
-  href: `/games/${g.slug}` as string,
-}));
 
 export function getGameBySlug(slug: string) {
   return games.find((g) => g.slug === slug);
 }
 
-/** Company name shown on cards and detail pages — store config overrides publisher. */
-export function getCompanyDisplay(game: Game) {
-  if (game.companyName) {
-    return { brandName: game.companyName };
-  }
-  return null;
-}
-
 export function getAllSlugs() {
   return games.map((g) => g.slug);
-}
-
-export function getGamesByPublisher(publisherId: string) {
-  return games.filter((g) => g.publisherId === publisherId);
-}
-
-export function getRelatedGames(slug: string, limit = 4) {
-  const game = getGameBySlug(slug);
-  if (!game) return [];
-  const others = games.filter((g) => g.slug !== slug);
-  const sameGenre = others.filter((g) => g.genre === game.genre);
-  const sharedCategory = others.filter(
-    (g) => g.slug !== slug && game.categories?.some((c) => g.categories?.includes(c)),
-  );
-  const pool = [...sameGenre, ...sharedCategory, ...others];
-  const seen = new Set<string>();
-  return pool.filter((g) => {
-    if (seen.has(g.slug)) return false;
-    seen.add(g.slug);
-    return true;
-  }).slice(0, limit);
-}
-
-export function getAllCategories() {
-  const counts = new Map<string, number>();
-  for (const game of games) {
-    for (const category of game.categories ?? [game.genre]) {
-      counts.set(category, (counts.get(category) ?? 0) + 1);
-    }
-  }
-  return Array.from(counts.entries())
-    .map(([name, count]) => ({ name, count, slug: name.toLowerCase().replace(/\s+/g, "-") }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-}
-
-export function getGamesByCategory(categorySlug: string) {
-  return games.filter((game) =>
-    (game.categories ?? [game.genre]).some(
-      (category) => category.toLowerCase().replace(/\s+/g, "-") === categorySlug,
-    ),
-  );
 }

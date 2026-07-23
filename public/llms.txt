@@ -1,36 +1,22 @@
 # Roncyo (roncyo.com)
 
-> Roncyo Open Platform — a developer-facing platform to build, distribute, and monetize digital products with advertising. Public site = introduction + docs (similar role to a “for developers” portal).
+> Roncyo (RONCY LLC) is a product studio: custom websites, game services, AI automation, Ronfax cloud fax, and SaaS tools.
 
-## What this site is
+## What we offer
 
-- Open Platform home: https://roncyo.com/
-- Developer docs: https://roncyo.com/docs
-- Getting started: https://roncyo.com/docs/getting-started
+- Websites — brand and product sites
+- Game services — custom games and publishing support
+- AI automation — practical workflow automation
+- Ronfax — cloud fax SaaS
+- SaaS tools — custom software products
+
+## Key pages
+
+- Home: https://roncyo.com/
+- Services: https://roncyo.com/services
 - About: https://roncyo.com/about
+- Contact (commission / order): https://roncyo.com/contact
 - Support: https://roncyo.com/support
-
-## What this site is not
-
-Not a consumer entertainment feed, catalog, or trial arcade.
-
-## Documentation
-
-| Doc | URL |
-|-----|-----|
-| Getting started | https://roncyo.com/docs/getting-started |
-| Platform overview | https://roncyo.com/docs/overview |
-| Distribution | https://roncyo.com/docs/distribution |
-| Monetization | https://roncyo.com/docs/monetization |
-| ads.txt | https://roncyo.com/docs/ads-txt |
-| Integration | https://roncyo.com/docs/integration |
-
-## Legal
-
-- Privacy: https://roncyo.com/privacy-policy
-- Terms: https://roncyo.com/terms-of-service
-- Cookie policy: https://roncyo.com/cookie-policy
-- Data deletion: https://roncyo.com/data-deletion
 
 ## Contact
 

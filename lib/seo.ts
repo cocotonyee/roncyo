@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
 import type { Game } from "@/lib/games";
-import type { FaqItem } from "@/lib/faqs";
 import { site, absoluteUrl } from "@/lib/site";
 
-/** Core SEO keywords for the Open Platform. */
 export const SEO_KEYWORDS = [
-  "open platform",
-  "developer platform",
-  "developer documentation",
-  "content distribution",
-  "ad monetization",
-  "ads.txt",
-  "partner platform",
   "Roncyo",
+  "custom websites",
+  "custom games",
+  "AI automation",
+  "Ronfax",
+  "SaaS development",
+  "software studio",
 ] as const;
 
 export const DEFAULT_KEYWORDS = [site.brand, ...SEO_KEYWORDS] as const;
@@ -45,8 +42,6 @@ export function buildPageMetadata(input: PageSeoInput): Metadata {
     alternates: {
       canonical: url,
       languages: {
-        "en-AU": url,
-        "en-NZ": url,
         en: url,
       },
     },
@@ -59,8 +54,7 @@ export function buildPageMetadata(input: PageSeoInput): Metadata {
         },
     openGraph: {
       type: input.type ?? "website",
-      locale: "en_AU",
-      alternateLocale: ["en_NZ", "en_US"],
+      locale: "en_US",
       siteName: site.brand,
       title: input.title,
       description: input.description,
@@ -78,38 +72,13 @@ export function buildPageMetadata(input: PageSeoInput): Metadata {
   };
 }
 
-export function faqJsonLd(faqs: FaqItem[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
-}
-
-export function itemListJsonLd(items: { name: string; url: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      url: item.url,
-    })),
-  };
-}
-
 export function contactPageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: `Contact ${site.brand}`,
     url: absoluteUrl("/contact"),
-    description: "Book a free automation consultation for your business.",
+    description: `Contact ${site.brand} for custom websites, games, AI automation, Ronfax, and SaaS.`,
     mainEntity: {
       "@type": "Organization",
       "@id": `${absoluteUrl("/")}#organization`,
@@ -117,7 +86,6 @@ export function contactPageJsonLd() {
         "@type": "ContactPoint",
         contactType: "sales",
         email: site.emails.hello,
-        areaServed: ["AU", "NZ"],
         availableLanguage: "English",
       },
     },
@@ -126,14 +94,6 @@ export function contactPageJsonLd() {
 
 export function gameKeywords(game: Game, publisherName: string) {
   return [game.title, game.genre, ...(game.categories ?? []), publisherName, "privacy policy"];
-}
-
-export function gameSeoTitle(game: Game) {
-  return `${game.title} Privacy & Support`;
-}
-
-export function gameSeoDescription(game: Game, publisherName: string) {
-  return `Privacy policy and support for ${game.title}, published by ${publisherName} on ${site.brand}.`;
 }
 
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
@@ -169,14 +129,14 @@ export function organizationJsonLd() {
   };
 }
 
-/** Static marketing and legal routes for sitemap generation. */
 export const STATIC_SITEMAP_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "weekly" as const },
-  { path: "/docs", priority: 0.95, changeFrequency: "weekly" as const },
+  { path: "/services", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/support", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/privacy-policy", priority: 0.5, changeFrequency: "yearly" as const },
-  { path: "/terms-of-service", priority: 0.5, changeFrequency: "yearly" as const },
-  { path: "/cookie-policy", priority: 0.4, changeFrequency: "yearly" as const },
-  { path: "/data-deletion", priority: 0.4, changeFrequency: "yearly" as const },
+  { path: "/contact", priority: 0.85, changeFrequency: "monthly" as const },
+  { path: "/support", priority: 0.5, changeFrequency: "monthly" as const },
+  { path: "/privacy-policy", priority: 0.4, changeFrequency: "yearly" as const },
+  { path: "/terms-of-service", priority: 0.4, changeFrequency: "yearly" as const },
+  { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" as const },
+  { path: "/data-deletion", priority: 0.3, changeFrequency: "yearly" as const },
 ];
