@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { AdSenseBanner } from "@/components/AdSenseBanner";
-import { AdSenseScript } from "@/components/AdSenseScript";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { organizationJsonLd } from "@/lib/seo";
@@ -18,7 +16,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      <AdSenseScript />
       {structuredData.map((schema) => (
         <script
           key={String(schema["@id"] ?? schema["@type"])}
@@ -29,7 +26,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <SiteHeader />
       <div className="flex min-h-0 flex-1 flex-col pt-16">
         <main className="flex-1">{children}</main>
-        <AdSenseBanner />
         {site.showFooter ? <SiteFooter /> : null}
       </div>
     </>

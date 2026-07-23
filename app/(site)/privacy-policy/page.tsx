@@ -79,21 +79,19 @@ export default function PrivacyPolicyPage() {
 
           <h2>3. Advertising and Analytics</h2>
           <p>
-            Our services may use third-party analytics tools and advertising partners. These third
-            parties may collect information as described in their own privacy policies, including
-            device identifiers, usage information, cookies, and ad performance data, where permitted
-            by law and platform rules.
+            Our apps and related services may use third-party analytics tools and advertising
+            partners (for example in mobile apps). These third parties may collect information as
+            described in their own privacy policies, including device identifiers, usage information,
+            cookies, and ad performance data, where permitted by law and platform rules.
           </p>
           <p>
-            <strong>Google AdSense on this website.</strong> Our website ({site.domain}) uses Google
-            AdSense to display advertisements. Google and its partners may use cookies or similar
-            technologies to serve ads based on your prior visits to this website or other websites,
-            and to measure how ads perform. This may include personalized ads depending on your
-            settings, region, and applicable law.
+            This company website ({site.domain}) does not currently display third-party advertising
+            networks such as Google AdSense.
           </p>
           <p>
-            You can learn more about how Google uses information from sites and apps that use its
-            services at{" "}
+            If our apps display ads, those ads may be contextual or personalized depending on your
+            device settings, region, and applicable law. You can learn more about how Google uses
+            information from sites and apps that use its services at{" "}
             <a
               href="https://policies.google.com/technologies/partner-sites"
               rel="noopener noreferrer"
@@ -101,19 +99,7 @@ export default function PrivacyPolicyPage() {
             >
               https://policies.google.com/technologies/partner-sites
             </a>
-            , and review Google&apos;s Privacy Policy at{" "}
-            <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">
-              https://policies.google.com/privacy
-            </a>
-            . You may opt out of personalized advertising via{" "}
-            <a href="https://adssettings.google.com" rel="noopener noreferrer" target="_blank">
-              Google Ads Settings
-            </a>{" "}
-            or other industry opt-out tools where available.
-          </p>
-          <p>
-            If our apps or websites display ads, those ads may also be contextual or personalized
-            depending on your device settings, region, and applicable law.
+            .
           </p>
 
           <h2>4. Sharing of Information</h2>

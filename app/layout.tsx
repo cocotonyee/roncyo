@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   },
   other: {
     "ai-content": absoluteUrl("/llms.txt"),
-    "google-adsense-account": "ca-pub-7172279368890576",
   },
 };
 
