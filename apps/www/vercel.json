@@ -1,4 +1,5 @@
 {
+  "installCommand": "npm install --no-workspaces --legacy-peer-deps",
   "redirects": [
     {
       "source": "/terms",
