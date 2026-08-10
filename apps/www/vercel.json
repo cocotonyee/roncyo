@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/terms",
+      "destination": "/terms-of-service",
+      "permanent": true
+    },
+    {
+      "source": "/journal",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/journal/:slug",
+      "destination": "/blog/:slug",
+      "permanent": true
+    }
+  ]
+}

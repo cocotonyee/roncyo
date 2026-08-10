@@ -1,0 +1,17 @@
+# Domain enforcement — GoShip Site contracts
+
+## Locked (do not rewrite)
+- `lib/blog.ts` — BlogPost schema, MD↔seo_documents merge, Hub contract
+- SEO surfaces that call `@goship/core`: `app/sitemap.ts`, `app/robots.ts`, `app/llms.txt/route.ts`
+- Plugin flags: `config/plugins.ts`
+
+## Allowed (Roncyo skin)
+- `components/blog/*` — layout, typography, classNames
+- Marketing pages: `/`, `/products`, `/labs`, `/about`, `/contact`
+- Legal: `/privacy-policy`, `/apps/*/privacy|support`
+
+## Rules
+- Import auth / billing / telemetry / SEO builders from `@goship/core` — do not fork
+- Upgrade SDK via `npm run pack:goship` (local tarball), not by copying source into this repo
+- Hub SEO writes `seo_documents`; `content/blog/*.md` is seed / offline fallback
+- Do not invent a second CMS or frontmatter parser

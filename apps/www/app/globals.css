@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+}
+
+:root {
+  /* Cold monochrome + single emerald accent (locked) */
+  --bg: #fafafa;
+  --fg: #0a0a0a;
+  --muted: #737373;
+  --border: #e5e5e5;
+  --surface: #f4f4f5;
+  --accent: #047857;
+  --ink: #18181b;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  @apply min-h-dvh bg-[var(--color-bg)] text-[var(--color-fg)] antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.prose-legal h2 {
+  @apply mt-10 mb-3 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--color-fg)];
+}
+
+.prose-legal h3 {
+  @apply mt-6 mb-2 text-base font-semibold text-[var(--color-fg)];
+}
+
+.prose-legal p,
+.prose-legal li {
+  @apply text-[15px] leading-relaxed text-[var(--color-muted)];
+}
+
+.prose-legal ul {
+  @apply my-3 list-disc space-y-2 pl-5;
+}
+
+.prose-legal a {
+  @apply text-[var(--color-fg)] underline underline-offset-4 transition hover:text-[var(--color-accent)];
+}
+
+.prose-legal strong {
+  @apply font-semibold text-[var(--color-fg)];
+}
+
+.prose-article {
+  @apply text-[17px] leading-[1.75] text-[var(--color-fg)];
+}
+
+.prose-article > * + * {
+  @apply mt-5;
+}
+
+.prose-article h2 {
+  @apply mt-12 mb-4 scroll-mt-28 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[var(--color-fg)];
+}
+
+.prose-article h3 {
+  @apply mt-8 mb-3 scroll-mt-28 font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight text-[var(--color-fg)];
+}
+
+.prose-article p,
+.prose-article li {
+  @apply text-[17px] leading-[1.75] text-[var(--color-muted)];
+}
+
+.prose-article ul,
+.prose-article ol {
+  @apply my-5 space-y-2 pl-6;
+}
+
+.prose-article ul {
+  @apply list-disc;
+}
+
+.prose-article ol {
+  @apply list-decimal;
+}
+
+.prose-article a {
+  @apply text-[var(--color-fg)] underline underline-offset-4 transition hover:text-[var(--color-accent)];
+}
+
+.prose-article strong {
+  @apply font-semibold text-[var(--color-fg)];
+}
+
+.prose-article blockquote {
+  @apply border-l-2 border-[var(--color-accent)] pl-5 text-[var(--color-fg)];
+}
+
+.prose-article code {
+  @apply rounded-sm bg-[var(--color-surface)] px-1.5 py-0.5 text-[0.9em] text-[var(--color-fg)];
+}
+
+.prose-article pre {
+  @apply overflow-x-auto border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm;
+}
+
+.prose-article pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose-article img {
+  @apply my-8 w-full border border-[var(--color-border)];
+}
+
+/* DestCard Soul TCG demo (adapted from Magic SoulTcgCard) */
+.dc-holo {
+  perspective: 1100px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dc-flip__stage {
+  width: 100%;
+  aspect-ratio: 1.586 / 1;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.dc-flip__stage--hero {
+  max-width: 420px;
+  margin-inline: auto;
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.35));
+}
+
+.dc-flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.dc-flip__inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.dc-flip__side {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(1px);
+  border-radius: 12px;
+}
+
+.dc-flip__side--back {
+  transform: rotateY(180deg) translateZ(1px);
+}
+
+.dc-holo-foil {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  border-radius: inherit;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dc-holo-foil__metal,
+.dc-holo-foil__glare,
+.dc-holo-foil__sparkle {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.dc-holo-foil__metal {
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 28%,
+    rgba(232, 200, 114, 0.1) 48%,
+    transparent 68%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 220% 220%;
+  animation: dc-holo-metal-drift 7s ease-in-out infinite alternate;
+}
+
+.dc-holo-foil__glare {
+  opacity: 0.42;
+  mix-blend-mode: soft-light;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.04) 46%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 248, 230, 0.1) 54%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  animation: dc-holo-lacquer-sweep 4.2s ease-in-out infinite;
+}
+
+.dc-holo-foil__sparkle {
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(1.2px 1.2px at 18% 22%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 42% 58%, rgba(255, 248, 220, 0.55), transparent),
+    radial-gradient(1.2px 1.2px at 68% 30%, rgba(255, 255, 255, 0.65), transparent);
+  animation: dc-holo-sparkle-pulse 4.2s ease-in-out infinite;
+}
+
+.dc-holo-foil--soft .dc-holo-foil__metal {
+  opacity: 0.12;
+}
+
+.dc-holo-foil--soft .dc-holo-foil__glare {
+  opacity: 0.26;
+}
+
+@keyframes dc-holo-metal-drift {
+  0% {
+    background-position: 12% 28%;
+  }
+  100% {
+    background-position: 88% 72%;
+  }
+}
+
+@keyframes dc-holo-lacquer-sweep {
+  0% {
+    background-position: 130% 0;
+  }
+  42%,
+  100% {
+    background-position: -30% 0;
+  }
+}
+
+@keyframes dc-holo-sparkle-pulse {
+  0%,
+  55%,
+  100% {
+    opacity: 0.1;
+  }
+  22%,
+  38% {
+    opacity: 0.28;
+  }
+}
+
+.dc-bank {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  padding: 0.7rem 0.85rem 0.75rem;
+  gap: 0.25rem;
+}
+
+.dc-bank--back {
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.4rem;
+}
+
+.dc-bank__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.dc-bank__hero {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  aspect-ratio: 1 / 1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dc-bank__glow {
+  position: absolute;
+  inset: 16%;
+  border-radius: 50%;
+  filter: blur(16px);
+  opacity: 0.85;
+}
+
+.dc-bank__burst {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.dc-bank__mid {
+  display: grid;
+  align-content: end;
+  min-height: 0;
+}
+
+.dc-bank__role {
+  margin: 0;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(0.7rem, 2.4vw, 0.85rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.dc-bank__role--solid {
+  background-image: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  color: inherit;
+}
+
+.dc-back-cores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.4rem 0.1rem;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.dc-back-core {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  text-align: center;
+}
+
+.dc-back-core__l {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dc-back-core__n {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.dc-back-quote {
+  margin: 0;
+  padding: 0 0.4rem;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(0.72rem, 2.6vw, 0.88rem);
+  font-style: italic;
+  line-height: 1.4;
+  text-align: center;
+  align-self: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dc-flip__inner {
+    transition: none;
+  }
+
+  .dc-holo-foil__metal,
+  .dc-holo-foil__glare,
+  .dc-holo-foil__sparkle {
+    animation: none !important;
+  }
+}
