@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Outfit } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main className="flex-1 pt-16">{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
