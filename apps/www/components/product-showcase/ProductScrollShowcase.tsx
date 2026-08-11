@@ -49,7 +49,7 @@ function buildItems(products: Product[]): ShowcaseItem[] {
         product,
         device: "browser",
         url: "app.ronfax.com/send",
-        detail: "Upload, confirm, and watch delivery complete in one pass.",
+        detail: "Enter email, upload a PDF, and send in one pass.",
         demo: <RonFaxBrowserDemo />,
       };
     }

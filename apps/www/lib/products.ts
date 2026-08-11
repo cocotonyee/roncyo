@@ -66,6 +66,7 @@ export const products: Product[] = [
     href: "https://play.google.com/store/apps/details?id=com.roncyo.mochicats",
     category: "Games",
     featured: false,
+    image: "/images/product-mochi-cats.jpg",
   },
   {
     slug: "cozy-cat",
@@ -80,6 +81,7 @@ export const products: Product[] = [
     href: "https://play.google.com/store/apps/details?id=com.roncyo.cozycat",
     category: "Games",
     featured: false,
+    image: "/images/product-cozy-cat.jpg",
   },
 ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { CtaButton } from "@/components/CtaButton";
-import { DestCardPhoneDemo } from "@/components/product-showcase/DestCardSoulDemo";
+import { HeroWebDemo } from "@/components/product-showcase/HeroWebDemo";
 import { site } from "@/lib/site";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
@@ -22,10 +22,7 @@ export function HomeHero() {
       ref={ref}
       className="relative min-h-[100dvh] overflow-hidden bg-[var(--color-bg)] text-[var(--color-fg)]"
     >
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden
-      >
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_42%,rgba(4,120,87,0.1),transparent_48%),radial-gradient(ellipse_at_12%_88%,rgba(10,10,10,0.04),transparent_40%),linear-gradient(180deg,#f7f7f8_0%,#fafafa_55%,#f4f4f5_100%)]" />
         <div
           className="absolute inset-0 opacity-[0.28]"
@@ -38,7 +35,7 @@ export function HomeHero() {
         <div className="absolute inset-x-0 bottom-0 h-px bg-[var(--color-border)]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-10 px-5 pb-16 pt-28 sm:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8 lg:px-12 lg:pb-20 lg:pt-24">
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-10 px-5 pb-16 pt-28 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10 lg:px-12 lg:pb-20 lg:pt-24">
         <motion.div
           className="max-w-xl"
           style={reduce ? undefined : { y: contentY }}
@@ -105,11 +102,11 @@ export function HomeHero() {
           transition={{ type: "spring", stiffness: 70, damping: 18, delay: 0.18 }}
         >
           <div
-            className="pointer-events-none absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(4,120,87,0.16),transparent_68%)] blur-2xl"
+            className="pointer-events-none absolute inset-[8%] rounded-full bg-[radial-gradient(circle,rgba(4,120,87,0.14),transparent_68%)] blur-2xl"
             aria-hidden
           />
-          <div className="relative w-full max-w-[420px]">
-            <DestCardPhoneDemo />
+          <div className="relative w-full max-w-[540px]">
+            <HeroWebDemo />
           </div>
         </motion.div>
       </div>
