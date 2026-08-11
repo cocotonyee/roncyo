@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { getSiteProfile } from "@goship/core";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BlogCard, BlogFilters, BlogPagination } from "@/components/blog";
 import { blogHref, queryBlogPosts, type BlogSort } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -47,12 +47,12 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
 
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
-      <p className="text-xs text-[var(--color-muted)]">
-        <Link href="/" className="hover:text-[var(--color-fg)]">
-          Home
-        </Link>{" "}
-        / Journal
-      </p>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Journal", href: "/blog" },
+        ]}
+      />
       <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tighter text-[var(--color-fg)] sm:text-5xl lg:text-6xl">
         {profile?.name ? `${profile.name} Journal` : "Journal"}
       </h1>

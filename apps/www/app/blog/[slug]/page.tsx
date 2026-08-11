@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   buildJsonLdScript,
   buildMetadata,
   getSiteProfile,
 } from "@goship/core";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import {
   BlogConvertFloat,
   BlogConvertRail,
@@ -74,12 +74,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         />
       ) : null}
 
-      <Link
-        href="/blog"
-        className="text-sm text-[var(--color-muted)] transition hover:text-[var(--color-fg)]"
-      >
-        Back to Journal
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Journal", href: "/blog" },
+          { label: post.title, href: `/blog/${post.slug}` },
+        ]}
+      />
 
       {post.coverImage ? (
         <div className="mt-8 overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)]">

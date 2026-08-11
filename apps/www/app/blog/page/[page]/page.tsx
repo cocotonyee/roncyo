@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { getSiteProfile } from "@goship/core";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BlogCard, BlogFilters, BlogPagination } from "@/components/blog";
 import { blogHref, queryBlogPosts, type BlogSort } from "@/lib/blog";
 
@@ -59,16 +59,13 @@ export default async function BlogArchivePage({ params, searchParams }: PageProp
 
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
-      <p className="text-xs text-[var(--color-muted)]">
-        <Link href="/" className="hover:text-[var(--color-fg)]">
-          Home
-        </Link>{" "}
-        /{" "}
-        <Link href="/blog" className="hover:text-[var(--color-fg)]">
-          Journal
-        </Link>{" "}
-        / Page {page}
-      </p>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Journal", href: "/blog" },
+          { label: `Page ${page}`, href: blogHref(page) },
+        ]}
+      />
       <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tighter text-[var(--color-fg)] sm:text-5xl">
         {profile?.name ? `${profile.name} Journal` : "Journal"}
       </h1>
