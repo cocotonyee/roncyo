@@ -147,7 +147,7 @@ body {
 .dc-flip__stage--hero {
   max-width: 420px;
   margin-inline: auto;
-  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 24px 48px rgba(10, 10, 10, 0.16));
 }
 
 .dc-flip__inner {

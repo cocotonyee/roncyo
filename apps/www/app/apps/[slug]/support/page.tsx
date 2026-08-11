@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { getStoreAppBySlug, getStoreSlugs } from "@/lib/store";
@@ -39,6 +40,10 @@ export default async function AppSupportPage({ params }: Props) {
       <p className="mt-4 text-base text-[var(--color-muted)]">
         Help for this product. Include device model and OS version in bug reports.
       </p>
+
+      <div className="mt-8">
+        <GooglePlayBadge href={app.playStoreUrl} title={app.title} />
+      </div>
 
       <div className="mt-10 border border-[var(--color-border)] bg-[var(--color-surface)]/60 p-6">
         <p className="text-sm font-medium text-[var(--color-muted)]">Email</p>

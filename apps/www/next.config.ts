@@ -21,6 +21,16 @@ const nextConfig: NextConfig = {
         destination: "/blog/:slug",
         permanent: true,
       },
+      {
+        source: "/labs",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/labs/:path*",
+        destination: "/blog",
+        permanent: true,
+      },
     ];
   },
 };

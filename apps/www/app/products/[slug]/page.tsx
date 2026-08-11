@@ -1,5 +1,8 @@
 import { CtaButton } from "@/components/CtaButton";
+import { GooglePlayBadge } from "@/components/GooglePlayBadge";
+import { AppLink } from "@/components/AppLink";
 import { getProductBySlug, products } from "@/lib/products";
+import { getStoreAppBySlug } from "@/lib/store";
 import { buildPageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 
@@ -25,6 +28,12 @@ export default async function ProductDetailPage({ params }: Props) {
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
+  const storeApp =
+    getStoreAppBySlug(slug) ??
+    (slug === "cozy-cat"
+      ? getStoreAppBySlug("cozy-cat-block-puzzle")
+      : undefined);
+
   return (
     <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:px-12">
       <p className="text-xs font-medium tracking-[0.18em] text-[var(--color-accent)] uppercase">
@@ -35,8 +44,10 @@ export default async function ProductDetailPage({ params }: Props) {
       </h1>
       <p className="mt-6 text-lg leading-relaxed text-[var(--color-muted)]">{product.tagline}</p>
       <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">{product.summary}</p>
-      <div className="mt-10">
-        {product.href ? (
+      <div className="mt-10 flex flex-wrap items-center gap-4">
+        {product.playStoreUrl ? (
+          <GooglePlayBadge href={product.playStoreUrl} title={product.name} />
+        ) : product.href ? (
           <CtaButton href={product.href} external>
             Open {product.name} →
           </CtaButton>
@@ -46,6 +57,23 @@ export default async function ProductDetailPage({ params }: Props) {
           </CtaButton>
         )}
       </div>
+      {storeApp ? (
+        <p className="mt-8 text-sm text-[var(--color-muted)]">
+          <AppLink
+            href={`/apps/${storeApp.slug}/support`}
+            className="underline-offset-4 hover:text-[var(--color-fg)] hover:underline"
+          >
+            Support
+          </AppLink>
+          {" · "}
+          <AppLink
+            href={`/apps/${storeApp.slug}/privacy`}
+            className="underline-offset-4 hover:text-[var(--color-fg)] hover:underline"
+          >
+            Privacy
+          </AppLink>
+        </p>
+      ) : null}
     </section>
   );
 }

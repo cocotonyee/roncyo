@@ -4,18 +4,21 @@ export type StoreApp = {
   slug: string;
   title: string;
   shortDescription: string;
+  playStoreUrl: string;
   collectsPersonalData: boolean;
   childrenTargeted: boolean;
   sdks: string[];
   progressNote: string;
 };
 
-/** Store compliance listings — not marketed on the company homepage. */
+/** Store compliance listings — Play Store apps under Roncyo. */
 export const storeApps: StoreApp[] = [
   {
     slug: "mochi-cats",
-    title: "Mochi Cat",
-    shortDescription: "Mobile app published by Roncyo.",
+    title: "Mochi Cats",
+    shortDescription: "A casual cat game published by Roncyo on Google Play.",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.roncyo.mochicats",
     collectsPersonalData: true,
     childrenTargeted: false,
     sdks: ["Google Play services", "Ad SDKs"],
@@ -25,7 +28,9 @@ export const storeApps: StoreApp[] = [
   {
     slug: "cozy-cat-block-puzzle",
     title: "Cozy Cat Block Puzzle",
-    shortDescription: "Mobile app published by Roncyo.",
+    shortDescription: "A calm block puzzle game published by Roncyo on Google Play.",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.roncyo.cozycat",
     collectsPersonalData: true,
     childrenTargeted: false,
     sdks: ["Google Play services", "Ad SDKs"],

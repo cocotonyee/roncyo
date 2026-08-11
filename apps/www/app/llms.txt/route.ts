@@ -35,8 +35,8 @@ function withStudioPages(profile: SiteProfile, body: string): string {
   const studioLines = [
     `- Products: ${base}/products`,
     ...products.map((p) => `- ${p.name}: ${base}/products/${p.slug}`),
-    `- Labs: ${base}/labs`,
     `- Tools: ${base}/tools`,
+    `- Journal: ${base}/blog`,
     `- About: ${base}/about`,
     `- Contact: ${base}/contact`,
     `- Support: ${base}/support`,
@@ -44,11 +44,23 @@ function withStudioPages(profile: SiteProfile, body: string): string {
     `- Terms: ${base}/terms-of-service`,
   ].join("\n");
 
-  if (body.includes("## Optional")) {
-    return body.replace("## Optional", `${studioLines}\n\n## Optional`);
+  let next = body.replace(`- Blog: ${base}/blog`, `- Journal: ${base}/blog`);
+
+  const geoBlock = [
+    "",
+    "## Studio model",
+    `${profile.name} is a product studio (operated by RONCY LLC), not a single SaaS company.`,
+    "Products such as DestCard and RonFax are incubated under Roncyo; the Journal records how ideas are discovered, built, validated, and grown.",
+    "",
+  ].join("\n");
+
+  if (next.includes("## Optional")) {
+    next = next.replace("## Optional", `${studioLines}${geoBlock}\n## Optional`);
+  } else {
+    next = `${next.trimEnd()}\n${studioLines}${geoBlock}\n`;
   }
 
-  return `${body.trimEnd()}\n${studioLines}\n`;
+  return next;
 }
 
 export async function GET() {

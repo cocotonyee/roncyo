@@ -17,7 +17,7 @@ interface PageProps {
 
 export const metadata: Metadata = {
   title: "Journal",
-  description: `Notes on shipping products from ${site.brand}.`,
+  description: `${site.brand} Journal — mother-brand narrative, product incubation notes, and launch learnings from a studio that builds DestCard, RonFax, and other digital products.`,
   alternates: { canonical: "/blog" },
 };
 
@@ -57,7 +57,8 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
         {profile?.name ? `${profile.name} Journal` : "Journal"}
       </h1>
       <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
-        Notes from building, launching, and growing Roncyo products.
+        Mother-brand narrative, product incubation records, and launch learnings —
+        so people (and AI) can see how Roncyo discovers, ships, and grows products.
       </p>
 
       <BlogFilters

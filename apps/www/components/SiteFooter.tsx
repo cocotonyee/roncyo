@@ -3,7 +3,6 @@ import { site } from "@/lib/site";
 
 const links = [
   { href: "/products", label: "Products" },
-  { href: "/labs", label: "Labs" },
   { href: "/blog", label: "Journal" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -28,9 +27,14 @@ export function SiteFooter() {
           </div>
           <a
             href={`mailto:${site.emails.hello}`}
-            className="text-sm text-[var(--color-fg)] underline-offset-4 transition hover:text-[var(--color-accent)] hover:underline"
+            className="group inline-flex flex-col gap-1 sm:items-end"
           >
-            {site.emails.hello}
+            <span className="text-xs font-medium tracking-[0.16em] text-[var(--color-muted)] uppercase">
+              Email
+            </span>
+            <span className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight text-[var(--color-fg)] underline decoration-[var(--color-border)] underline-offset-4 transition group-hover:text-[var(--color-accent)] group-hover:decoration-[var(--color-accent)] sm:text-2xl">
+              {site.emails.hello}
+            </span>
           </a>
         </div>
 

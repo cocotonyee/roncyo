@@ -1,9 +1,9 @@
 "use client";
 
 import { CtaButton } from "@/components/CtaButton";
+import { DestCardPhoneDemo } from "@/components/product-showcase/DestCardSoulDemo";
 import { site } from "@/lib/site";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import Image from "next/image";
 import { useRef } from "react";
 
 export function HomeHero() {
@@ -14,44 +14,40 @@ export function HomeHero() {
     offset: ["start start", "end start"],
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.18]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const stageY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
 
   return (
     <section
       ref={ref}
-      className="relative min-h-[100dvh] overflow-hidden bg-[#0a0a0a] text-white"
+      className="relative min-h-[100dvh] overflow-hidden bg-[var(--color-bg)] text-[var(--color-fg)]"
     >
-      <motion.div
-        className="absolute inset-0"
-        style={reduce ? undefined : { y: imageY, scale: imageScale }}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden
       >
-        <Image
-          src="/images/hero-studio.jpg"
-          alt="Quiet studio workspace with soft window light"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[42%_center]"
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_42%,rgba(4,120,87,0.1),transparent_48%),radial-gradient(ellipse_at_12%_88%,rgba(10,10,10,0.04),transparent_40%),linear-gradient(180deg,#f7f7f8_0%,#fafafa_55%,#f4f4f5_100%)]" />
+        <div
+          className="absolute inset-0 opacity-[0.28]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E\")",
+            backgroundSize: "160px 160px",
+          }}
         />
-      </motion.div>
+        <div className="absolute inset-x-0 bottom-0 h-px bg-[var(--color-border)]" />
+      </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(6,6,8,0.82)_0%,rgba(6,6,8,0.55)_42%,rgba(6,6,8,0.18)_68%,rgba(6,6,8,0.35)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,6,8,0.45)_0%,transparent_28%,transparent_62%,rgba(6,6,8,0.55)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_18%_70%,rgba(4,120,87,0.16),transparent_42%)]" />
-
-      <motion.div
-        className="relative z-10 mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-20 lg:justify-center lg:px-12 lg:pb-24 lg:pt-24"
-        style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
-      >
-        <div className="w-full max-w-2xl">
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-10 px-5 pb-16 pt-28 sm:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8 lg:px-12 lg:pb-20 lg:pt-24">
+        <motion.div
+          className="max-w-xl"
+          style={reduce ? undefined : { y: contentY }}
+        >
           <motion.p
-            className="font-[family-name:var(--font-display)] text-[clamp(3.75rem,10vw,8rem)] font-semibold leading-[0.9] tracking-tighter text-white"
-            initial={reduce ? false : { opacity: 0, y: 28 }}
+            className="font-[family-name:var(--font-display)] text-[clamp(3.5rem,9vw,7.25rem)] font-semibold leading-[0.88] tracking-tighter text-[var(--color-fg)]"
+            initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.05 }}
+            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.04 }}
           >
             {site.brand}
             <motion.span
@@ -60,10 +56,7 @@ export function HomeHero() {
               animate={
                 reduce
                   ? undefined
-                  : {
-                      opacity: [0.55, 1, 0.55],
-                      scale: [1, 1.08, 1],
-                    }
+                  : { opacity: [0.55, 1, 0.55], scale: [1, 1.06, 1] }
               }
               transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -72,41 +65,54 @@ export function HomeHero() {
           </motion.p>
 
           <motion.h1
-            className="mt-8 max-w-[18ch] pb-1 font-[family-name:var(--font-display)] text-[clamp(1.85rem,3.6vw,3.15rem)] font-semibold leading-[1.12] tracking-tighter text-white/95"
-            initial={reduce ? false : { opacity: 0, y: 24 }}
+            className="mt-7 max-w-[16ch] font-[family-name:var(--font-display)] text-[clamp(1.7rem,3.2vw,2.75rem)] font-semibold leading-[1.12] tracking-tighter text-[var(--color-fg)]"
+            initial={reduce ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.14 }}
+            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.12 }}
           >
             A studio that builds and ships digital products.
           </motion.h1>
 
           <motion.p
-            className="mt-5 max-w-[40ch] text-base leading-relaxed text-white/62 sm:text-lg"
-            initial={reduce ? false : { opacity: 0, y: 18 }}
+            className="mt-5 max-w-[38ch] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg"
+            initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.22 }}
+            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.2 }}
           >
-            We design focused tools and apps, launch them to market, and grow the ones people keep using.
+            Focused tools and apps, launched to market, grown when people keep using them.
           </motion.p>
 
           <motion.div
-            className="mt-10 flex flex-wrap items-center gap-3"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
+            className="mt-9 flex flex-wrap items-center gap-3"
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.3 }}
+            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.28 }}
           >
-            <CtaButton href="/#products" variant="inverse">
+            <CtaButton href="/#products" variant="primary">
               Explore products
             </CtaButton>
-            <a
-              href="/about"
-              className="inline-flex items-center justify-center border border-white/25 bg-white/5 px-5 py-3 text-sm font-medium tracking-tight text-white backdrop-blur-md transition hover:border-white/50 hover:bg-white/10 active:scale-[0.98]"
-            >
+            <CtaButton href="/about" variant="secondary">
               About the studio
-            </a>
+            </CtaButton>
           </motion.div>
-        </div>
-      </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="relative flex items-center justify-center lg:justify-end"
+          style={reduce ? undefined : { y: stageY }}
+          initial={reduce ? false : { opacity: 0, y: 28, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: "spring", stiffness: 70, damping: 18, delay: 0.18 }}
+        >
+          <div
+            className="pointer-events-none absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(4,120,87,0.16),transparent_68%)] blur-2xl"
+            aria-hidden
+          />
+          <div className="relative w-full max-w-[420px]">
+            <DestCardPhoneDemo />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -2,10 +2,8 @@ import { AppLink } from "@/components/AppLink";
 import { HomeHero } from "@/components/HomeHero";
 import { ProductScrollShowcase } from "@/components/product-showcase/ProductScrollShowcase";
 import { Reveal } from "@/components/Reveal";
-import { experiments } from "@/lib/experiments";
 import { listBlogPosts } from "@/lib/blog";
 import { getFeaturedProducts } from "@/lib/products";
-import { withReferral } from "@/lib/outbound";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -36,62 +34,15 @@ export default async function HomePage() {
             </h2>
             <div className="mt-8 max-w-[62ch] space-y-5 text-base leading-relaxed text-[var(--color-muted)]">
               <p>
-                Roncyo is a small digital product studio. We create tools, apps, and experiments
-                that solve real problems, then let winners earn their own stage.
+                Roncyo is a small digital product studio. We discover opportunities, ship focused
+                products, and grow the ones people keep using.
               </p>
               <p>
-                The mother brand builds trust. Products earn attention, signups, and revenue. We are
-                not an all-in-one AI platform.
+                The mother brand builds trust. Products earn attention, signups, and revenue. Build
+                logs and lessons live in the Journal — not a separate Labs section.
               </p>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 lg:px-12">
-        <Reveal>
-          <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tighter text-[var(--color-fg)] sm:text-4xl">
-            The lab notebook.
-          </h2>
-        </Reveal>
-        <ul className="mt-12 grid gap-0 border-y border-[var(--color-border)] md:grid-cols-2">
-          {experiments.map((item, i) => (
-            <li
-              key={`${item.year}-${item.name}`}
-              className={`border-b border-[var(--color-border)] py-7 md:px-6 md:py-8 ${
-                i % 2 === 0 ? "md:border-r" : ""
-              } ${i >= experiments.length - 2 ? "md:border-b-0" : ""}`}
-            >
-              <Reveal delay={i * 0.04}>
-                <p className="text-xs text-[var(--color-muted)]">
-                  {item.year} · {item.status}
-                </p>
-                {item.href ? (
-                  <a
-                    href={withReferral(item.href)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 block font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--color-fg)] transition hover:text-[var(--color-accent)]"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <p className="mt-2 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--color-fg)]">
-                    {item.name}
-                  </p>
-                )}
-                <p className="mt-2 text-sm text-[var(--color-muted)]">{item.blurb}</p>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-        <div className="pt-8">
-          <AppLink
-            href="/labs"
-            className="text-sm font-medium text-[var(--color-fg)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline"
-          >
-            Visit Labs
-          </AppLink>
         </div>
       </section>
 
@@ -100,13 +51,13 @@ export default async function HomePage() {
           <Reveal>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tighter text-[var(--color-fg)] sm:text-4xl">
-                Notes from the studio.
+                From the Journal.
               </h2>
               <AppLink
                 href="/blog"
                 className="text-sm font-medium text-[var(--color-fg)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline"
               >
-                All entries
+                All Journal entries
               </AppLink>
             </div>
           </Reveal>

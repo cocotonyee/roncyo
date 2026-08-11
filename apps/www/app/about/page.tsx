@@ -16,15 +16,24 @@ export default function AboutPage() {
       </h1>
       <div className="mt-8 space-y-5 text-base leading-relaxed text-[var(--color-muted)]">
         <p>
-          {site.brand} is a digital product studio operated by {site.legalName}. We create useful
-          software for the world: websites, tools, games, extensions, and focused SaaS experiments.
+          {site.brand} is a digital product studio operated by {site.legalName}. We research ideas,
+          build focused digital products, and turn small opportunities into independent businesses.
         </p>
         <p>
-          We are not a traditional software sales company. We are closer to a tiny startup studio:
-          ship small products, learn from real usage, and let winners grow into independent brands
-          when they earn it.
+          DestCard, RonFax, and other tools are where users interact and revenue is created. Roncyo
+          provides the foundation: product thinking, design, engineering, experimentation, and brand
+          trust.
         </p>
-        <p>The mother site is for trust and orientation. The products do the earning.</p>
+        <p>
+          The mother site is for orientation and trust. The{" "}
+          <a
+            href="/blog"
+            className="text-[var(--color-fg)] underline-offset-4 transition hover:text-[var(--color-accent)] hover:underline"
+          >
+            Journal
+          </a>{" "}
+          records how products are discovered, shipped, and grown.
+        </p>
       </div>
       <div className="mt-10 flex flex-wrap gap-3">
         <CtaButton href="/products">See products</CtaButton>

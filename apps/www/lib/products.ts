@@ -8,6 +8,7 @@ export type Product = {
   status: ProductStatus;
   year: number;
   href?: string;
+  playStoreUrl?: string;
   category: string;
   featured?: boolean;
   image?: string;
@@ -53,13 +54,30 @@ export const products: Product[] = [
     image: "/images/product-picturekit.jpg",
   },
   {
-    slug: "cozy-cat",
-    name: "Cozy Cat",
-    tagline: "A calm mobile puzzle game.",
+    slug: "mochi-cats",
+    name: "Mochi Cats",
+    tagline: "A casual cat game on Google Play.",
     summary:
-      "Block puzzle play with a soft feline mood. Published as a store app under the Roncyo umbrella.",
+      "Light feline play published under the Roncyo umbrella. Available now on Google Play.",
     status: "live",
     year: 2026,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.roncyo.mochicats",
+    href: "https://play.google.com/store/apps/details?id=com.roncyo.mochicats",
+    category: "Games",
+    featured: false,
+  },
+  {
+    slug: "cozy-cat",
+    name: "Cozy Cat Block Puzzle",
+    tagline: "A calm mobile block puzzle with a soft feline mood.",
+    summary:
+      "Block puzzle play published as a store app under the Roncyo umbrella. Available now on Google Play.",
+    status: "live",
+    year: 2026,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.roncyo.cozycat",
+    href: "https://play.google.com/store/apps/details?id=com.roncyo.cozycat",
     category: "Games",
     featured: false,
   },

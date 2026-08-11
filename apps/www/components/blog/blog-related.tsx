@@ -6,7 +6,7 @@ export function BlogRelated({ posts }: { posts: BlogPost[] }) {
   return (
     <section className="mt-16 border-t border-[var(--color-border)] pt-12">
       <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--color-fg)] sm:text-3xl">
-        Related
+        Related Journal
       </h2>
       <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (

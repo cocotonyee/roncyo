@@ -1,4 +1,5 @@
 import { CtaButton } from "@/components/CtaButton";
+import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import type { Product } from "@/lib/products";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
@@ -31,10 +32,14 @@ export function ProductGalleryItem({
       <p className="mt-4 max-w-[42ch] text-base leading-relaxed text-[var(--color-muted)]">
         {product.tagline}
       </p>
-      <div className="mt-8">
-        <CtaButton href={exploreHref} external={external}>
-          Explore {product.name}
-        </CtaButton>
+      <div className="mt-8 flex flex-wrap items-center gap-4">
+        {product.playStoreUrl ? (
+          <GooglePlayBadge href={product.playStoreUrl} title={product.name} />
+        ) : (
+          <CtaButton href={exploreHref} external={external}>
+            Explore {product.name}
+          </CtaButton>
+        )}
       </div>
     </div>
   );

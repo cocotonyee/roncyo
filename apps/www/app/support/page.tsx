@@ -1,4 +1,5 @@
 import { AppLink } from "@/components/AppLink";
+import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { buildPageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { storeApps } from "@/lib/store";
@@ -33,22 +34,25 @@ export default function SupportPage() {
         <h2 className="font-[family-name:var(--font-display)] text-2xl text-[var(--color-fg)]">
           App support pages
         </h2>
-        <ul className="mt-6 space-y-4">
+        <ul className="mt-6 space-y-8">
           {storeApps.map((app) => (
-            <li key={app.slug} className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              <span className="text-[var(--color-fg)]">{app.title}</span>
-              <AppLink
-                href={`/apps/${app.slug}/support`}
-                className="text-[var(--color-muted)] underline-offset-4 hover:underline"
-              >
-                Support
-              </AppLink>
-              <AppLink
-                href={`/apps/${app.slug}/privacy`}
-                className="text-[var(--color-muted)] underline-offset-4 hover:underline"
-              >
-                Privacy
-              </AppLink>
+            <li key={app.slug} className="space-y-3">
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 text-sm">
+                <span className="text-[var(--color-fg)]">{app.title}</span>
+                <AppLink
+                  href={`/apps/${app.slug}/support`}
+                  className="text-[var(--color-muted)] underline-offset-4 hover:underline"
+                >
+                  Support
+                </AppLink>
+                <AppLink
+                  href={`/apps/${app.slug}/privacy`}
+                  className="text-[var(--color-muted)] underline-offset-4 hover:underline"
+                >
+                  Privacy
+                </AppLink>
+              </div>
+              <GooglePlayBadge href={app.playStoreUrl} title={app.title} />
             </li>
           ))}
         </ul>

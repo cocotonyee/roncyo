@@ -99,7 +99,7 @@ export function ProductScrollShowcase({ products }: { products: Product[] }) {
             Work that ships.
           </h2>
           <p className="mt-4 max-w-[40ch] text-base leading-relaxed text-[var(--color-muted)]">
-            Live products and experiments under the Roncyo studio.
+            Shipped products from the Roncyo studio.
           </p>
         </div>
         <ul className="mt-10 divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
@@ -150,7 +150,7 @@ export function ProductScrollShowcase({ products }: { products: Product[] }) {
                   Work that ships.
                 </h2>
                 <p className="mt-3 max-w-[36ch] text-sm leading-relaxed text-[var(--color-muted)]">
-                  Live products and experiments under the Roncyo studio.
+                  Shipped products from the Roncyo studio.
                 </p>
               </div>
 

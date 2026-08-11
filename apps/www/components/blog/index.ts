@@ -7,3 +7,4 @@ export { BlogTags } from "./blog-tags";
 export { BlogFaq } from "./blog-faq";
 export { BlogRelated } from "./blog-related";
 export { BlogQuickAnswer } from "./blog-quick-answer";
+export { BlogConvertRail, BlogConvertFloat } from "./blog-convert-rail";

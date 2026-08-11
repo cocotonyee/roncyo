@@ -7,6 +7,8 @@ import {
   getSiteProfile,
 } from "@goship/core";
 import {
+  BlogConvertFloat,
+  BlogConvertRail,
   BlogFaq,
   BlogPostHeader,
   BlogQuickAnswer,
@@ -64,7 +66,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const hasToc = post.headings.length > 0;
 
   return (
-    <article className="mx-auto max-w-[1100px] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+    <article className="relative mx-auto max-w-[1280px] px-5 py-12 pb-36 sm:px-8 lg:px-12 lg:py-16 xl:pb-16">
       {jsonLd ? (
         <script
           type="application/ld+json"
@@ -92,21 +94,23 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <div
         className={`mt-10 grid gap-10 ${
-          hasToc ? "lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-14" : ""
+          hasToc
+            ? "xl:grid-cols-[180px_minmax(0,1fr)_240px] xl:gap-12"
+            : "xl:grid-cols-[minmax(0,1fr)_240px] xl:gap-12"
         }`}
       >
         {hasToc ? (
-          <aside className="hidden lg:block">
+          <aside className="hidden xl:block">
             <div className="sticky top-24">
               <BlogToc headings={post.headings} />
             </div>
           </aside>
         ) : null}
 
-        <div className="min-w-0 max-w-[42rem]">
+        <div className="min-w-0 max-w-[42rem] justify-self-center xl:justify-self-stretch">
           <BlogPostHeader post={post} />
 
-          <div className="mt-8 lg:hidden">
+          <div className="mt-8 xl:hidden">
             <BlogToc headings={post.headings} />
           </div>
 
@@ -124,9 +128,12 @@ export default async function BlogPostPage({ params }: PageProps) {
           <BlogTags tags={post.tags} />
           <BlogFaq items={post.faq} />
         </div>
+
+        <BlogConvertRail post={post} />
       </div>
 
       <BlogRelated posts={related} />
+      <BlogConvertFloat post={post} />
     </article>
   );
 }
